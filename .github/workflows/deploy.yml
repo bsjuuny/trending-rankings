@@ -36,8 +36,8 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./out/
-          server-dir: /www/trendingrankings/
-          state-name: .sync-state-trending.json
+          server-dir: www/trendingrankings/
+          state-name: .sync-state-trending-v2.json
           exclude: |
             **/.git*
             **/.git*/**
