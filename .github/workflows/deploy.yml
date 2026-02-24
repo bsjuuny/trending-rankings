@@ -38,4 +38,4 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y lftp
-          lftp -c "set ssl:verify-certificate no; set ftp:ssl-allow yes; open -u $FTP_USERNAME,$FTP_PASSWORD $FTP_SERVER; mirror -Rev ./out/ /www/trendingrankings/; quit"
+          lftp -c "set ssl:verify-certificate no; set ftp:ssl-allow yes; open -u $FTP_USERNAME,$FTP_PASSWORD $FTP_SERVER; mirror -R -v -e --ignore-time ./out/ /www/trendingrankings/; quit"
