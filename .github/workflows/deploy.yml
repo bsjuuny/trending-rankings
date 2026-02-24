@@ -30,16 +30,12 @@ jobs:
         # env:
         #   NEXT_PUBLIC_API_URL: ${{ secrets.NEXT_PUBLIC_API_URL }}
 
-      - name: ✨ Deploy to Cafe24 via FTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
-        with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./out/
-          server-dir: /www/trendingrankings/ # 대상 폴더로 업로드 경로 수정
-          # 제외할 파일이나 폴더가 있다면 지정
-          exclude: |
-            **/.git*
-            **/.git*/**
-            **/node_modules/**
+      - name: ✨ Deploy to Cafe24 via lftp
+        env:
+          FTP_SERVER: ${{ secrets.FTP_SERVER }}
+          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y lftp
+          lftp -c "set ssl:verify-certificate no; set ftp:ssl-allow yes; open -u $FTP_USERNAME,$FTP_PASSWORD $FTP_SERVER; mirror -Rev ./out/ /www/trendingrankings/; quit"
