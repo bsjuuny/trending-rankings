@@ -40,8 +40,8 @@ jobs:
           lftp -u "$FTP_USERNAME","$FTP_PASSWORD" "$FTP_SERVER" <<EOF
           set ftp:ssl-allow no
           set ftp:passive-mode false
-          cd trendingrankings
-          lcd ./out
-          mirror -R -v -e --overwrite --ignore-time . .
+          # try to make directory in case it really doesn't exist during the path lookup
+          mkdir -p /www/trendingrankings
+          mirror -R -v -e --overwrite --ignore-time ./out/ /www/trendingrankings/
           quit
           EOF
