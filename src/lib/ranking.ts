@@ -110,24 +110,21 @@ export async function getSignalRankings(revalidate: number): Promise<RankingSour
 
 export async function getNateRankings(revalidate: number): Promise<RankingSource> {
     try {
-        const response = await fetch('https://www.nate.com', {
+        const response = await fetch('https://www.nate.com/js/data/jsonLiveKeywordDataV1.js', {
             headers: { 'User-Agent': USER_AGENT },
             next: { revalidate }
         });
-        const html = await response.text();
-        const $ = cheerio.load(html);
-        const items: RankingItem[] = [];
 
-        $('a.ik span.txt_rank').each((i, el) => {
-            const keyword = $(el).text().trim();
-            if (keyword && items.length < 10) {
-                items.push({
-                    rank: items.length + 1,
-                    keyword,
-                    link: `https://search.daum.net/search?w=tot&q=${encodeURIComponent(keyword)}`,
-                });
-            }
-        });
+        const buffer = await response.arrayBuffer();
+        const decoder = new TextDecoder('euc-kr');
+        const text = decoder.decode(buffer);
+        const data = JSON.parse(text);
+
+        const items: RankingItem[] = data.map((item: string[]) => ({
+            rank: parseInt(item[0], 10),
+            keyword: item[4], // 인덱스 4가 실제 검색 키워드
+            link: `https://search.daum.net/search?w=tot&q=${encodeURIComponent(item[4])}`,
+        }));
 
         return { title: 'Nate 실시간 이슈', items };
     } catch (error) {
