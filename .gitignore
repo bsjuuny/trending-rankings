@@ -39,3 +39,11 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# dev and testing files
+test-rankings.ts
+data/
+yt_data_sample.json
+yt_dump.html
+yt_full_data.json
+

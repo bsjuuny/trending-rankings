@@ -1,0 +1,45 @@
+name: Build and Deploy to Cafe24
+on:
+  push:
+    branches:
+      - main
+      - master
+  schedule:
+    # 1시간마다 주기적으로 실행 (UTC 기준)
+    - cron: '0 * * * *'
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20' # 프로젝트에 맞는 Node 버전 사용 (또는 18 등)
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci || npm install
+
+      - name: Build project
+        run: npm run build
+        # 빌드 과정에서 환경 변수가 필요하면 아래 주석을 해제하고 추가하세요.
+        # env:
+        #   NEXT_PUBLIC_API_URL: ${{ secrets.NEXT_PUBLIC_API_URL }}
+
+      - name: ✨ Deploy to Cafe24 via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./out/
+          server-dir: /www/ # Cafe24의 웹 루트 디렉토리 (환경에 따라 다를 수 있음)
+          # 제외할 파일이나 폴더가 있다면 지정
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
