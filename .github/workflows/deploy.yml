@@ -37,7 +37,7 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./out/
-          server-dir: /www/ # Cafe24의 웹 루트 디렉토리 (환경에 따라 다를 수 있음)
+          server-dir: /www/trendingrankings/ # 대상 폴더로 업로드 경로 수정
           # 제외할 파일이나 폴더가 있다면 지정
           exclude: |
             **/.git*
