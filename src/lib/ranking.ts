@@ -118,7 +118,7 @@ export async function getNateRankings(revalidate: number): Promise<RankingSource
         const $ = cheerio.load(html);
         const items: RankingItem[] = [];
 
-        $('a.ik span').each((i, el) => {
+        $('a.ik span.txt_rank').each((i, el) => {
             const keyword = $(el).text().trim();
             if (keyword && items.length < 10) {
                 items.push({
