@@ -3,7 +3,6 @@ on:
   push:
     branches:
       - main
-      - master
   schedule:
     # 1시간마다 주기적으로 실행 (UTC 기준)
     - cron: '0 * * * *'
