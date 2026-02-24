@@ -29,19 +29,16 @@ jobs:
         # env:
         #   NEXT_PUBLIC_API_URL: ${{ secrets.NEXT_PUBLIC_API_URL }}
 
-      - name: ✨ Deploy to Cafe24 via lftp
-        env:
-          FTP_SERVER: ${{ secrets.FTP_SERVER }}
-          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
-          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y lftp
-          lftp -u "$FTP_USERNAME","$FTP_PASSWORD" "$FTP_SERVER" <<EOF
-          set ftp:ssl-allow no
-          set ftp:passive-mode false
-          # try to make directory in case it really doesn't exist during the path lookup
-          mkdir -p /www/trendingrankings
-          mirror -R -v -e --overwrite --ignore-time ./out/ /www/trendingrankings/
-          quit
-          EOF
+      - name: ✨ Deploy to Cafe24 via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./out/
+          server-dir: /www/trendingrankings/
+          state-name: .sync-state-trending.json
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
