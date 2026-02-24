@@ -3,6 +3,7 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   /* config options here */
   output: 'export',
+  generateBuildId: async () => 'my-build-id',
   reactCompiler: true,
   basePath: '/trendingrankings',
   images: {
