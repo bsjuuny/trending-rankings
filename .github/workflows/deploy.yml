@@ -40,7 +40,7 @@ jobs:
           sudo apt-get install -y lftp
           lftp -u "$FTP_USERNAME","$FTP_PASSWORD" "$FTP_SERVER" <<EOF
           set ftp:ssl-allow no
-          set ftp:passive-mode true
+          set ftp:passive-mode false
           cd /www/trendingrankings
           lcd ./out
           mirror -R -v -e --overwrite --ignore-time . .
