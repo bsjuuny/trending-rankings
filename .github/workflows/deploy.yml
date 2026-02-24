@@ -37,4 +37,4 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y ncftp
-          ncftpput -R -v -u "$FTP_USERNAME" -p "$FTP_PASSWORD" "$FTP_SERVER" /www/trendingrankings ./out/*
+          ncftpput -R -v -u "$FTP_USERNAME" -p "$FTP_PASSWORD" "$FTP_SERVER" www/trendingrankings ./out/*
