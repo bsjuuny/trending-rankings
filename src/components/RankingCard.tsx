@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import { RankingSource } from '@/lib/ranking';
-import CacheTimer from './CacheTimer';
 
 interface RankingCardProps {
     source: RankingSource;
@@ -12,7 +11,6 @@ export default function RankingCard({ source }: RankingCardProps) {
             <h2>
                 <span className="source-icon">🔥</span>
                 {source.title}
-                <CacheTimer />
             </h2>
             <ul className="ranking-list">
                 {source.items.length > 0 ? (
