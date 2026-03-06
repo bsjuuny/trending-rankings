@@ -1,5 +1,6 @@
 import RankingCard from '@/components/RankingCard';
 import { getAllRankings } from '@/lib/ranking';
+import DonationPopup from '@/components/DonationPopup';
 
 export default async function Home() {
   const sources = await getAllRankings();
@@ -18,9 +19,6 @@ export default async function Home() {
     <main>
       <h1>Real-time Trending</h1>
       <p className="subtitle">Discover what's happening now across major portals</p>
-      <p className="info-text" style={{ fontSize: '0.9rem', color: '#666', textAlign: 'center', marginBottom: '0.5rem' }}>
-        ※ 데이터는 안정적인 제공을 위해 매시간 5분마다 최신 순위로 자동 갱신됩니다.
-      </p>
       <p style={{ fontSize: '0.9rem', color: '#0070f3', textAlign: 'center', marginBottom: '2rem', fontWeight: '500' }}>
         최근 업데이트: {buildTime}
       </p>
@@ -30,6 +28,7 @@ export default async function Home() {
           <RankingCard key={index} source={source} />
         ))}
       </div>
+      <DonationPopup />
     </main>
   );
 }

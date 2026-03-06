@@ -5,6 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "build:push": "npm run build && git add . && git commit -m \"Build and update Trending Rankings\" && git push",
+    "generate:summary": "node scripts/generate-summary.js",
     "start": "next start",
     "lint": "eslint"
   },
