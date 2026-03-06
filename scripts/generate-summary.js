@@ -12,7 +12,7 @@ async function getXRankings() {
         const items = [];
         $('.trend-link').each((i, el) => {
             const keyword = $(el).text().trim();
-            if (keyword && items.length < 5) {
+            if (keyword && items.length < 10) {
                 items.push(`${items.length + 1}. ${keyword}`);
             }
         });
@@ -30,7 +30,7 @@ async function getYoutubeRankings() {
         const items = [];
         $('.text div a').each((i, el) => {
             const keyword = $(el).text().trim();
-            if (keyword && items.length < 5) {
+            if (keyword && items.length < 10) {
                 items.push(`${items.length + 1}. ${keyword}`);
             }
         });
@@ -44,7 +44,7 @@ async function getSignalRankings() {
             headers: { 'User-Agent': USER_AGENT }
         });
         const data = await response.json();
-        return data.top10.slice(0, 5).map((item, i) => `${i + 1}. ${item.keyword}`).join('\n');
+        return data.top10.slice(0, 10).map((item, i) => `${i + 1}. ${item.keyword}`).join('\n');
     } catch (e) { return '데이터를 가져올 수 없습니다.'; }
 }
 
@@ -57,7 +57,7 @@ async function getNateRankings() {
         const decoder = new TextDecoder('euc-kr');
         const text = decoder.decode(buffer);
         const data = JSON.parse(text);
-        return data.slice(0, 5).map((item, i) => `${i + 1}. ${item[4]}`).join('\n');
+        return data.slice(0, 10).map((item, i) => `${i + 1}. ${item[4]}`).join('\n');
     } catch (e) { return '데이터를 가져올 수 없습니다.'; }
 }
 
@@ -71,7 +71,7 @@ async function getGoogleTrends() {
         const items = [];
         $('item').each((i, el) => {
             const keyword = $(el).children('title').text().trim();
-            if (keyword && items.length < 5) {
+            if (keyword && items.length < 10) {
                 items.push(`${items.length + 1}. ${keyword}`);
             }
         });
