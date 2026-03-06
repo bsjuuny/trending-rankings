@@ -63,7 +63,7 @@ jobs:
             
             ${{ env.TRENDING_SUMMARY }}
             
-            🔗 웹사이트: <a href="https://bsjuuny.cafe24.com/trendingrankings/">바로가기</a>
+            🔗 웹사이트: <a href="https://bsjuuny2026.mycafe24.com/trendingrankings/">바로가기</a>
           format: html
 
       - name: 🚨 Notify Telegram on Failure
