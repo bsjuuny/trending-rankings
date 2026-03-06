@@ -18,17 +18,21 @@ export default async function Home() {
   return (
     <main>
       <h1>Real-time Trending</h1>
-      <p className="subtitle">Discover what's happening now across major portals</p>
-      <p style={{ fontSize: '0.9rem', color: '#0070f3', textAlign: 'center', marginBottom: '2rem', fontWeight: '500' }}>
+      <p className="subtitle">주요 포털의 실시간 급상승 트렌드를 한눈에 파악하세요</p>
+      <p className="update-time">
         최근 업데이트: {buildTime}
       </p>
 
       <div className="grid">
         {sources.map((source, index) => (
-          <RankingCard key={index} source={source} />
+          <div key={index} style={{ animationDelay: `${index * 0.1}s` }}>
+            <RankingCard source={source} />
+          </div>
         ))}
       </div>
-      <DonationPopup />
+      <div className="mt-16 flex justify-center w-full" style={{ animation: 'fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards', opacity: 0, animationDelay: '0.5s' }}>
+        <DonationPopup />
+      </div>
     </main>
   );
 }
