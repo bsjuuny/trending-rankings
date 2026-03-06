@@ -88,23 +88,28 @@ async function main() {
         getYoutubeRankings()
     ]);
 
+    // Simple escape for HTML
+    const escapeHTML = (str) => str.replace(/[&<>"']/g, m => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+    })[m]);
+
     const summary = `
-🔥 *실시간 트렌드 요약*
+<b>🔥 실시간 트렌드 요약</b>
 
-🏙 *Nate 실시간 이슈*
-${nate}
+<b>🏙 Nate 실시간 이슈</b>
+${escapeHTML(nate)}
 
-🔍 *Google Trends (KR)*
-${google}
+<b>🔍 Google Trends (KR)</b>
+${escapeHTML(google)}
 
-🚥 *Signal.bz 실시간*
-${signal}
+<b>🚥 Signal.bz 실시간</b>
+${escapeHTML(signal)}
 
-🐦 *X (Twitter) 트렌드*
-${x}
+<b>🐦 X (Twitter) 트렌드</b>
+${escapeHTML(x)}
 
-🎬 *YouTube 인기 급상승*
-${youtube}
+<b>🎬 YouTube 인기 급상승</b>
+${escapeHTML(youtube)}
     `.trim();
 
     console.log(summary);

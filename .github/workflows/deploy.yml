@@ -57,14 +57,14 @@ jobs:
           to: ${{ secrets.TELEGRAM_CHAT_ID }}
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           message: |
-            ✅ *Trending Rankings* 배포 성공!
+            ✅ <b>Trending Rankings</b> 배포 성공!
             
             ⏱ 업데이트 시각: ${{ github.event.head_commit.timestamp }}
             
             ${{ env.TRENDING_SUMMARY }}
             
-            🔗 웹사이트: https://bsjuuny.cafe24.com/trendingrankings/
-          format: markdown
+            🔗 웹사이트: <a href="https://bsjuuny.cafe24.com/trendingrankings/">바로가기</a>
+          format: html
 
       - name: 🚨 Notify Telegram on Failure
         if: failure()
@@ -73,8 +73,8 @@ jobs:
           to: ${{ secrets.TELEGRAM_CHAT_ID }}
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           message: |
-            ❌ *Trending Rankings* 배포 실패!
+            ❌ <b>Trending Rankings</b> 배포 실패!
             
             빌드 또는 배포 과정에서 오류가 발생했습니다. GitHub Actions 로그를 확인해 주세요.
-            🔗 리포지토리: ${{ github.server_url }}/${{ github.repository }}/actions
-          format: markdown
+            🔗 리포지토리: <a href="${{ github.server_url }}/${{ github.repository }}/actions">확인하기</a>
+          format: html
