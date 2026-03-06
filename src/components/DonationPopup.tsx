@@ -78,7 +78,7 @@ export default function DonationPopup() {
                 <p style={{ fontSize: "13px", fontWeight: 500, lineHeight: 1.6, wordBreak: "keep-all", margin: "0", color: "#374151" }}>
                     이 글이 도움이 되셨다면,<br />
                     커피 한 잔 값으로 응원해 주실 수 있어요 ☕<br />
-                    작은 기부가 앞으로 더 좋은 글을 쓰는 데 큰 힘이 됩니다.
+                    작은 기부가 앞으로 더 좋은 서비스를 만드는 데 큰 힘이 됩니다.
                 </p>
             </div>
         </div>,
