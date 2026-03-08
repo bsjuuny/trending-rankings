@@ -1,6 +1,5 @@
 const cheerio = require('cheerio');
-
-const USER_AGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36';
+const puppeteer = require('puppeteer');const USER_AGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36';
 
 async function getXRankings() {
     try {
@@ -79,13 +78,56 @@ async function getGoogleTrends() {
     } catch (e) { return '데이터를 가져올 수 없습니다.'; }
 }
 
+async function getDaumRankings() {
+    let browser = null;
+    try {
+        browser = await puppeteer.launch({
+            headless: 'new',
+            args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage']
+        });
+        const page = await browser.newPage();
+        await page.setUserAgent(USER_AGENT);
+        await page.goto('https://search.daum.net/search?w=tot&DA=23N&q=%EC%8B%A4%EC%8B%9C%EA%B0%84+%ED%8A%B8%EB%A0%8C%EB%93%9C', { waitUntil: 'networkidle2', timeout: 30000 });
+        
+        const trends = await page.evaluate(() => {
+            const results = [];
+            const sections = document.querySelectorAll('div, section');
+            for (const sec of sections) {
+                const titleText = (sec.querySelector('h2, h3, h4, strong.tit_wrap') || {}).innerText || '';
+                if (titleText.includes('실시간 트렌드') || titleText.includes('버블')) {
+                    const links = sec.querySelectorAll('a');
+                    links.forEach(a => {
+                        const t = a.innerText.trim();
+                        const cleanT = t.replace(/^[0-9]+/, '').split('\n')[0].trim();
+                        if (cleanT && cleanT.length > 1 && !results.includes(cleanT) && !cleanT.includes('실시간')) {
+                            results.push(cleanT);
+                        }
+                    });
+                }
+            }
+            return results;
+        });
+        
+        const keywords = trends.filter(t => t && !t.includes('안내') && !t.includes('자세히 보기') && !t.includes('닫기') && !t.includes('beta') && !t.includes('다양한 출처')).slice(0, 10);
+        if (keywords.length > 0) {
+             return keywords.map((k, i) => `${i + 1}. ${k}`).join('\n');
+        }
+        return '데이터를 가져올 수 없습니다.';
+    } catch (e) {
+        return '데이터를 가져올 수 없습니다.';
+    } finally {
+        if (browser) await browser.close();
+    }
+}
+
 async function main() {
-    const [nate, google, signal, x, youtube] = await Promise.all([
+    const [nate, google, signal, x, youtube, daum] = await Promise.all([
         getNateRankings(),
         getGoogleTrends(),
         getSignalRankings(),
         getXRankings(),
-        getYoutubeRankings()
+        getYoutubeRankings(),
+        getDaumRankings()
     ]);
 
     // Simple escape for HTML
@@ -101,6 +143,9 @@ ${escapeHTML(nate)}
 
 <b>🔍 Google Trends (KR)</b>
 ${escapeHTML(google)}
+
+<b>🟡 Daum 실시간 트렌드 (Beta)</b>
+${escapeHTML(daum)}
 
 <b>🚥 Signal.bz 실시간</b>
 ${escapeHTML(signal)}
