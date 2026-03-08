@@ -1,5 +1,6 @@
 import * as cheerio from 'cheerio';
-
+import puppeteer from 'puppeteer';
+import { unstable_cache } from 'next/cache';
 export interface RankingItem {
     rank: number;
     keyword: string;
@@ -162,14 +163,72 @@ export async function getGoogleTrends(revalidate: number): Promise<RankingSource
     }
 }
 
+// Puppeteer fetching is heavy, so we wrap it in Next.js unstable_cache
+const getDaumRankingsCached = unstable_cache(
+    async (): Promise<RankingSource> => {
+        let browser = null;
+        try {
+            browser = await puppeteer.launch({
+                headless: true,
+                args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage']
+            });
+            const page = await browser.newPage();
+            await page.setUserAgent(USER_AGENT);
+            await page.goto('https://search.daum.net/search?w=tot&DA=23N&q=%EC%8B%A4%EC%8B%9C%EA%B0%84+%ED%8A%B8%EB%A0%8C%EB%93%9C', { waitUntil: 'networkidle2', timeout: 30000 });
+            
+            const trends = await page.evaluate(() => {
+                const results: string[] = [];
+                const sections = document.querySelectorAll('div, section');
+                for (const sec of sections) {
+                    const titleEl = sec.querySelector('h2, h3, h4, strong.tit_wrap');
+                    const titleText = titleEl ? (titleEl as HTMLElement).innerText : '';
+                    if (titleText.includes('실시간 트렌드') || titleText.includes('버블')) {
+                        const links = sec.querySelectorAll('a');
+                        links.forEach(a => {
+                            const t = a.innerText.trim();
+                            const cleanT = t.replace(/^[0-9]+/, '').split('\n')[0].trim();
+                            if (cleanT && cleanT.length > 1 && !results.includes(cleanT) && !cleanT.includes('실시간')) {
+                                results.push(cleanT);
+                            }
+                        });
+                    }
+                }
+                return results;
+            });
+            
+            const keywords = trends.filter(t => t && !t.includes('안내') && !t.includes('자세히 보기') && !t.includes('닫기')).slice(0, 10);
+            
+            const items: RankingItem[] = keywords.map((keyword, index) => ({
+                rank: index + 1,
+                keyword,
+                link: `https://search.daum.net/search?w=tot&q=${encodeURIComponent(keyword)}`,
+            }));
+
+            return { title: 'Daum 실시간 트렌드 (Beta)', items };
+        } catch (error) {
+            console.error('Error fetching Daum rankings:', error);
+            return { title: 'Daum 실시간 트렌드 (Beta)', items: [] };
+        } finally {
+            if (browser) await browser.close();
+        }
+    },
+    ['daum-trend-rankings'],
+    { revalidate: 3600 } // Cache for 1 hour to prevent excessive Puppeteer launches
+);
+
+export async function getDaumRankings(): Promise<RankingSource> {
+    return getDaumRankingsCached();
+}
+
 export async function getAllRankings(): Promise<RankingSource[]> {
     const revalidate = getRevalidateSeconds();
-    const [nate, google, signal, x, youtube] = await Promise.all([
+    const [nate, google, signal, x, youtube, daum] = await Promise.all([
         getNateRankings(revalidate),
         getGoogleTrends(revalidate),
         getSignalRankings(revalidate),
         getXRankings(revalidate),
         getYoutubeRankings(revalidate),
+        getDaumRankings(),
     ]);
-    return [nate, google, signal, x, youtube];
+    return [nate, google, signal, x, youtube, daum];
 }
