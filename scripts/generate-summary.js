@@ -87,23 +87,21 @@ async function getDaumRankings() {
         });
         const page = await browser.newPage();
         await page.setUserAgent(USER_AGENT);
-        await page.goto('https://search.daum.net/search?w=tot&DA=23N&q=%EC%8B%A4%EC%8B%9C%EA%B0%84+%ED%8A%B8%EB%A0%8C%EB%93%9C', { waitUntil: 'networkidle2', timeout: 30000 });
+        await page.goto('https://www.daum.net/', { waitUntil: 'networkidle2', timeout: 30000 });
         
         const trends = await page.evaluate(() => {
             const results = [];
-            const links = document.querySelectorAll('a[href*="DA=TRL"]');
-            links.forEach(a => {
-                const text = a.innerText.trim();
-                const cleanT = text.split('\n')[0].trim();
-                const keywordFinal = cleanT.replace(/^[0-9]+\s*/, '').trim();
-                if (keywordFinal && keywordFinal.length > 1 && !results.includes(keywordFinal)) {
-                    results.push(keywordFinal);
+            const items = document.querySelectorAll('.box_trendrank .tit_item');
+            items.forEach(el => {
+                const text = el.innerText.trim();
+                if (text && !results.includes(text)) {
+                    results.push(text);
                 }
             });
             return results;
         });
         
-        const keywords = trends.filter(t => t && !t.includes('안내') && !t.includes('자세히 보기') && !t.includes('닫기') && !t.includes('beta') && !t.includes('다양한 출처')).slice(0, 10);
+        const keywords = trends.slice(0, 10);
         if (keywords.length > 0) {
              return keywords.map((k, i) => `${i + 1}. ${k}`).join('\n');
         }

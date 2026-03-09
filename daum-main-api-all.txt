@@ -1,0 +1,113 @@
+URL: https://stat.tiara.daum.net/track
+
+
+URL: https://stat.tiara.daum.net/track
+
+
+URL: https://live-orisa-edge.play.kakao.com/time?iso&ms
+2026-03-09T23:03:58.921+09:00
+
+URL: https://live-orisa-edge.play.kakao.com/time?iso&ms
+2026-03-09T23:03:58.928+09:00
+
+URL: https://live-orisa-edge.play.kakao.com/time?iso&ms
+2026-03-09T23:03:58.933+09:00
+
+URL: https://live-orisa-edge.play.kakao.com/time?iso&ms
+2026-03-09T23:03:58.938+09:00
+
+URL: https://live-orisa-edge.play.kakao.com/time?iso&ms
+2026-03-09T23:03:58.944+09:00
+
+URL: https://live-orisa-edge.play.kakao.com/time?iso&ms
+2026-03-09T23:03:58.949+09:00
+
+URL: https://live-orisa-edge.play.kakao.com/time?iso&ms
+2026-03-09T23:03:58.964+09:00
+
+URL: https://live-orisa-edge.play.kakao.com/time?iso&ms
+2026-03-09T23:03:58.973+09:00
+
+URL: https://live-orisa-edge.play.kakao.com/time?iso&ms
+2026-03-09T23:03:58.979+09:00
+
+URL: https://ext-cologger.shopping.naver.com/api/v1/external/s2s/ads/MALL_NAME_LINK/areas/001900
+{"status":200,"bizCd":"MALL_NAME_LINK","expsTrtrCd":"001900","exposeContents":[{"adCntsSeq":"98101811","adCntsUrl":"https://adcr.shopping.naver.com/adclk.nhn?x=1ubXB0a%2BjyO4rBZnJjIRIP%2F%2F%2Fw%3D%3DsBNhh49xnKJpRW5FLaN5XQIc5ET9yZPt0Fk7xjzv3sheMKytoae%2FEeV4b47R9M%2FozNVEJhmvbcRAPYpyWhukc9GcbvRXTk8EK2Ww%2FvzxC2JQiOXAVbLHBeor6KHgu9MEGf2bY105fKugzy2Us0ffzRmlVnz0iBGgOR7NH0TMnoxZRH5nw3C5uwEgsGbJ8tcM5dMf%2Fy8XpBsKj8EEm1bzMQLXexqvGue9Gba8WZzmoKCu0wM4feYW%2FkGYw%2FyLRywv%2FRgRDNrLZRF3qU8rau02zMK4wIp1W8rK6oX7g%2FRW4%2F6aOi2czh2rBsvzsYBPv87sGhvNkXSF2zvHPmWUyIyBdXVBNpZfonBBSfPSx9QFXXMqcjemNL6pCfScqA9lbvKKj"},{"adCntsSeq":"98101830","adCntsUrl":"https://adcr.shopping.naver.com/adclk.nhn?x=0w9hF7epi76eydZ95X7jYf%2F%2F%2Fw%3D%3DsBNhh49xnKJpRW5FLaN5XQIc5ET9yZPt0Fk7xjzv3sheMKytoae%2FEeV4b47R9M%2FozNVEJhmvbcRAPYpyWhukc9GcbvRXTk8EK2Ww%2FvzxC2JQiOXAVbLHBeor6KHgu9MEGf2bY105fKugzy2Us0ffzRmlVnz0iBGgOR7NH0TMnoxZRH5nw3C5uwEgsGbJ8tcM5dMf%2Fy8XpBsKj8EEm1bzMQLXexqvGue9Gba8WZzmoKCsCP%2BBv%2BBa%2BgNHunJtW6NcrRgRD
+
+URL: https://dapi.kakao.com/region-code/v2/regionWithWeather.json?service=pcTop&kakao_appkey=f8428eff45f02b4575dfd32653011174
+{"codes":{"resultCode":"OK","hcode":{"type":"H","code":"1162076500","name":"미성동","fullName":"서울특별시 관악구 미성동","regionId":"I10040309","name0":"대한민국","code1":"1100000000","name1":"서울특별시","code2":"1162000000","name2":"관악구","code3":"1162076500","name3":"미성동","childcount":0,"x":481331.0,"y":1104667.0},"bcode":{"type":"B","code":"1162010200","name":"신림동","fullName":"서울특별시 관악구 신림동","regionId":"I10040200","name0":"대한민국","code1":"1100000000","name1":"서울특별시","code2":"1162000000","name2":"관악구","code3":"1162010200","name3":"신림동","childcount":0,"x":483887.0,"y":1107774.0}},"weatherInfos":{"current":{"type":"CURRENT","rcode":"1162076500","iconId":"1","temperature":"2","desc":"맑음","humidity":"50","rainfall":"0","snowfall":"0"},"forecast":{"type":"FORECAST","rcode":"1162076500","iconId":"1","temperature":"2","desc":"맑음","humidity":"50","rainfall":"0","snowfall":"0"}}}
+
+URL: https://shop-redapi.daum.net/red-apigate/daumtop/v8/planmall
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8" />
+    <title>Daum</title>
+    <meta http-equiv="x-ua-compatible" content="IE=edge" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="-1" />
+    <meta name="referrer" content="origin" />
+    <link href="https://t1.daumcdn.net/top/favicon.ico" rel="shortcut icon" />
+    <meta name="referrer" content="origin" />
+    <style>
+        body {
+            width: 384px
+        }
+    </style>
+    <link href="https://t1.daumcdn.net/shophow_cssjs/daumtop/css/planmall.23f70050e9a2a301140c.css" rel="stylesheet">
+</head>
+
+<body>
+    <noscript>
+    이 사이트의 기능을 모두 활용하기 위해서는 자바스크립트를 활성화 시킬 필요가 있습니다.
+    <a href="https://www.enable-javascript.com/ko/">
+        브라우저에서 자바스크립트를 활성화하는 방법</a
+    >을 참고 하세요.
+</noscript>
+
+<main class="doc-body" id="app"></main>
+
+<script src="https://t1.daumcdn.net/shophow_cssjs/daumtop/js/planmall.merged.23f70050e9a2a301140c.js" async defer></script>
+
+<script src="https
+
+URL: https://aem-kakao-collector.onkakao.net/api/5965/envelope/?sentry_key=49bed221aeb94ba5b51b0f7c41c39988&sentry_version=7
+<html>
+<head><title>429 Too Many Requests</title></head>
+<body>
+<center><h1>429 Too Many Requests</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+<!-- a padding to disable MSIE and Chrome friendly error page -->
+<!-- a padding to disable MSIE and Chrome friendly error page -->
+<!-- a padding to disable MSIE and Chrome friendly error page -->
+<!-- a padding to disable MSIE and Chrome friendly error page -->
+<!-- a padding to disable MSIE and Chrome friendly error page -->
+<!-- a padding to disable MSIE and Chrome friendly error page -->
+
+
+URL: https://shop-redapi.daum.net/red-apigate/p/pctop/plans
+{"title":null,"home_url":null,"title_url":null,"total_page":null,"contents":[{"id":"16032","disporder":999,"title":"간절기 아우터 #가죽 자켓","status":"Y","channelid":"","contid":"","linkurl":"https://shoppinghow.kakao.com/search/%EC%97%AC%EC%84%B1%20%EA%B0%80%EC%A3%BD%20%EC%9E%90%EC%BC%93/sort_type:6&tab:normal&view_type:image&image_filter_cnt:200","suburl":"","imgurl":"https://shop.daumcdn.net/shophow/c/image/cms/shophow_20260224144047.png","fixlocoyn":"","story":"오랫동안 멋스러움을 간직할 수 있죠","prodid":null,"badgesale":"","orgintitle":"간절기 아우터 #가죽 자켓","optitle":"","startDtm":"20260309000000","endDtm":"20260309235959","mTopDocExtroInfo":null,"price":0,"reviewCnt":0,"productInfos":null,"mtopDocExtroInfo":null},{"id":"16035","disporder":999,"title":"밥은 물론 면에도 잘 어울려요","status":"Y","channelid":"","contid":"","linkurl":"https://shoppinghow.kakao.com/search/%EA%BC%AC%EB%A7%89%EC%9E%A5","suburl":"","imgurl":"https://shop.daumcdn.net/shophow/c/image/cms/shophow_20260224153141.png","fixlocoyn":"","story":"매콤하면서 
+
+URL: https://shop-redapi.daum.net/red-apigate/p/pctop/v1/banner
+{"title":null,"home_url":null,"title_url":null,"total_page":null,"contents":[{"id":"15799","disporder":999,"title":"고려은단 영양제 봄맞이 특가","status":"Y","channelid":"","contid":"","linkurl":"https://rpp.gmarket.co.kr/?exhib=52206","suburl":"","imgurl":"https://shop.daumcdn.net/shophow/c/image/cms/shophow_20240314094140.png","fixlocoyn":"","story":null,"prodid":null,"badgesale":"","orgintitle":"고려은단 영양제 봄맞이 특가","optitle":"","startDtm":"20260306000000","endDtm":"20260309235959","mTopDocExtroInfo":null,"price":0,"reviewCnt":0,"productInfos":null,"mtopDocExtroInfo":null},{"id":"15800","disporder":999,"title":"Apple 최대 20% 할인","status":"Y","channelid":"","contid":"","linkurl":"https://rpp.auction.co.kr/?exhib=35344","suburl":"","imgurl":"https://shop.daumcdn.net/shophow/c/image/cms/shophow_20240314094156.png","fixlocoyn":"","story":null,"prodid":null,"badgesale":"","orgintitle":"Apple 최대 20% 할인","optitle":"","startDtm":"20260306000000","endDtm":"20260309235959","mTopDocExtroInfo":null,"price":0,"r
+
+URL: https://m.daum.net/api/spec/v2/arms_weather_region
+{"data":{"region":{"regionName":"미성동","regionName1":"서울특별시","regionName2":"관악구","regionName3":"미성동","localCode":"AI10040309"},"shortTermForecast":{"weatherIconNightYn":"Y","temperature":"2","temperatureComparedToYesterday":"2","weatherDescription":"맑음","weatherIconCode":"1"},"airPollution":{"fineDust":{"now":{"code":"2","desc":"보통"}},"ultraFineParticle":{"now":{"code":"3","desc":"나쁨"}}},"specialReports":[],"villageWeatherTemperatures":{"maximumTemperature":"6","minimumTemperature":"0"},"url":"https://weather.daum.net/?location-regionId=AI10040309&weather-cp=kweather"},"contentsStatus":"SUCCESS","status":200,"message":null}
+
+URL: https://live-orisa-edge.play.kakao.com/time?iso&ms
+2026-03-09T23:03:59.266+09:00
+
+URL: https://googleads.g.doubleclick.net/pagead/ads?client=ca-pub-1682288257759598&output=html&adk=1812271804&adf=3025194257&lmt=1773065039&plaf=1%3A2%2C2%3A2%2C7%3A2&plat=1%3A128%2C2%3A128%2C3%3A128%2C4%3A128%2C8%3A128%2C9%3A32776%2C16%3A8388608%2C17%3A32%2C24%3A32%2C25%3A32%2C30%3A1048576%2C32%3A32%2C41%3A32%2C42%3A32%2C43%3A32&format=0x0&url=https%3A%2F%2Fwww.daum.net%2F&pra=5&aiof=9&asro=0&aiapm=0.1542&aiapmd=0.1423&aiapmi=0.16&aiapmid=1&aiact=0.0001&aiactd=0.0001&aicct=0.0001&aicctd=0.0001&ailct=0.0001&ailctd=0.0001&aimart=4&aimartd=4&aieuf=1&aicrs=1&uach=WyJXaW5kb3dzIiwiMTkuMC4wIiwieDg2IiwiIiwiMTQ2LjAuNzY4MC4zMSIsbnVsbCwwLG51bGwsIjY0IixbWyJOb3QtQS5CcmFuZCIsIjI0LjAuMC4wIl0sWyJDaHJvbWl1bSIsIjE0Ni4wLjc2ODAuMzEiXV0sMF0.&abgtt=6&dt=1773065039038&bpp=5&bdt=866&idt=220&shv=r20260305&mjsv=m202603030101&ptt=9&saldr=aa&abxe=1&cookie_enabled=1&eoidce=1&nras=1&correlator=3056172725120&frm=20&pv=2&u_tz=540&u_his=2&u_h=600&u_w=800&u_ah=600&u_aw=800&u_cd=24&u_sd=1&dmc=8&adx=-12245933&ady=-12245933&biw=800&bih=600&scr_x=94&scr_y=0&eid=95378425%2C95381339%2C95381489%2C95383701%2C95384193%2C95381976%2C95384713&oid=2&pvsid=6783735391398997&tmod=1477995280&uas=0&nvt=1&fsapi=1&fc=1920&brdim=10%2C10%2C10%2C10%2C800%2C0%2C780%2C580%2C800%2C600&vis=1&rsz=%7C%7Cs%7C&abl=NS&fu=33792&bc=31&bz=0.98&ifi=1&uci=a!1&fsb=1&dtd=240
+
+
+URL: https://ep1.adtrafficquality.google/getconfig/sodar?sv=200&tid=gda&tv=r20260305&st=env&sjk=6783735391398997
+{"sodar_query_id":"T9OuaaGMJMWLjeYP3o_cgQE","injector_basename":"sodar2","bg_hash_basename":"vh3Quip7uqZvPu13N1JZKO2zf0HrXYRf1JUUeDDK9Qs","bg_binary":"YRS3SB6+QvGnqJWmt1BsSCQTLKgIWkG479Ujx7/5kLxeJYw3KAYN5Ws/7/0ql/U1qMnY1gfgV6UiGXY4YDgEWST1mW/ReTsUUoCxA8sHpm76MFYYcjiaRBCHCqcvRx+tYfDuoUV1E99mOzyIQHX4k66QH4LbO4FPhGYZz/pBzn8ywMTnHuVuyaDTPaX4cAFyzl27zWaqDIWqmzssa/vCjE9Dq98GaPGuFwDTrSkty+i0w5ODAbT1CPCfQhFB93Hplxuid8ONFjBzwcaRgM2vY6JOXy8LXHwTGPPD3KDfaWafJhqPxXGECyv//4JGi1vUjzOAgMeqDFdUW6JjWcqGfoU7JdqZpnpJLOLA7RVM7Ittg1fZyB0cxSkn5hqlgZ8NKSRi4Sf/d7GcIT9+8UbAt7CboofoGKEFA0kU6frK0jYhVjxTNvAUwmBXb7e58AW/Jyk5wSOTieYVk15mqcjtj9s8nrCalYaVi7mMije0WjY4wT8v8MXJ9dvTYGrKwx0vAXwalnSLoDmsVR1XRFqQN71VXXyobBEbKC+TVBfn2jGF0bM1e5Kvc1zey5LSMaRycjH91kczo//RIHMIILKJvxtC21fIyiHkK0RT9R6uAqHAj6eB63ikeojYo45TpidOl2Ekkskm6BjDoiEqopTNqs2/wldiXBksKkD3gOuxgbeIH01vA8rCah2gT+08qA7tcUx6EEhLa/wUA4MvVhVYG2x/NSarGQXifhScfrODeakfiwpSJUjKau1uqlO4g+0hjX8DtAuYYkRpspGcSw61ryayApAo3uhgwvf29M9x84IQT1Ovzewrg4VAD2fv424w9+OkMXtRpnJIsUMDm
+
+URL: https://www.google.com/recaptcha/api2/aframe
+<!DOCTYPE HTML><html><head><meta http-equiv="content-type" content="text/html; charset=UTF-8"></head><body><script nonce="V9yUjMiN3UUp8_1Phnk4ZQ">/** Anti-fraud and anti-abuse applications only. See google.com/recaptcha */ try{var clients={'sodar':'https://pagead2.googlesyndication.com/pagead/sodar?'};window.addEventListener("message",function(a){try{if(a.source===window.parent){var b=JSON.parse(a.data);var c=clients[b['id']];if(c){var d=document.createElement('img');d.src=c+b['params']+'&rc='+(localStorage.getItem("rc::a")?sessionStorage.getItem("rc::b"):"");window.document.body.appendChild(d);sessionStorage.setItem("rc::e",parseInt(sessionStorage.getItem("rc::e")||0)+1);localStorage.setItem("rc::h",'1773065039881');}}}catch(b){}});window.parent.postMessage("_grecaptcha_ready", "*");}catch(b){}</script></body></html>
+
+URL: https://stat.tiara.daum.net/track
+
+
