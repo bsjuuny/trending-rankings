@@ -178,21 +178,15 @@ const getDaumRankingsCached = unstable_cache(
             
             const trends = await page.evaluate(() => {
                 const results: string[] = [];
-                const sections = document.querySelectorAll('div, section');
-                for (const sec of sections) {
-                    const titleEl = sec.querySelector('h2, h3, h4, strong.tit_wrap');
-                    const titleText = titleEl ? (titleEl as HTMLElement).innerText : '';
-                    if (titleText.includes('실시간 트렌드') || titleText.includes('버블')) {
-                        const links = sec.querySelectorAll('a');
-                        links.forEach(a => {
-                            const t = a.innerText.trim();
-                            const cleanT = t.replace(/^[0-9]+/, '').split('\n')[0].trim();
-                            if (cleanT && cleanT.length > 1 && !results.includes(cleanT) && !cleanT.includes('실시간')) {
-                                results.push(cleanT);
-                            }
-                        });
+                const links = document.querySelectorAll('a[href*="DA=TRL"]');
+                links.forEach(a => {
+                    const text = (a as HTMLElement).innerText.trim();
+                    const cleanT = text.split('\n')[0].trim();
+                    const keywordFinal = cleanT.replace(/^[0-9]+\s*/, '').trim();
+                    if (keywordFinal && keywordFinal.length > 1 && !results.includes(keywordFinal)) {
+                        results.push(keywordFinal);
                     }
-                }
+                });
                 return results;
             });
             
