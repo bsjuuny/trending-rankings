@@ -129,21 +129,21 @@ async function main() {
     })[m]);
 
     const summary = `
-<b>🔥 실시간 트렌드 요약</b>
+<b>🔥 트렌드 요약</b>
 
-<b>🏙 Nate 실시간 이슈</b>
+<b>🏙 Nate 이슈</b>
 ${escapeHTML(nate)}
 
 <b>🔍 Google Trends (KR)</b>
 ${escapeHTML(google)}
 
-<b>🟡 Daum 실시간 트렌드 (Beta)</b>
+<b>🟡 Daum 트렌드 (Beta)</b>
 ${escapeHTML(daum)}
 
 <b>🚥 Signal.bz</b>
 ${escapeHTML(signal)}
 
-<b>🐦 X (Twitter) 트렌드</b>
+<b>🐦 X(Twitter) 트렌드</b>
 ${escapeHTML(x)}
 
 <b>🎬 YouTube 인기 급상승</b>

@@ -1,25 +1,41 @@
 :root {
-  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
-  --font-heading: 'Outfit', sans-serif;
+  --font-body: -apple-system, BlinkMacSystemFont, 'Inter', system-ui, sans-serif;
+  --font-heading: -apple-system, BlinkMacSystemFont, 'Outfit', sans-serif;
 
-  /* Premium Midnight Theme */
+  /* Theme Transitions */
+  --transition-theme: background 0.5s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+
+  /* Default Dark Mode (Premium Midnight) */
   --background-start: #1e1b4b;
-  /* Deep Indigo */
   --background-end: #020617;
-  /* Slate 950 */
   --foreground: #f8fafc;
-
   --card-bg: rgba(15, 23, 42, 0.4);
   --card-border: rgba(255, 255, 255, 0.08);
   --card-border-hover: rgba(139, 92, 246, 0.5);
-  /* Violet 500 */
-
   --accent: #8b5cf6;
   --accent-glow: rgba(139, 92, 246, 0.3);
+  --subtitle-color: #94a3b8;
+  --rank-number-default: #cbd5e1;
+  --keyword-color: #e2e8f0;
 
   /* Mica Effect */
   --shadow-mica: inset 0 0.5px 0 0.5px rgba(255, 255, 255, 0.15);
   --shadow-lg: 0 20px 25px -5px rgb(0 0 0 / 0.3), 0 8px 10px -6px rgb(0 0 0 / 0.3);
+}
+
+:root.light {
+  --background-start: #ffffff;
+  --background-end: #f1f5f9;
+  --foreground: #0f172a;
+  --card-bg: rgba(255, 255, 255, 0.8);
+  --card-border: rgba(15, 23, 42, 0.1);
+  --card-border-hover: rgba(139, 92, 246, 0.6);
+  --accent: #7c3aed;
+  --accent-glow: rgba(124, 58, 237, 0.15);
+  --subtitle-color: #475569;
+  --rank-number-default: #64748b;
+  --keyword-color: #1e293b;
+  --shadow-mica: inset 0 0.5px 0 0.5px rgba(15, 23, 42, 0.05);
 }
 
 * {
@@ -34,8 +50,11 @@ body {
   color: var(--foreground);
   font-family: var(--font-body);
   overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   min-height: 100vh;
   letter-spacing: -0.011em;
+  transition: var(--transition-theme);
 }
 
 main {
@@ -53,39 +72,41 @@ h3 {
 }
 
 h1 {
-  font-size: 3.5rem;
+  font-size: clamp(2.5rem, 6vw, 4rem);
   font-weight: 800;
   text-align: center;
   margin-bottom: 0.5rem;
-  background: linear-gradient(135deg, #fff 0%, #cbd5e1 100%);
+  background: linear-gradient(135deg, var(--foreground) 0%, var(--subtitle-color) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+  transition: var(--transition-theme);
 }
 
 .subtitle {
   text-align: center;
-  color: #94a3b8;
-  /* Slate 400 */
+  color: var(--subtitle-color);
   margin-bottom: 3.5rem;
   font-size: 1.15rem;
   font-weight: 500;
+  transition: var(--transition-theme);
 }
 
 .update-time {
   font-size: 0.85rem;
-  color: #64748b;
-  /* Slate 500 */
+  color: var(--subtitle-color);
   text-align: center;
   margin-bottom: 3rem;
   font-weight: 500;
+  opacity: 0.8;
+  transition: var(--transition-theme);
 }
 
 /* Grid Layout */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: clamp(1rem, 2vw, 1.5rem);
   align-items: start;
   /* Enable Masonry-like stacking */
 }
@@ -94,7 +115,7 @@ h1 {
 .card {
   background: var(--card-bg);
   border: 1px solid var(--card-border);
-  border-radius: 20px;
+  border-radius: 16px;
   padding: 2rem;
   backdrop-filter: blur(24px) saturate(180%);
   -webkit-backdrop-filter: blur(24px) saturate(180%);
@@ -117,7 +138,8 @@ h1 {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  color: #f8fafc;
+  color: var(--foreground);
+  transition: var(--transition-theme);
 }
 
 /* List Items */
@@ -149,8 +171,8 @@ h1 {
   font-size: 1.1rem;
   font-weight: 800;
   width: 2.2rem;
-  color: #cbd5e1;
-  /* Slate 300 to start */
+  color: var(--rank-number-default);
+  transition: var(--transition-theme);
 }
 
 /* Top 3 Highlighting */
@@ -177,19 +199,18 @@ h1 {
 
 .keyword {
   font-size: 1.05rem;
-  color: #e2e8f0;
-  /* Slate 200 */
+  color: var(--keyword-color);
   text-decoration: none;
   flex: 1;
   font-weight: 500;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  transition: color 0.2s ease;
+  transition: color 0.2s ease, var(--transition-theme);
 }
 
 .keyword:hover {
-  color: #fff;
+  color: var(--accent);
 }
 
 /* Animations */
@@ -226,4 +247,127 @@ h1 {
 
 .grid>*:nth-child(4) {
   animation-delay: 0.4s;
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 100;
+  padding: 0.75rem;
+  border-radius: 12px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  color: var(--foreground);
+  cursor: pointer;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  min-width: 44px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-mica), 0 4px 6px rgb(0 0 0 / 0.1);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1);
+  border-color: var(--card-border-hover);
+  box-shadow: var(--shadow-lg), var(--shadow-mica), 0 0 20px var(--accent-glow);
+}
+
+.theme-toggle:active {
+  transform: scale(0.95);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  .subtitle,
+  .update-time {
+    font-size: 0.9rem;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .card {
+    padding: 1.5rem;
+    border-radius: 12px;
+  }
+
+  .theme-toggle {
+    top: 1rem;
+    right: 1rem;
+    padding: 0.6rem;
+  }
+}
+
+/* Tablet & Small Mobile Adjustments */
+@media (max-width: 1024px) {
+
+  /* Tablet layout */
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.2rem;
+  }
+
+  .card {
+    padding: 1.75rem;
+    border-radius: 14px;
+  }
+
+  h1 {
+    font-size: 2.8rem;
+  }
+
+  .subtitle,
+  .update-time {
+    font-size: 0.95rem;
+  }
+
+  .theme-toggle {
+    top: 1.2rem;
+    right: 1.2rem;
+    padding: 0.65rem;
+  }
+}
+
+@media (max-width: 480px) {
+
+  /* Small mobile layout */
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+  }
+
+  .card {
+    padding: 1.2rem;
+    border-radius: 12px;
+  }
+
+  h1 {
+    font-size: 2.2rem;
+  }
+
+  .subtitle,
+  .update-time {
+    font-size: 0.85rem;
+  }
+
+  .theme-toggle {
+    top: 0.9rem;
+    right: 0.9rem;
+    padding: 0.5rem;
+  }
 }

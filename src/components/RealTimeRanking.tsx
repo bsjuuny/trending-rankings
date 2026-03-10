@@ -43,13 +43,13 @@ export default function RealTimeRanking({ initialSources }: RealTimeRankingProps
     }, []);
 
     return (
-        <div className="grid">
+        <div className="grid" role="list">
             {sources.map((source, index) => (
-                <div key={source.title} style={{ animationDelay: `${index * 0.1}s` }}>
+                <div key={source.title} style={{ animationDelay: `${index * 0.1}s` }} role="listitem" tabIndex={0}>
                     <div className="relative">
                         <RankingCard source={source} />
                         {source.title.includes('Signal.bz') && isLive && (
-                            <div className="absolute top-4 right-4 flex items-center gap-1.5 px-2 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20">
+                            <div className="absolute top-4 right-4 flex items-center gap-1.5 px-2 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20" aria-live="polite">
                                 <span className="relative flex h-2 w-2">
                                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                                     <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
