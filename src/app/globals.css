@@ -344,13 +344,6 @@ h1 {
 }
 
 @media (max-width: 480px) {
-
-  /* Small mobile layout */
-  .grid {
-    grid-template-columns: 1fr;
-    gap: 0.8rem;
-  }
-
   .card {
     padding: 1.2rem;
     border-radius: 12px;
