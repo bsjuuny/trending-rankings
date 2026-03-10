@@ -25,7 +25,7 @@ jobs:
 
       - name: Install Puppeteer dependencies
         run: |
-          npx puppeteer browsers install chrome --install-deps
+          sudo npx puppeteer browsers install chrome --install-deps
 
       - name: Build project
         run: npm run build
