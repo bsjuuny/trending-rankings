@@ -102,10 +102,10 @@ export async function getSignalRankings(revalidate: number): Promise<RankingSour
             link: `https://search.naver.com/search.naver?query=${encodeURIComponent(item.keyword)}`,
         }));
 
-        return { title: 'Signal.bz 실시간', items };
+        return { title: 'Signal.bz', items };
     } catch (error) {
         console.error('Error fetching Signal rankings:', error);
-        return { title: 'Signal.bz 실시간', items: [] };
+        return { title: 'Signal.bz', items: [] };
     }
 }
 
@@ -127,10 +127,10 @@ export async function getNateRankings(revalidate: number): Promise<RankingSource
             link: `https://search.daum.net/search?w=tot&q=${encodeURIComponent(item[4])}`,
         }));
 
-        return { title: 'Nate 실시간 이슈', items };
+        return { title: 'Nate 이슈', items };
     } catch (error) {
         console.error('Error fetching Nate rankings:', error);
-        return { title: 'Nate 실시간 이슈', items: [] };
+        return { title: 'Nate 이슈', items: [] };
     }
 }
 
@@ -174,7 +174,7 @@ async function fetchDaumRankings(): Promise<RankingSource> {
         const page = await browser.newPage();
         await page.setUserAgent(USER_AGENT);
         await page.goto('https://www.daum.net/', { waitUntil: 'networkidle2', timeout: 30000 });
-        
+
         const trends = await page.evaluate(() => {
             const results: string[] = [];
             const items = document.querySelectorAll('.box_trendrank .tit_item');
@@ -186,21 +186,21 @@ async function fetchDaumRankings(): Promise<RankingSource> {
             });
             return results;
         });
-        
+
         console.log(`[Daum Scraper] Found ${trends.length} items`);
-        
+
         const keywords = trends.slice(0, 10);
-        
+
         const items: RankingItem[] = keywords.map((keyword, index) => ({
             rank: index + 1,
             keyword,
             link: `https://search.daum.net/search?w=tot&q=${encodeURIComponent(keyword)}`,
         }));
 
-        return { title: 'Daum 실시간 트렌드 (Beta)', items };
+        return { title: 'Daum 트렌드 (Beta)', items };
     } catch (error) {
         console.error('Error fetching Daum rankings:', error);
-        return { title: 'Daum 실시간 트렌드 (Beta)', items: [] };
+        return { title: 'Daum 트렌드 (Beta)', items: [] };
     } finally {
         if (browser) await browser.close();
     }

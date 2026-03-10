@@ -1,5 +1,5 @@
 const cheerio = require('cheerio');
-const puppeteer = require('puppeteer');const USER_AGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36';
+const puppeteer = require('puppeteer'); const USER_AGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36';
 
 async function getXRankings() {
     try {
@@ -88,7 +88,7 @@ async function getDaumRankings() {
         const page = await browser.newPage();
         await page.setUserAgent(USER_AGENT);
         await page.goto('https://www.daum.net/', { waitUntil: 'networkidle2', timeout: 30000 });
-        
+
         const trends = await page.evaluate(() => {
             const results = [];
             const items = document.querySelectorAll('.box_trendrank .tit_item');
@@ -100,10 +100,10 @@ async function getDaumRankings() {
             });
             return results;
         });
-        
+
         const keywords = trends.slice(0, 10);
         if (keywords.length > 0) {
-             return keywords.map((k, i) => `${i + 1}. ${k}`).join('\n');
+            return keywords.map((k, i) => `${i + 1}. ${k}`).join('\n');
         }
         return '데이터를 가져올 수 없습니다.';
     } catch (e) {
@@ -140,7 +140,7 @@ ${escapeHTML(google)}
 <b>🟡 Daum 실시간 트렌드 (Beta)</b>
 ${escapeHTML(daum)}
 
-<b>🚥 Signal.bz 실시간</b>
+<b>🚥 Signal.bz</b>
 ${escapeHTML(signal)}
 
 <b>🐦 X (Twitter) 트렌드</b>
