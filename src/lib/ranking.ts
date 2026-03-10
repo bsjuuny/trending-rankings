@@ -187,6 +187,8 @@ async function fetchDaumRankings(): Promise<RankingSource> {
             return results;
         });
         
+        console.log(`[Daum Scraper] Found ${trends.length} items`);
+        
         const keywords = trends.slice(0, 10);
         
         const items: RankingItem[] = keywords.map((keyword, index) => ({

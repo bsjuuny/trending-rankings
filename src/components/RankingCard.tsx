@@ -13,6 +13,8 @@ const getPlatformConfig = (title: string) => {
         'YouTube': { icon: <Youtube className="w-5 h-5" />, color: '#FF0000' },
         'Nate': { icon: <TrendingUp className="w-5 h-5" />, color: '#E53E3E' },
         'X (Twitter)': { icon: <Hash className="w-5 h-5" />, color: '#E2E8F0' },
+        'Daum': { icon: <TrendingUp className="w-5 h-5" />, color: '#1E90FF' },
+        'Signal.bz': { icon: <TrendingUp className="w-5 h-5" />, color: '#48BB78' },
     };
 
     // 패턴 매칭으로 찾기

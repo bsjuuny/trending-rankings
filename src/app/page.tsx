@@ -19,8 +19,9 @@ export default async function Home() {
     <main>
       <h1>Real-time Trending</h1>
       <p className="subtitle">주요 포털의 실시간 급상승 트렌드를 한눈에 파악하세요</p>
-      <p className="update-time">
-        최근 업데이트: {buildTime}
+      <p className="update-time flex items-center justify-center gap-2">
+        <span>최근 업데이트: {buildTime}</span>
+        <span className="text-[10px] px-2 py-0.5 rounded-full bg-white/5 border border-white/10 text-slate-400">Snapshot</span>
       </p>
 
       <div className="grid">
