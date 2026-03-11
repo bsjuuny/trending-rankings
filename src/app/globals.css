@@ -25,16 +25,16 @@
 
 :root.light {
   --background-start: #ffffff;
-  --background-end: #f1f5f9;
-  --foreground: #0f172a;
-  --card-bg: rgba(255, 255, 255, 0.8);
-  --card-border: rgba(15, 23, 42, 0.1);
-  --card-border-hover: rgba(139, 92, 246, 0.6);
+  --background-end: #f8fafc;
+  --foreground: #020617;
+  --card-bg: rgba(255, 255, 255, 0.9);
+  --card-border: rgba(15, 23, 42, 0.12);
+  --card-border-hover: rgba(124, 58, 237, 0.4);
   --accent: #7c3aed;
   --accent-glow: rgba(124, 58, 237, 0.15);
-  --subtitle-color: #475569;
-  --rank-number-default: #64748b;
-  --keyword-color: #1e293b;
+  --subtitle-color: #334155;
+  --rank-number-default: #475569;
+  --keyword-color: #0f172a;
   --shadow-mica: inset 0 0.5px 0 0.5px rgba(15, 23, 42, 0.05);
 }
 

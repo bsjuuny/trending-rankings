@@ -12,7 +12,7 @@ const getPlatformConfig = (title: string) => {
         'Google Trends': { icon: <Search className="w-5 h-5" />, color: '#4285F4' },
         'YouTube': { icon: <Youtube className="w-5 h-5" />, color: '#FF0000' },
         'Nate': { icon: <TrendingUp className="w-5 h-5" />, color: '#E53E3E' },
-        'X (Twitter)': { icon: <Hash className="w-5 h-5" />, color: '#E2E8F0' },
+        'X (Twitter)': { icon: <Hash className="w-5 h-5" />, color: '#64748b' },
         'Daum': { icon: <TrendingUp className="w-5 h-5" />, color: '#1E90FF' },
         'Signal.bz': { icon: <TrendingUp className="w-5 h-5" />, color: '#48BB78' },
     };
@@ -37,11 +37,18 @@ export default function RankingCard({ source }: RankingCardProps) {
                 {source.items.length > 0 ? (
                     source.items.map((item) => (
                         <li key={item.rank} className="ranking-item group">
-                            <span className="rank-number">{item.rank}</span>
-                            <Link href={item.link} target="_blank" className="keyword group-hover:text-white">
+                            <span className="rank-number" style={item.rank === 2 ? {
+                                background: 'linear-gradient(135deg, var(--rank-number-default), var(--subtitle-color))',
+                                WebkitBackgroundClip: 'text',
+                                backgroundClip: 'text',
+                                WebkitTextFillColor: 'transparent'
+                            } : {}}>
+                                {item.rank}
+                            </span>
+                            <Link href={item.link} target="_blank" className="keyword group-hover:text-indigo-600 dark:group-hover:text-white">
                                 {item.keyword}
                             </Link>
-                            <ArrowUpRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity text-slate-400 group-hover:text-white" />
+                            <ArrowUpRight className="w-4 h-4 opacity-20 group-hover:opacity-100 transition-opacity text-slate-500 group-hover:text-indigo-600 dark:group-hover:text-white" />
                         </li>
                     ))
                 ) : (

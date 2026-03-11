@@ -55,7 +55,7 @@ export default function DonationPopup() {
                     top: "12px",
                     right: "12px",
                     padding: "6px",
-                    color: "#9ca3af",
+                    color: "#4b5563",
                     backgroundColor: "transparent",
                     border: "none",
                     cursor: "pointer",
