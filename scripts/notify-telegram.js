@@ -1,5 +1,3 @@
-const https = require('https');
-
 const token = process.env.TELEGRAM_BOT_TOKEN;
 const chatId = process.env.TELEGRAM_CHAT_ID;
 const type = process.argv[2]; // 'success' or 'failure'
@@ -34,23 +32,13 @@ if (type === 'success') {
   ].join('\n');
 }
 
-const body = JSON.stringify({ chat_id: chatId, text, parse_mode: 'HTML' });
-
-const req = https.request({
-  hostname: 'api.telegram.org',
-  path: `/bot${token}/sendMessage`,
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': Buffer.byteLength(body) },
-}, (res) => {
-  let data = '';
-  res.on('data', (chunk) => data += chunk);
-  res.on('end', () => {
-    const result = JSON.parse(data);
-    if (!result.ok) { console.error('Telegram error:', result); process.exit(1); }
-    console.log('Telegram notification sent.');
+(async () => {
+  const res = await fetch('https://api.telegram.org/bot' + token + '/sendMessage', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json; charset=utf-8' },
+    body: JSON.stringify({ chat_id: chatId, text, parse_mode: 'HTML' }),
   });
-});
-
-req.on('error', (e) => { console.error(e); process.exit(1); });
-req.write(body);
-req.end();
+  const result = await res.json();
+  if (!result.ok) { console.error('Telegram error:', result); process.exit(1); }
+  console.log('Telegram notification sent.');
+})().catch((e) => { console.error(e); process.exit(1); });
