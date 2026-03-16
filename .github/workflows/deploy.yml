@@ -63,27 +63,16 @@ jobs:
       - name: 📢 Notify Telegram on Success
         if: success()
         continue-on-error: true
-        shell: powershell
-        run: |
-          $header_b64 = "4pyFIDxiPlRyZW5kaW5nIFJhbmtpbmdzIOuwsO2PrCDshLHqs7UhPC9iPg=="
-          $footer_b64 = "8J+UlyDsm7nsgqzsnbTtirg6IDxhIGhyZWY9Imh0dHBzOi8vYnNqdXVueTIwMjYubXljYWZlMjQuY29tL3RyZW5kaW5ncmFua2luZ3MvIj7rsJTroZzqsIDquLA8L2E+CvCflJcg66as7Y+s7KeA7Yag66asOiA8YSBocmVmPSJodHRwczovL2dpdGh1Yi5jb20vYnNqdXVueS90cmVuZGluZy1yYW5raW5ncy9hY3Rpb25zIj7tmZXsnbjtlZjquLA8L2E+"
-          $div_b64 = "4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA"
-          $header = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($header_b64))
-          $footer = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($footer_b64))
-          $divider = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($div_b64))
-          $summary = "${{ env.TRENDING_SUMMARY }}"
-          $msg = "$header`n`n$divider`n$summary`n$divider`n`n$footer"
-          $body = @{ chat_id = "${{ secrets.TELEGRAM_CHAT_ID }}"; text = $msg; parse_mode = "HTML" } | ConvertTo-Json
-          $bytes = [System.Text.Encoding]::UTF8.GetBytes($body)
-          Invoke-RestMethod -Uri "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" -Method POST -Body $bytes -ContentType "application/json; charset=utf-8"
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          TRENDING_SUMMARY: ${{ env.TRENDING_SUMMARY }}
+        run: node scripts/notify-telegram.js success
 
       - name: 🚨 Notify Telegram on Failure
         if: failure()
         continue-on-error: true
-        shell: powershell
-        run: |
-          $msg_b64 = "4p2MIDxiPlRyZW5kaW5nIFJhbmtpbmdzIOuwsO2PrCDsi6TtjKghPC9iPgoK67mM65OcIOuYkOuKlCDrsLDtj6wg6rO87KCV7JeQ7IScIOyYpOulmOqwgCDrsJzsg53tlojsirXri4jri6QuCvCflJcg66as7Y+s7KeA7Yag66asOiA8YSBocmVmPSJodHRwczovL2dpdGh1Yi5jb20vYnNqdXVueS90cmVuZGluZy1yYW5raW5ncy9hY3Rpb25zIj7tmZXsnbjtlZjquLA8L2E+"
-          $msg = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($msg_b64))
-          $body = @{ chat_id = "${{ secrets.TELEGRAM_CHAT_ID }}"; text = $msg; parse_mode = "HTML" } | ConvertTo-Json
-          $bytes = [System.Text.Encoding]::UTF8.GetBytes($body)
-          Invoke-RestMethod -Uri "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" -Method POST -Body $bytes -ContentType "application/json; charset=utf-8"
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: node scripts/notify-telegram.js failure
