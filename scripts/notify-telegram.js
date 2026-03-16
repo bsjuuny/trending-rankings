@@ -10,11 +10,28 @@ if (!token || !chatId) {
   process.exit(1);
 }
 
+const divider = '─────────────────────';
+
 let text;
 if (type === 'success') {
-  text = `✅ <b>Trending Rankings</b> 배포 성공!\n\n${summary}\n\n🔗 웹사이트: <a href="https://bsjuuny2026.mycafe24.com/trendingrankings/">바로가기</a>\n🔗 리포지토리: <a href="https://github.com/bsjuuny/trending-rankings/actions">확인하기</a>`;
+  text = [
+    `✅ <b>Trending Rankings 배포 성공!</b>`,
+    ``,
+    `${divider}`,
+    `${summary}`,
+    `${divider}`,
+    ``,
+    `🔗 <a href="https://bsjuuny2026.mycafe24.com/trendingrankings/">웹사이트 바로가기</a>`,
+    `📋 <a href="https://github.com/bsjuuny/trending-rankings/actions">Actions 로그 확인</a>`,
+  ].join('\n');
 } else {
-  text = `❌ <b>Trending Rankings</b> 배포 실패!\n\n빌드 또는 배포 과정에서 오류가 발생했습니다.\n🔗 리포지토리: <a href="https://github.com/bsjuuny/trending-rankings/actions">확인하기</a>`;
+  text = [
+    `❌ <b>Trending Rankings 배포 실패!</b>`,
+    ``,
+    `빌드 또는 배포 과정에서 오류가 발생했습니다.`,
+    ``,
+    `📋 <a href="https://github.com/bsjuuny/trending-rankings/actions">Actions 로그 확인</a>`,
+  ].join('\n');
 }
 
 const body = JSON.stringify({ chat_id: chatId, text, parse_mode: 'HTML' });
