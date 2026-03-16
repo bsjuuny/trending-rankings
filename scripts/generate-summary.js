@@ -128,28 +128,29 @@ async function main() {
         '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
     })[m]);
 
-    const summary = `
-<b>🔥 트렌드 요약</b>
+    const formatSection = (title, icon, data) => {
+        const lines = data.split('\n');
+        const formattedData = lines.map(line => `  ${line}`).join('\n');
+        return `<b>${icon} ${title}</b>\n${escapeHTML(formattedData)}`;
+    };
 
-<b>🏙 Nate 이슈</b>
-${escapeHTML(nate)}
+    const summary = [
+        formatSection('Nate 이슈', '🏙', nate),
+        '',
+        formatSection('Google Trends', '🔍', google),
+        '',
+        formatSection('Daum 트렌드 (Beta)', '🟡', daum),
+        '',
+        formatSection('Signal.bz', '🚥', signal),
+        '',
+        formatSection('X (Twitter)', '🐦', x),
+        '',
+        formatSection('YouTube 인기 급상승', '🎬', youtube),
+    ].join('\n');
 
-<b>🔍 Google Trends (KR)</b>
-${escapeHTML(google)}
-
-<b>🟡 Daum 트렌드 (Beta)</b>
-${escapeHTML(daum)}
-
-<b>🚥 Signal.bz</b>
-${escapeHTML(signal)}
-
-<b>🐦 X(Twitter) 트렌드</b>
-${escapeHTML(x)}
-
-<b>🎬 YouTube 인기 급상승</b>
-${escapeHTML(youtube)}
-    `.trim();
-
+    const fs = require('fs');
+    fs.writeFileSync('summary.txt', summary, 'utf8');
+    console.log('Summary generated and saved to summary.txt');
     console.log(summary);
 }
 

@@ -56,22 +56,13 @@ jobs:
 
       - name: 📋 Generate Trending Summary
         if: success()
-        run: |
-          [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
-          $summary = (npm run generate:summary 2>&1) | Where-Object { $_ -notmatch "^>" -and $_ -notmatch "^$" -and $_ -notmatch "trending-rankings" } | Out-String
-          [System.IO.File]::AppendAllText($env:GITHUB_ENV, "TRENDING_SUMMARY<<EOF`n$($summary.Trim())`nEOF`n", [System.Text.Encoding]::UTF8)
+        run: npm run generate:summary
 
       - name: 📢 Notify Telegram on Success
         if: success()
         continue-on-error: true
         run: |
-          # 1. Save summary to file to avoid escaping issues
-          $summaryContent = @"
-          ${{ env.TRENDING_SUMMARY }}
-          "@
-          $summaryContent | Out-File -FilePath "summary.txt" -Encoding utf8
-          
-          # 2. Prepare components
+          # 1. Prepare components
           $h_b64 = "4pyFIDxiPlRyZW5kaW5nIFJhbmtpbmdzIOuwsO2PrCDshLHqs7UhPC9iPg=="
           $f_b64 = "8J+UlyDsm7nsgqzsnbTtirg6IDxhIGhyZWY9Imh0dHBzOi8vYnNqdXVueTIwMjYubXljYWZlMjQuY29tL3RyZW5kaW5ncmFua2luZ3MvIj7rsJTroZzqsIDquLA8L2E+CvCflJcg66as7Y+s7KeA7Yag66asOiA8YSBocmVmPSJodHRwczovL2dpdGh1Yi5jb20vYnNqdXVueS90cmVuZGluZy1yYW5raW5ncy9hY3Rpb25zIj7tmZXsnbjtlZjquLA8L2E+"
           $d_b64 = "4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA"
@@ -79,12 +70,12 @@ jobs:
           $header = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($h_b64))
           $footer = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($f_b64))
           $divider = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($d_b64))
-          $summary = Get-Content -Path "summary.txt" -Raw
+          $summary = Get-Content -Path "summary.txt" -Raw -Encoding UTF8
           
-          # 3. Assemble message
+          # 2. Assemble message
           $msg = $header + "`n`n" + $divider + "`n" + $summary + "`n" + $divider + "`n`n" + $footer
           
-          # 4. Send
+          # 3. Send
           $body = @{ chat_id = "${{ secrets.TELEGRAM_CHAT_ID }}"; text = $msg; parse_mode = "HTML" } | ConvertTo-Json
           $bytes = [System.Text.Encoding]::UTF8.GetBytes($body)
           Invoke-RestMethod -Uri "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" -Method POST -Body $bytes -ContentType "application/json; charset=utf-8"
