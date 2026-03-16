@@ -4,10 +4,15 @@ const nextConfig: NextConfig = {
   /* config options here */
   output: 'export',
   generateBuildId: async () => 'my-build-id',
-  reactCompiler: true,
   basePath: '/trendingrankings',
   images: {
     unoptimized: true,
+  },
+  experimental: {
+    reactCompiler: true,
+    turbo: {
+      rules: {},
+    },
   },
 };
 
