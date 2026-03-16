@@ -57,26 +57,22 @@ jobs:
         shell: powershell
         run: |
           [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
-          $summary = npm run generate:summary 2>&1 | Select-Object -Skip 3 | Out-String
-          "TRENDING_SUMMARY<<EOF`n$summary`nEOF" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+          $summary = (npm run generate:summary 2>&1) | Where-Object { $_ -notmatch "^>" -and $_ -notmatch "^$" -and $_ -notmatch "trending-rankings" } | Out-String
+          [System.IO.File]::AppendAllText($env:GITHUB_ENV, "TRENDING_SUMMARY<<EOF`n$($summary.Trim())`nEOF`n", [System.Text.Encoding]::UTF8)
 
       - name: 📢 Notify Telegram on Success
         if: success()
         shell: powershell
-        run: |
-          [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
-          $summary = "${{ env.TRENDING_SUMMARY }}"
-          $msg = "✅ <b>Trending Rankings</b> 배포 성공!`n`n$summary`n`n🔗 웹사이트: <a href=`"https://bsjuuny2026.mycafe24.com/trendingrankings/`">바로가기</a>`n🔗 리포지토리: <a href=`"https://github.com/bsjuuny/trending-rankings/actions`">확인하기</a>"
-          $body = @{ chat_id = "${{ secrets.TELEGRAM_CHAT_ID }}"; text = $msg; parse_mode = "HTML" } | ConvertTo-Json
-          $bytes = [System.Text.Encoding]::UTF8.GetBytes($body)
-          Invoke-RestMethod -Uri "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" -Method POST -Body $bytes -ContentType "application/json; charset=utf-8"
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          TRENDING_SUMMARY: ${{ env.TRENDING_SUMMARY }}
+        run: node scripts/notify-telegram.js success
 
       - name: 🚨 Notify Telegram on Failure
         if: failure()
         shell: powershell
-        run: |
-          [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
-          $msg = "❌ <b>Trending Rankings</b> 배포 실패!`n`n빌드 또는 배포 과정에서 오류가 발생했습니다.`n🔗 리포지토리: <a href=`"https://github.com/bsjuuny/trending-rankings/actions`">확인하기</a>"
-          $body = @{ chat_id = "${{ secrets.TELEGRAM_CHAT_ID }}"; text = $msg; parse_mode = "HTML" } | ConvertTo-Json
-          $bytes = [System.Text.Encoding]::UTF8.GetBytes($body)
-          Invoke-RestMethod -Uri "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" -Method POST -Body $bytes -ContentType "application/json; charset=utf-8"
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: node scripts/notify-telegram.js failure
