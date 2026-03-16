@@ -65,12 +65,13 @@ jobs:
         continue-on-error: true
         shell: powershell
         run: |
-          $header_b64 = "4pyFIDxiPlRyZW5kaW5nIFJhbmtpbmdzIOuwseqvnotshLHqs7XshLshPC9iPg=="
-          $footer_b64 = "8J+UlyDsm7nsnbTthLA6IDxhIGocmVmPSJodHRwczovL2JzanV1bnkyMDI2Lm15Y2FmZTI0LmNvbS90cmVuZGluZ3JhbmtpbmdzLyI+67Cw669uoorgvCgrwn5SXIOumrO2PrOyngO2GoOumrDogPGEgaHJlZj0iaHR0cHM6Ly9naXRodWIuY29tL2JzanV1bnkvdHJlbmRpbmctcmFua2luZ3MvYWN0aW9ucyI+7ZmleyduO2VmOq4sDwvYT4="
+          $header_b64 = "4pyFIDxiPlRyZW5kaW5nIFJhbmtpbmdzIOuwsO2PrCDshLHqs7UhPC9iPg=="
+          $footer_b64 = "8J+UlyDsm7nsgqzsnbTtirg6IDxhIGhyZWY9Imh0dHBzOi8vYnNqdXVueTIwMjYubXljYWZlMjQuY29tL3RyZW5kaW5ncmFua2luZ3MvIj7rsJTroZzqsIDquLA8L2E+CvCflJcg66as7Y+s7KeA7Yag66asOiA8YSBocmVmPSJodHRwczovL2dpdGh1Yi5jb20vYnNqdXVueS90cmVuZGluZy1yYW5raW5ncy9hY3Rpb25zIj7tmZXsnbjtlZjquLA8L2E+"
+          $div_b64 = "4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA4pSA"
           $header = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($header_b64))
           $footer = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($footer_b64))
+          $divider = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($div_b64))
           $summary = "${{ env.TRENDING_SUMMARY }}"
-          $divider = "─────────────────────"
           $msg = "$header`n`n$divider`n$summary`n$divider`n`n$footer"
           $body = @{ chat_id = "${{ secrets.TELEGRAM_CHAT_ID }}"; text = $msg; parse_mode = "HTML" } | ConvertTo-Json
           $bytes = [System.Text.Encoding]::UTF8.GetBytes($body)
