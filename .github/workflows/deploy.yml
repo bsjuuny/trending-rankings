@@ -24,15 +24,15 @@ jobs:
           cache: 'npm'
 
       - name: Install dependencies
-        shell: pwsh
+        shell: powershell
         run: npm ci; if ($LASTEXITCODE -ne 0) { npm install }
 
       - name: Install Puppeteer dependencies
-        shell: pwsh
+        shell: powershell
         run: npx puppeteer browsers install chrome
 
       - name: Build project
-        shell: pwsh
+        shell: powershell
         run: npx next build --no-turbopack
         # 빌드 과정에서 환경 변수가 필요하면 아래 주석을 해제하고 추가하세요.
         # env:
@@ -54,7 +54,7 @@ jobs:
 
       - name: 📢 Notify Telegram on Success
         if: success()
-        shell: pwsh
+        shell: powershell
         run: |
           $msg = "✅ Trending Rankings 배포 성공!`n🔗 https://bsjuuny2026.mycafe24.com/trendingrankings/"
           $body = @{ chat_id = "${{ secrets.TELEGRAM_CHAT_ID }}"; text = $msg } | ConvertTo-Json
@@ -62,7 +62,7 @@ jobs:
 
       - name: 🚨 Notify Telegram on Failure
         if: failure()
-        shell: pwsh
+        shell: powershell
         run: |
           $msg = "❌ Trending Rankings 배포 실패! Actions 로그를 확인해 주세요."
           $body = @{ chat_id = "${{ secrets.TELEGRAM_CHAT_ID }}"; text = $msg } | ConvertTo-Json
