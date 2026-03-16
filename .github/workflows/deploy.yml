@@ -24,8 +24,8 @@ jobs:
           cache: 'npm'
 
       - name: Install dependencies
-        shell: bash
-        run: npm ci || npm install
+        shell: pwsh
+        run: npm ci; if ($LASTEXITCODE -ne 0) { npm install }
 
       - name: Install Puppeteer dependencies
         run: npx puppeteer browsers install chrome
