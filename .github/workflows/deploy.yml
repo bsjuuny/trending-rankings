@@ -7,6 +7,9 @@ on:
     # 매 30분마다 주기적으로 실행 (0분, 30분)
     - cron: '0,30 * * * *'
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
