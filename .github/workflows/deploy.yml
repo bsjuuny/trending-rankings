@@ -28,9 +28,11 @@ jobs:
         run: npm ci; if ($LASTEXITCODE -ne 0) { npm install }
 
       - name: Install Puppeteer dependencies
+        shell: pwsh
         run: npx puppeteer browsers install chrome
 
       - name: Build project
+        shell: pwsh
         run: npx next build --no-turbopack
         # 빌드 과정에서 환경 변수가 필요하면 아래 주석을 해제하고 추가하세요.
         # env:
