@@ -8,12 +8,6 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
-  experimental: {
-    reactCompiler: true,
-    turbo: {
-      rules: {},
-    },
-  },
 };
 
 export default nextConfig;
