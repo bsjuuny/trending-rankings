@@ -56,7 +56,6 @@ jobs:
 
       - name: 📋 Generate Trending Summary
         if: success()
-        shell: powershell
         run: |
           [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
           $summary = (npm run generate:summary 2>&1) | Where-Object { $_ -notmatch "^>" -and $_ -notmatch "^$" -and $_ -notmatch "trending-rankings" } | Out-String
@@ -65,7 +64,6 @@ jobs:
       - name: 📢 Notify Telegram on Success
         if: success()
         continue-on-error: true
-        shell: powershell
         run: |
           # 1. Save summary to file to avoid escaping issues
           $summaryContent = @"
@@ -94,7 +92,6 @@ jobs:
       - name: 🚨 Notify Telegram on Failure
         if: failure()
         continue-on-error: true
-        shell: powershell
         run: |
           $msg_b64 = "4p2MIDxiPlRyZW5kaW5nIFJhbmtpbmdzIOuwsO2PrCDsi6TtjKghPC9iPgoK67mM65OcIOuYkOuKlCDrsLDtj6wg6rO87KCV7JeQ7IScIOyYpOulmOqwgCDrsJzsg53tlojsirXri4jri6QuCvCflJcg66as7Y+s7KeA7Yag66asOiA8YSBocmVmPSJodHRwczovL2dpdGh1Yi5jb20vYnNqdXVueS90cmVuZGluZy1yYW5raW5ncy9hY3Rpb25zIj7tmZXsnbjtlZjquLA8L2E+"
           $msg = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($msg_b64))
