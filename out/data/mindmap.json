@@ -1,14 +1,10 @@
 [
   {
     "text": "붉은사막",
-    "value": 16
+    "value": 19
   },
   {
-    "text": "스팀",
-    "value": 13
-  },
-  {
-    "text": "게임",
+    "text": "호불호",
     "value": 12
   },
   {
@@ -24,7 +20,19 @@
     "value": 11
   },
   {
-    "text": "글로벌",
+    "text": "게임",
+    "value": 9
+  },
+  {
+    "text": "스팀",
+    "value": 8
+  },
+  {
+    "text": "판매량",
+    "value": 8
+  },
+  {
+    "text": "갈리",
     "value": 7
   },
   {
@@ -44,11 +52,27 @@
     "value": 6
   },
   {
-    "text": "트릭컬",
+    "text": "달성",
+    "value": 6
+  },
+  {
+    "text": "PC",
     "value": 5
   },
   {
-    "text": "정식",
+    "text": "개선점",
+    "value": 5
+  },
+  {
+    "text": "글로벌",
+    "value": 5
+  },
+  {
+    "text": "넥슨",
+    "value": 5
+  },
+  {
+    "text": "누적",
     "value": 5
   },
   {
@@ -56,19 +80,7 @@
     "value": 5
   },
   {
-    "text": "평가",
-    "value": 4
-  },
-  {
-    "text": "PC",
-    "value": 4
-  },
-  {
-    "text": "버전",
-    "value": 4
-  },
-  {
-    "text": "개선점",
+    "text": "갈린다",
     "value": 4
   },
   {
@@ -104,27 +116,15 @@
     "value": 4
   },
   {
+    "text": "정식",
+    "value": 4
+  },
+  {
     "text": "발매",
     "value": 4
   },
   {
     "text": "스마일게이트",
-    "value": 4
-  },
-  {
-    "text": "넥슨",
-    "value": 4
-  },
-  {
-    "text": "누적",
-    "value": 4
-  },
-  {
-    "text": "판매량",
-    "value": 4
-  },
-  {
-    "text": "달성",
     "value": 4
   },
   {
@@ -140,11 +140,39 @@
     "value": 4
   },
   {
+    "text": "3월",
+    "value": 4
+  },
+  {
+    "text": "PS5",
+    "value": 4
+  },
+  {
     "text": "세키로",
     "value": 4
   },
   {
-    "text": "낙원",
+    "text": "만에",
+    "value": 4
+  },
+  {
+    "text": "돌파",
+    "value": 4
+  },
+  {
+    "text": "바이오하자드",
+    "value": 4
+  },
+  {
+    "text": "300만장",
+    "value": 4
+  },
+  {
+    "text": "버전",
+    "value": 3
+  },
+  {
+    "text": "알파",
     "value": 3
   },
   {
@@ -169,34 +197,6 @@
   },
   {
     "text": "ContiNew",
-    "value": 3
-  },
-  {
-    "text": "닌텐도",
-    "value": 3
-  },
-  {
-    "text": "스위치",
-    "value": 3
-  },
-  {
-    "text": "Xbox",
-    "value": 3
-  },
-  {
-    "text": "3월",
-    "value": 3
-  },
-  {
-    "text": "PS5",
-    "value": 3
-  },
-  {
-    "text": "이식",
-    "value": 3
-  },
-  {
-    "text": "승리",
     "value": 3
   }
 ]
