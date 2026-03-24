@@ -34,30 +34,31 @@ export default function IpoMindmapPage() {
     const CENTER_SIZE = 140;
 
     return (
-        <div className="min-h-screen bg-[#0f172a] text-white p-4 md:p-8 flex flex-col items-center overflow-x-hidden font-sans">
+        <div className="h-screen bg-[#0f172a] text-white flex flex-col items-center overflow-hidden font-sans">
             <Head>
                 <title>공모주 트렌드 마인드맵</title>
             </Head>
 
-            <header className="mb-8 mt-4 text-center w-full max-w-5xl">
-                <h1 className="text-3xl md:text-5xl font-black mb-3 bg-gradient-to-r from-violet-400 to-purple-600 bg-clip-text text-transparent inline-block">
+            <header className="shrink-0 pt-3 pb-1 text-center">
+                <h1 className="text-2xl md:text-3xl font-black bg-gradient-to-r from-violet-400 to-purple-600 bg-clip-text text-transparent inline-block">
                     🏢 공모주 마인드맵
                 </h1>
-
             </header>
 
             {loading ? (
-                <div className="flex justify-center items-center h-64">
+                <div className="flex-1 flex justify-center items-center">
                     <div className="w-12 h-12 border-4 border-violet-500 border-t-transparent rounded-full animate-spin"></div>
                 </div>
             ) : words.length === 0 ? (
-                <div className="bg-[#1e293b] border border-[#334155] rounded-2xl p-12 text-center text-slate-400">
-                    <p>아직 추출된 키워드 데이터가 없습니다.</p>
+                <div className="flex-1 flex justify-center items-center">
+                    <div className="bg-[#1e293b] border border-[#334155] rounded-2xl p-12 text-center text-slate-400">
+                        <p>아직 추출된 키워드 데이터가 없습니다.</p>
+                    </div>
                 </div>
             ) : (
-                <div className="w-full max-w-6xl flex flex-col gap-12 items-center">
-                    <div className="w-full max-w-[800px] bg-[#1e293b] rounded-3xl shadow-2xl border border-[#334155] p-2 md:p-8 overflow-hidden relative">
-                        <svg viewBox={`0 0 ${SVG_SIZE} ${SVG_SIZE}`} className="w-full h-auto drop-shadow-xl" style={{ display: "block" }}>
+                <div className="flex-1 min-h-0 w-full flex items-center justify-center p-2">
+                    <div className="h-full w-full max-w-[800px] bg-[#1e293b] rounded-3xl shadow-2xl border border-[#334155] overflow-hidden">
+                        <svg viewBox={`0 0 ${SVG_SIZE} ${SVG_SIZE}`} className="w-full h-full drop-shadow-xl" style={{ display: "block" }}>
 
                             {words.map((w, idx) => {
                                 const isInner = idx < 6;
