@@ -1,14 +1,22 @@
 [
   {
     "text": "붉은사막",
-    "value": 22
+    "value": 16
+  },
+  {
+    "text": "스팀",
+    "value": 13
   },
   {
     "text": "게임",
-    "value": 14
+    "value": 12
   },
   {
     "text": "1주년",
+    "value": 11
+  },
+  {
+    "text": "모바일",
     "value": 11
   },
   {
@@ -16,12 +24,8 @@
     "value": 11
   },
   {
-    "text": "스팀",
-    "value": 10
-  },
-  {
-    "text": "모바일",
-    "value": 10
+    "text": "글로벌",
+    "value": 7
   },
   {
     "text": "마비노기",
@@ -32,15 +36,27 @@
     "value": 6
   },
   {
-    "text": "글로벌",
+    "text": "왕좌",
     "value": 6
   },
   {
-    "text": "엔씨소프트",
+    "text": "킹스로드",
+    "value": 6
+  },
+  {
+    "text": "트릭컬",
     "value": 5
   },
   {
-    "text": "불법",
+    "text": "정식",
+    "value": 5
+  },
+  {
+    "text": "신작",
+    "value": 5
+  },
+  {
+    "text": "평가",
     "value": 4
   },
   {
@@ -72,11 +88,7 @@
     "value": 4
   },
   {
-    "text": "정식",
-    "value": 4
-  },
-  {
-    "text": "발매",
+    "text": "테스트",
     "value": 4
   },
   {
@@ -92,15 +104,27 @@
     "value": 4
   },
   {
-    "text": "왕좌",
-    "value": 4
-  },
-  {
-    "text": "킹스로드",
+    "text": "발매",
     "value": 4
   },
   {
     "text": "스마일게이트",
+    "value": 4
+  },
+  {
+    "text": "넥슨",
+    "value": 4
+  },
+  {
+    "text": "누적",
+    "value": 4
+  },
+  {
+    "text": "판매량",
+    "value": 4
+  },
+  {
+    "text": "달성",
     "value": 4
   },
   {
@@ -116,55 +140,11 @@
     "value": 4
   },
   {
-    "text": "닌텐도",
-    "value": 4
-  },
-  {
-    "text": "스위치",
-    "value": 4
-  },
-  {
-    "text": "PS5",
-    "value": 4
-  },
-  {
     "text": "세키로",
     "value": 4
   },
   {
-    "text": "승리",
-    "value": 4
-  },
-  {
-    "text": "여신",
-    "value": 4
-  },
-  {
-    "text": "니케",
-    "value": 4
-  },
-  {
-    "text": "신작",
-    "value": 4
-  },
-  {
-    "text": "리뷰",
-    "value": 3
-  },
-  {
-    "text": "복귀",
-    "value": 3
-  },
-  {
-    "text": "제로",
-    "value": 3
-  },
-  {
     "text": "낙원",
-    "value": 3
-  },
-  {
-    "text": "조치",
     "value": 3
   },
   {
@@ -180,6 +160,10 @@
     "value": 3
   },
   {
+    "text": "엔씨소프트",
+    "value": 3
+  },
+  {
     "text": "리니지M",
     "value": 3
   },
@@ -188,15 +172,31 @@
     "value": 3
   },
   {
-    "text": "세계",
+    "text": "닌텐도",
     "value": 3
   },
   {
-    "text": "누적",
+    "text": "스위치",
     "value": 3
   },
   {
-    "text": "판매량",
+    "text": "Xbox",
+    "value": 3
+  },
+  {
+    "text": "3월",
+    "value": 3
+  },
+  {
+    "text": "PS5",
+    "value": 3
+  },
+  {
+    "text": "이식",
+    "value": 3
+  },
+  {
+    "text": "승리",
     "value": 3
   }
 ]

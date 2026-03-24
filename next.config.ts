@@ -1,13 +1,14 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  /* static export options for Cafe24 */
   output: 'export',
-  generateBuildId: async () => 'my-build-id',
-  basePath: '/trendingrankings',
+  trailingSlash: true,
   images: {
     unoptimized: true,
   },
+  // If you are deploying to a specific subdirectory, uncomment the following:
+  // basePath: '/trendingrankings',
 };
 
 export default nextConfig;
