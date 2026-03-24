@@ -65,11 +65,13 @@ export default function StocksMindmapPage() {
                     style={{ position: 'absolute', left: svgLeft, top: svgTop, width: svgPx, height: svgPx, display: 'block' }}
                 >
                     {words.map((w, idx) => {
-                        const isInner = idx < 6;
-                        const totalInRing = isInner ? 6 : (words.length - 6);
-                        const ringIdx = isInner ? idx : (idx - 6);
+                        const innerCount = words.length <= 8 ? Math.min(4, words.length) : 6;
+                        const isInner = idx < innerCount;
+                        const totalInRing = isInner ? innerCount : (words.length - innerCount);
+                        const ringIdx = isInner ? idx : (idx - innerCount);
                         const distance = isInner ? 180 : 320;
-                        const theta = (ringIdx / totalInRing) * 2 * Math.PI - (Math.PI / 2);
+                        const outerOffset = isInner ? 0 : (Math.PI / totalInRing);
+                        const theta = (ringIdx / totalInRing) * 2 * Math.PI - (Math.PI / 2) + outerOffset;
                         const x = CENTER + Math.cos(theta) * distance;
                         const y = CENTER + Math.sin(theta) * distance;
                         const color = colors[w.text.split('').reduce((acc, c) => acc + c.charCodeAt(0), 0) % colors.length];
@@ -84,14 +86,16 @@ export default function StocksMindmapPage() {
 
                     {words.map((w, idx) => {
                         const ratio = maxVal === minVal ? 0.5 : (w.value - minVal) / (maxVal - minVal);
-                        const isInner = idx < 6;
-                        const totalInRing = isInner ? 6 : (words.length - 6);
-                        const ringIdx = isInner ? idx : (idx - 6);
+                        const innerCount = words.length <= 8 ? Math.min(4, words.length) : 6;
+                        const isInner = idx < innerCount;
+                        const totalInRing = isInner ? innerCount : (words.length - innerCount);
+                        const ringIdx = isInner ? idx : (idx - innerCount);
                         const baseSize = isInner ? 100 : 70;
                         const nodeSize = baseSize + (ratio * (isInner ? 30 : 20));
                         const fontSize = isInner ? (18 + ratio * 8) : (14 + ratio * 6);
                         const distance = isInner ? 180 : 320;
-                        const theta = (ringIdx / totalInRing) * 2 * Math.PI - (Math.PI / 2);
+                        const outerOffset = isInner ? 0 : (Math.PI / totalInRing);
+                        const theta = (ringIdx / totalInRing) * 2 * Math.PI - (Math.PI / 2) + outerOffset;
                         const x = CENTER + Math.cos(theta) * distance;
                         const y = CENTER + Math.sin(theta) * distance;
                         const color = colors[w.text.split('').reduce((acc, c) => acc + c.charCodeAt(0), 0) % colors.length];
