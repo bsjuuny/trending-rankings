@@ -35,7 +35,7 @@ export default function StocksMindmapPage() {
     const SVG_SIZE = 800;
     const CENTER = SVG_SIZE / 2;
     const CENTER_SIZE = 140;
-    const HEADER_H = 72;
+    const HEADER_H = 56;
 
     const svgPx = win.w > 0 ? Math.min(win.w - 16, win.h - HEADER_H - 8) : 0;
     const svgLeft = win.w > 0 ? (win.w - svgPx) / 2 : 0;
@@ -45,7 +45,7 @@ export default function StocksMindmapPage() {
         <div style={{ position: 'fixed', inset: 0, background: '#0f172a', overflow: 'hidden', color: 'white' }}>
             <Head><title>주식 트렌드 마인드맵</title></Head>
 
-            <header style={{ position: 'absolute', top: 0, left: 0, right: 0, height: HEADER_H, display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 10 }}>
+            <header style={{ position: 'absolute', top: 0, left: 0, right: 0, height: HEADER_H, paddingTop: '10px', display: 'flex', alignItems: 'flex-start', justifyContent: 'center', zIndex: 10 }}>
                 <h1 className="text-2xl md:text-3xl font-black bg-gradient-to-r from-emerald-400 to-blue-500 bg-clip-text text-transparent">
                     📈 주식 트렌드 마인드맵
                 </h1>
