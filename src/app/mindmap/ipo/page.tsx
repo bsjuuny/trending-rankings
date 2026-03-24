@@ -8,6 +8,11 @@ export default function IpoMindmapPage() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
+        document.body.style.overflow = 'hidden';
+        return () => { document.body.style.overflow = ''; };
+    }, []);
+
+    useEffect(() => {
         fetch('/trendingrankings/data/mindmap_ipo.json')
             .then(res => res.json())
             .then(data => {
