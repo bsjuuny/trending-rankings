@@ -4,14 +4,6 @@
     "value": 7
   },
   {
-    "text": "광우병",
-    "value": 7
-  },
-  {
-    "text": "반기문",
-    "value": 7
-  },
-  {
     "text": "신문",
     "value": 6
   },
@@ -32,43 +24,11 @@
     "value": 6
   },
   {
-    "text": "그런",
-    "value": 5
-  },
-  {
-    "text": "의미",
-    "value": 5
-  },
-  {
-    "text": "차기",
-    "value": 5
-  },
-  {
-    "text": "대통령",
-    "value": 5
-  },
-  {
-    "text": "jpg",
-    "value": 4
-  },
-  {
-    "text": "대한",
-    "value": 3
-  },
-  {
     "text": "미국증시",
     "value": 3
   },
   {
     "text": "비지니스",
-    "value": 3
-  },
-  {
-    "text": "이전",
-    "value": 3
-  },
-  {
-    "text": "소고기",
     "value": 3
   },
   {
@@ -104,6 +64,10 @@
     "value": 2
   },
   {
+    "text": "현대차",
+    "value": 2
+  },
+  {
     "text": "RIA",
     "value": 2
   },
@@ -120,11 +84,11 @@
     "value": 2
   },
   {
-    "text": "진실",
+    "text": "개드립",
     "value": 2
   },
   {
-    "text": "계기판",
+    "text": "인기글",
     "value": 2
   }
 ]

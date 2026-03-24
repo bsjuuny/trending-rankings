@@ -1,6 +1,6 @@
 /**
  * collect-ipo-mindmap.js
- * 클리앙 주식한당 + 디씨인사이드 주식갤러리 게시글 제목에서 IPO/주식 키워드 추출
+ * 클리앙 주식한당 + 도그드립 게시글 제목에서 IPO/주식 키워드 추출
  * → public/data/mindmap_ipo.json 저장
  */
 
@@ -37,9 +37,9 @@ async function getClienStockTitles() {
   }
 }
 
-async function getDCInsideStockTitles() {
+async function getDogdripTitles() {
   try {
-    const res = await fetch('https://gall.dcinside.com/board/lists/?id=stock_new1', {
+    const res = await fetch('https://www.dogdrip.net', {
       headers: { 'User-Agent': USER_AGENT },
     });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
@@ -47,18 +47,17 @@ async function getDCInsideStockTitles() {
     const $ = cheerio.load(html);
 
     const titles = [];
-    $('.gall_tit a:not(.reply_num)').each((i, el) => {
+    $('.title').each((_i, el) => {
       const text = $(el).text().trim();
-      // 공지/광고 등 짧거나 비의미 제목 제외
-      if (text.length >= 4 && text.length <= 60 && /[가-힣]/.test(text)) {
+      if (text.length >= 5 && text.length <= 80 && /[가-힣]/.test(text)) {
         titles.push(text);
       }
     });
 
-    console.log(`[ipo] DC인사이드 주식 제목: ${titles.length}개`);
+    console.log(`[ipo] 도그드립 제목: ${titles.length}개`);
     return titles;
   } catch (e) {
-    console.warn(`[ipo] DC인사이드 실패: ${e.message}`);
+    console.warn(`[ipo] 도그드립 실패: ${e.message}`);
     return [];
   }
 }
@@ -68,7 +67,7 @@ async function main() {
 
   const [clienTitles, dcTitles] = await Promise.all([
     getClienStockTitles(),
-    getDCInsideStockTitles(),
+    getDogdripTitles(),
   ]);
 
   const allTitles = [...clienTitles, ...dcTitles];

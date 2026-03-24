@@ -1,6 +1,6 @@
 /**
  * collect-community-mindmap.js
- * 루리웹/판 커뮤니티 게시글 제목에서 키워드 추출
+ * 루리웹/도그드립 커뮤니티 게시글 제목에서 키워드 추출
  * → public/data/mindmap.json 저장
  * (기존 generate-summary.js의 getCommunityKeywords 로직 분리)
  */
@@ -24,17 +24,20 @@ async function main() {
     } catch (e) { console.warn('[community] 루리웹 실패:', e.message); }
 
     try {
-        const res2 = await fetch('https://pann.nate.com/talk/ranking', { headers: { 'User-Agent': USER_AGENT } });
+        const res2 = await fetch('https://www.dogdrip.net', { headers: { 'User-Agent': USER_AGENT } });
         const html2 = await res2.text();
         const $2 = cheerio.load(html2);
-        $2('.tit').each((i, el) => titles.push($2(el).text().trim()));
-    } catch (e) { console.warn('[community] 판 실패:', e.message); }
+        $2('.title').each((_i, el) => {
+            const text = $2(el).text().trim();
+            if (text.length >= 5 && text.length <= 80 && /[가-힣]/.test(text)) titles.push(text);
+        });
+    } catch (e) { console.warn('[community] 도그드립 실패:', e.message); }
 
     // 고급 형태소 분석기를 통한 명사 빈도수 추출
     const wordCounts = KoreanNLP.getFrequencies(titles);
 
     const sorted = Object.entries(wordCounts)
-        .filter(([, v]) => v > 1)
+        .filter(([, v]) => v >= 3)
         .sort((a, b) => b[1] - a[1])
         .slice(0, 50)
         .map(([text, value]) => ({ text, value }));

@@ -1,7 +1,7 @@
 [
   {
     "text": "붉은사막",
-    "value": 22
+    "value": 23
   },
   {
     "text": "게임",
@@ -16,16 +16,12 @@
     "value": 11
   },
   {
-    "text": "스팀",
-    "value": 10
-  },
-  {
     "text": "모바일",
     "value": 10
   },
   {
-    "text": "24일",
-    "value": 7
+    "text": "스팀",
+    "value": 9
   },
   {
     "text": "마비노기",
@@ -40,20 +36,8 @@
     "value": 6
   },
   {
-    "text": "방송",
-    "value": 5
-  },
-  {
     "text": "엔씨소프트",
     "value": 5
-  },
-  {
-    "text": "이제",
-    "value": 4
-  },
-  {
-    "text": "아닌",
-    "value": 4
   },
   {
     "text": "불법",
@@ -81,6 +65,10 @@
   },
   {
     "text": "전야제",
+    "value": 4
+  },
+  {
+    "text": "방송",
     "value": 4
   },
   {
@@ -116,15 +104,7 @@
     "value": 4
   },
   {
-    "text": "18일",
-    "value": 4
-  },
-  {
     "text": "패치",
-    "value": 4
-  },
-  {
-    "text": "달라지",
     "value": 4
   },
   {
@@ -136,7 +116,7 @@
     "value": 4
   },
   {
-    "text": "닌텐",
+    "text": "닌텐도",
     "value": 4
   },
   {
@@ -148,7 +128,7 @@
     "value": 4
   },
   {
-    "text": "세키",
+    "text": "세키로",
     "value": 4
   },
   {
@@ -164,39 +144,59 @@
     "value": 4
   },
   {
-    "text": "19일",
-    "value": 4
-  },
-  {
     "text": "신작",
     "value": 4
-  },
-  {
-    "text": "베플정국이",
-    "value": 4
-  },
-  {
-    "text": "리뷰",
-    "value": 3
   },
   {
     "text": "낙원",
     "value": 3
   },
   {
-    "text": "jpg",
-    "value": 3
-  },
-  {
-    "text": "모드",
-    "value": 3
-  },
-  {
-    "text": "대한",
-    "value": 3
-  },
-  {
     "text": "조치",
+    "value": 3
+  },
+  {
+    "text": "그라비티",
+    "value": 3
+  },
+  {
+    "text": "라그나로크",
+    "value": 3
+  },
+  {
+    "text": "스토리",
+    "value": 3
+  },
+  {
+    "text": "리니지M",
+    "value": 3
+  },
+  {
+    "text": "ContiNew",
+    "value": 3
+  },
+  {
+    "text": "세계",
+    "value": 3
+  },
+  {
+    "text": "누적",
+    "value": 3
+  },
+  {
+    "text": "판매량",
+    "value": 3
+  },
+  {
+    "text": "달성",
+    "value": 3
+  },
+  {
+    "text": "콜라보",
+    "value": 3
+  },
+  {
+    "text": "MMORPG",
     "value": 3
   }
 ]

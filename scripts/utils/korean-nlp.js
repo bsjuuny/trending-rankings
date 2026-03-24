@@ -7,6 +7,8 @@ const STOPWORDS = new Set([
     '진짜', '오늘', '너무', '정말', '이거', '저거', '어떻게', '어떤', '무슨', '이런',
     '저런', '그리고', '이게', '내가', '근데', '뭐가', '그냥', '많이', '요즘', '다들', '지금', '약후',
     '아직', '벌써', '어제', '내일', '주말', '올해', '내년', '아침', '저녁', '새벽',
+    '아닌', '다른', '그런', '어떤', '같은', '모든', '많은', '적은', '크게', '아무',
+    '어떻', '그렇', '이렇', '저렇', '어쩌', '대한', '대해', '관한', '관해', '위한',
     '미친', '대박', '레전드', '진심', '아니', '이걸', '저걸', '왜케', '왜이렇게',
     '공개', '출시', '소개', '진행', '지난', '신규', '모든', '많은', '적은', '크게',
     '역대', '최근', '이유', '현재', '이번', '이후', '결과', '과연', '역시', '주의',
@@ -15,14 +17,16 @@ const STOPWORDS = new Set([
     '예정', '확인', '참여', '방법', '추가', '변경', '적용', '안내', '문제', '이유',
     '사람', '하루', '우리', '누가', '어디', '저희', '분들', '사람들', '자체', '자신',
     '부분', '하나', '둘다', '전부', '모두', '누군가', '누구', '무엇', '어느', '어느것',
-    '주식', '상장', '공모주', '주가', '투자', '매수', '매도', '수익', '시장', '기업'
+    '주식', '상장', '공모주', '주가', '투자', '매수', '매도', '수익', '시장', '기업',
+    'jpg', 'png', 'gif', '베플', '추천', '비추', '실시간', '달라지', '단독', '기소', '정신', '차릴', '수가', '있네', '없네', '기대', '소멸'
 ]);
 
 // 억울하게 잘릴 위험이 있는 명사 원형 보호 (사전)
 const DICTIONARY = new Set([
     '어린이', '고양이', '사나이', '지팡이', '원숭이', '호랑이', '거북이', '달팽이',
     '마늘', '하늘', '가을', '겨울', '오늘', '내일', '모레', '바늘', '연필', '지하철',
-    '아이폰', '갤럭시', '컴퓨터', '스마트폰', '노트북', '카메라', '모니터'
+    '아이폰', '갤럭시', '컴퓨터', '스마트폰', '노트북', '카메라', '모니터',
+    '닌텐도', '세키로', '배틀필드', '엔씨소프트', '스마일게이트', '마비노기'
 ]);
 
 // 절대로 명사로 취급해서는 안 되는 동사/형용사 어간 (L-Part)
@@ -61,6 +65,8 @@ class KoreanNLP {
         const nouns = [];
 
         for (let word of rawWords) {
+            // 0. 날짜/숫자 섞인 단어 1차 필터링 (예: 24일, 18일, 10위 등)
+            if (/^\d+[일위개층회분초]$/.test(word)) continue;
             
             // 2. 어미/조사 분리 무시 여부 (사전 등록 단어)
             let isException = DICTIONARY.has(word);
@@ -70,15 +76,13 @@ class KoreanNLP {
                 let isVerb = false;
                 for (let eomi of EOMIS) {
                     if (word.endsWith(eomi)) {
-                        // 어미를 뗐을 때, 남은 앞부분이 금지된 어간(있, 없, 하, 되)이면 폐기
                         const stem = word.slice(0, word.length - eomi.length);
                         if (stem.length === 0 || BANNED_STEMS.has(stem)) {
                             isVerb = true;
                             break;
                         }
-                        // 어미를 뗐는데 앞에 멀쩡한 명사가 남았다면 (예: "게임했다" -> "게임" + "했다")
                         word = stem;
-                        break; // 어미를 자른 상태로 조사를 잘라보는 로직으로 내려감
+                        break;
                     }
                 }
                 if (isVerb) continue;
@@ -89,7 +93,8 @@ class KoreanNLP {
                 for (let josa of JOSAS) {
                     if (word.endsWith(josa)) {
                         const nominal = word.slice(0, word.length - josa.length);
-                        if (DICTIONARY.has(nominal) || nominal.length >= 1) {
+                        // 잘라낸 앞부분이 최소 2글자 이상이거나 원형 사전에 있어야 함
+                        if (DICTIONARY.has(nominal) || nominal.length >= 2) {
                             word = nominal;
                             break;
                         }
@@ -98,9 +103,12 @@ class KoreanNLP {
             }
 
             // 5. 남은 Noun(명사) 찌꺼기 최종 검증
-            // (1글자는 너무 흔한 오류 유발이라 최소 2글자 권장. 단, 영어 약어 A, B 등은 통과)
             if (word.length > 1 && !STOPWORDS.has(word) && !BANNED_STEMS.has(word) && isNaN(Number(word))) {
-                nouns.push(word);
+                // 베플 등의 잡다한 접두어/명칭 추가 필터링
+                if (word.startsWith('베플')) word = word.replace('베플', '');
+                if (word.length > 1 && !STOPWORDS.has(word)) {
+                    nouns.push(word);
+                }
             }
         }
 

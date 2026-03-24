@@ -11,8 +11,8 @@ export default function MindmapPage() {
         fetch('/trendingrankings/data/mindmap.json')
             .then(res => res.json())
             .then(data => {
-                // 상위 16개 한정
-                setWords(data.sort((a: any, b: any) => b.value - a.value).slice(0, 16));
+                // 상위 15개 한정 (사용자 요청)
+                setWords(data.sort((a: any, b: any) => b.value - a.value).slice(0, 15));
                 setLoading(false);
             })
             .catch(err => {

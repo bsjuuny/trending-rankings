@@ -7,15 +7,17 @@
 const cheerio = require('cheerio');
 const fs = require('fs');
 const path = require('path');
+const KoreanNLP = require('./utils/korean-nlp');
 
 const USER_AGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36';
 
-// 제외할 일반 단어 (주식과 무관한 불용어)
+// 제외할 일반 단어 (주식과 무관한 불용어 또는 ETF 관련 검색어)
 const STOPWORDS = new Set([
   '관련', '이후', '주가', '시장', '투자', '매수', '매도', '상승', '하락',
   '전망', '분석', '결과', '발표', '예상', '오늘', '내일', '최근', '국내',
   '해외', '글로벌', '코스피', '코스닥', '증권', '주식', '펀드', 'ETF',
   '금리', '환율', '달러', '유가', '금', '원자재', '채권', '경제',
+  '레버리지', '인버스', 'KODEX', 'TIGER', 'ACE', 'KBSTAR', 'SOL', '선물', 'ETN', '2X'
 ]);
 
 async function getNaverStockSearchRanking() {
@@ -60,15 +62,9 @@ async function getNaverFinanceNews() {
       headlines.push($(el).text().trim());
     });
 
-    // 헤드라인에서 2~8자 명사 추출 (종목명 패턴)
-    const keywords = [];
-    const pattern = /[가-힣A-Z]{2,8}/g;
-    headlines.forEach(h => {
-      const matches = h.match(pattern) || [];
-      matches.forEach(m => {
-        if (!STOPWORDS.has(m) && m.length >= 2) keywords.push(m);
-      });
-    });
+    // 고급 형태소 분석기를 통한 고품질 명사 추출
+    const freqMap = KoreanNLP.getFrequencies(headlines);
+    const keywords = Object.keys(freqMap);
 
     console.log(`[stocks] 네이버 뉴스 키워드: ${keywords.length}개`);
     return keywords;
@@ -85,7 +81,8 @@ async function getNaverStockRanking() {
       headers: { 'User-Agent': USER_AGENT },
     });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const html = await res.text();
+    const buf = await res.arrayBuffer();
+    const html = new TextDecoder('euc-kr').decode(buf);
     const $ = cheerio.load(html);
 
     const keywords = [];
@@ -123,7 +120,13 @@ async function main() {
   newsKeywords.forEach(k => { freq[k] = (freq[k] || 0) + 1; });
 
   const sorted = Object.entries(freq)
-    .filter(([, v]) => v >= 1)
+    .filter(([text, v]) => {
+      if (v < 1) return false;
+      // 추가 필터: ETF 키워드가 포함된 긴 텍스트는 종목명이 아니므로 제외
+      const etfKeywords = ['KODEX', 'TIGER', '인버스', '레버리지', '선물', 'ETN', 'ETF', '2X', 'ACE', 'KOSEF'];
+      if (etfKeywords.some(k => text.includes(k))) return false;
+      return true;
+    })
     .sort((a, b) => b[1] - a[1])
     .slice(0, 50)
     .map(([text, value]) => ({ text, value }));
