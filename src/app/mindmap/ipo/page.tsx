@@ -43,7 +43,7 @@ export default function IpoMindmapPage() {
                 <h1 className="text-3xl md:text-5xl font-black mb-3 bg-gradient-to-r from-violet-400 to-purple-600 bg-clip-text text-transparent inline-block">
                     🏢 공모주 마인드맵
                 </h1>
-                <p className="text-slate-400 text-sm">청약 중 · 청약 예정 · 38커뮤니케이션 · 네이버 증권 IPO</p>
+                <p className="text-slate-400 text-sm">클리앙 · 도그드립 커뮤니티 트렌드</p>
             </header>
 
             {loading ? (

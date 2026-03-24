@@ -1,7 +1,7 @@
 [
   {
     "text": "붉은사막",
-    "value": 23
+    "value": 22
   },
   {
     "text": "게임",
@@ -16,12 +16,12 @@
     "value": 11
   },
   {
-    "text": "모바일",
+    "text": "스팀",
     "value": 10
   },
   {
-    "text": "스팀",
-    "value": 9
+    "text": "모바일",
+    "value": 10
   },
   {
     "text": "마비노기",
@@ -148,6 +148,18 @@
     "value": 4
   },
   {
+    "text": "리뷰",
+    "value": 3
+  },
+  {
+    "text": "복귀",
+    "value": 3
+  },
+  {
+    "text": "제로",
+    "value": 3
+  },
+  {
     "text": "낙원",
     "value": 3
   },
@@ -185,18 +197,6 @@
   },
   {
     "text": "판매량",
-    "value": 3
-  },
-  {
-    "text": "달성",
-    "value": 3
-  },
-  {
-    "text": "콜라보",
-    "value": 3
-  },
-  {
-    "text": "MMORPG",
     "value": 3
   }
 ]

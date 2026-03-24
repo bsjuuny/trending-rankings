@@ -121,7 +121,7 @@ async function main() {
 
   const sorted = Object.entries(freq)
     .filter(([text, v]) => {
-      if (v < 1) return false;
+      if (v < 3) return false;
       // 추가 필터: ETF 키워드가 포함된 긴 텍스트는 종목명이 아니므로 제외
       const etfKeywords = ['KODEX', 'TIGER', '인버스', '레버리지', '선물', 'ETN', 'ETF', '2X', 'ACE', 'KOSEF'];
       if (etfKeywords.some(k => text.includes(k))) return false;
