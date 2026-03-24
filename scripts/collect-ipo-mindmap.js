@@ -1,86 +1,64 @@
 /**
  * collect-ipo-mindmap.js
- * ipo-master 로컬 데이터 + 38커뮤니케이션에서 IPO 키워드 추출
+ * 클리앙 주식한당 + 디씨인사이드 주식갤러리 게시글 제목에서 IPO/주식 키워드 추출
  * → public/data/mindmap_ipo.json 저장
  */
 
 const cheerio = require('cheerio');
 const fs = require('fs');
 const path = require('path');
+const KoreanNLP = require('./utils/korean-nlp');
 
 const USER_AGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36';
 
-const IPO_MASTER_PATH = 'C:/github/ipo-master/public/data/ipo_list.json';
-
-function getIpoMasterKeywords() {
+async function getClienStockTitles() {
   try {
-    if (!fs.existsSync(IPO_MASTER_PATH)) {
-      console.warn('[ipo] ipo_list.json 없음 — 건너뜀');
-      return [];
-    }
+    const res = await fetch('https://www.clien.net/service/board/cm_stock', {
+      headers: { 'User-Agent': USER_AGENT },
+    });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const html = await res.text();
+    const $ = cheerio.load(html);
 
-    const raw = JSON.parse(fs.readFileSync(IPO_MASTER_PATH, 'utf8'));
-    const ipos = Array.isArray(raw) ? raw : (raw.ipos ?? raw.data ?? []);
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-
-    const keywords = [];
-
-    ipos.forEach(ipo => {
-      if (!ipo.name) return;
-
-      // 청약 중 가중치 5, 청약 예정(30일 이내) 가중치 3, 마감 후 30일 이내 가중치 1
-      const start = ipo.subscriptionStart ? new Date(ipo.subscriptionStart.replace(/\./g, '-')) : null;
-      const end = ipo.subscriptionEnd ? new Date(ipo.subscriptionEnd.replace(/\./g, '-')) : null;
-
-      let weight = 0;
-      if (start && end && start <= today && end >= today) {
-        weight = 5; // 청약 중
-      } else if (start && start > today && (start - today) / 86400000 <= 30) {
-        weight = 3; // 30일 내 예정
-      } else if (end && end < today && (today - end) / 86400000 <= 30) {
-        weight = 1; // 최근 마감
-      }
-
-      if (weight > 0) {
-        keywords.push({ text: ipo.name, weight });
-        // 섹터/업종도 추가
-        if (ipo.sector) keywords.push({ text: ipo.sector, weight: 1 });
-      }
+    const titles = [];
+    $('.list_subject').each((i, el) => {
+      const raw = $(el).text().trim();
+      // 탭/줄바꿈 이후 실제 제목 추출
+      const lines = raw.split(/[\n\t]+/).map(l => l.trim()).filter(Boolean);
+      const title = lines[lines.length - 1];
+      if (title && title.length >= 4) titles.push(title);
     });
 
-    console.log(`[ipo] ipo-master 키워드: ${keywords.length}개`);
-    return keywords;
+    console.log(`[ipo] 클리앙 주식 제목: ${titles.length}개`);
+    return titles;
   } catch (e) {
-    console.warn(`[ipo] ipo-master 로드 실패: ${e.message}`);
+    console.warn(`[ipo] 클리앙 실패: ${e.message}`);
     return [];
   }
 }
 
-async function getIpoStockKeywords() {
+async function getDCInsideStockTitles() {
   try {
-    // ipostock.co.kr 공모주 일정
-    const res = await fetch('https://ipostock.co.kr/sub03/ipo02.asp', {
-      headers: { 'User-Agent': USER_AGENT, 'Referer': 'https://ipostock.co.kr/' },
+    const res = await fetch('https://gall.dcinside.com/board/lists/?id=stock_new1', {
+      headers: { 'User-Agent': USER_AGENT },
     });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const buf = await res.arrayBuffer();
-    const decoder = new TextDecoder('euc-kr');
-    const html = decoder.decode(buf);
+    const html = await res.text();
     const $ = cheerio.load(html);
 
-    const keywords = [];
-    $('table td a').each((i, el) => {
+    const titles = [];
+    $('.gall_tit a:not(.reply_num)').each((i, el) => {
       const text = $(el).text().trim();
-      if (text && text.length >= 2 && text.length <= 15 && !/^\d+$/.test(text)) {
-        keywords.push({ text, weight: 2 });
+      // 공지/광고 등 짧거나 비의미 제목 제외
+      if (text.length >= 4 && text.length <= 60 && /[가-힣]/.test(text)) {
+        titles.push(text);
       }
     });
 
-    console.log(`[ipo] ipostock 키워드: ${keywords.length}개`);
-    return keywords;
+    console.log(`[ipo] DC인사이드 주식 제목: ${titles.length}개`);
+    return titles;
   } catch (e) {
-    console.warn(`[ipo] ipostock 실패: ${e.message}`);
+    console.warn(`[ipo] DC인사이드 실패: ${e.message}`);
     return [];
   }
 }
@@ -88,18 +66,22 @@ async function getIpoStockKeywords() {
 async function main() {
   console.log('[collect-ipo-mindmap] 시작...');
 
-  const [ipoMaster, comm38, naverIpo] = await Promise.all([
-    Promise.resolve(getIpoMasterKeywords()),
-    getIpoStockKeywords(),
-    Promise.resolve([]),
+  const [clienTitles, dcTitles] = await Promise.all([
+    getClienStockTitles(),
+    getDCInsideStockTitles(),
   ]);
 
-  const freq = {};
-  [...ipoMaster, ...comm38, ...naverIpo].forEach(({ text, weight }) => {
-    freq[text] = (freq[text] || 0) + weight;
-  });
+  const allTitles = [...clienTitles, ...dcTitles];
 
-  const sorted = Object.entries(freq)
+  if (allTitles.length === 0) {
+    console.warn('[ipo] 수집된 제목 없음');
+  }
+
+  // KoreanNLP 형태소 분석으로 명사 빈도 추출
+  const wordCounts = KoreanNLP.getFrequencies(allTitles);
+
+  const sorted = Object.entries(wordCounts)
+    .filter(([, v]) => v > 1)
     .sort((a, b) => b[1] - a[1])
     .slice(0, 50)
     .map(([text, value]) => ({ text, value }));
