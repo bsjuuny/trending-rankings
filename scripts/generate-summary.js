@@ -1,5 +1,8 @@
 const cheerio = require('cheerio');
-const puppeteer = require('puppeteer'); const USER_AGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36';
+const puppeteer = require('puppeteer'); 
+const KoreanNLP = require('./utils/korean-nlp');
+
+const USER_AGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36';
 
 async function getXRankings() {
     try {
@@ -113,14 +116,48 @@ async function getDaumRankings() {
     }
 }
 
+async function getCommunityKeywords(fs) {
+    const titles = [];
+    try {
+        const response1 = await fetch('https://m.ruliweb.com/best', { headers: { 'User-Agent': USER_AGENT } });
+        const html1 = await response1.text();
+        const $1 = cheerio.load(html1);
+        $1('.subject').each((i, el) => titles.push($1(el).text().trim()));
+
+        const response2 = await fetch('https://pann.nate.com/talk/ranking', { headers: { 'User-Agent': USER_AGENT } });
+        const html2 = await response2.text();
+        const $2 = cheerio.load(html2);
+        $2('.tit').each((i, el) => titles.push($2(el).text().trim()));
+    } catch (e) { console.error('Community fetch error:', e); }
+
+    const wordCounts = KoreanNLP.getFrequencies(titles);
+
+    const sortedWords = Object.entries(wordCounts)
+        .sort((a, b) => b[1] - a[1])
+        .filter(w => w[1] > 1);
+
+    if (fs) {
+        if (!fs.existsSync('public/data')) fs.mkdirSync('public/data', { recursive: true });
+        fs.writeFileSync('public/data/mindmap.json', JSON.stringify(sortedWords.slice(0, 50).map(w => ({text: w[0], value: w[1]})), null, 2), 'utf8');
+    }
+
+    const keywords = sortedWords.slice(0, 10);
+    if (keywords.length > 0) {
+        return keywords.map((w, i) => `${i + 1}. ${w[0]} (${w[1]}회)`).join('\n');
+    }
+    return '데이터를 가져올 수 없습니다.';
+}
+
 async function main() {
-    const [nate, google, signal, x, youtube, daum] = await Promise.all([
+    const fs = require('fs');
+    const [nate, google, signal, x, youtube, daum, comm] = await Promise.all([
         getNateRankings(),
         getGoogleTrends(),
         getSignalRankings(),
         getXRankings(),
         getYoutubeRankings(),
-        getDaumRankings()
+        getDaumRankings(),
+        getCommunityKeywords(fs)
     ]);
 
     // Simple escape for HTML
@@ -135,6 +172,8 @@ async function main() {
     };
 
     const summary = [
+        formatSection('종합 커뮤니티 트렌드', '🔥', comm),
+        '',
         formatSection('Nate 이슈', '🏙', nate),
         '',
         formatSection('Google Trends', '🔍', google),
@@ -148,7 +187,6 @@ async function main() {
         formatSection('YouTube 인기 급상승', '🎬', youtube),
     ].join('\n');
 
-    const fs = require('fs');
     fs.writeFileSync('summary.txt', summary, 'utf8');
     console.log('Summary generated and saved to summary.txt');
     console.log(summary);

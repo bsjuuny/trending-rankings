@@ -39,6 +39,7 @@ export async function getXRankings(revalidate: number): Promise<RankingSource> {
             headers: { 'User-Agent': USER_AGENT },
             next: { revalidate }
         });
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
         const html = await response.text();
         const $ = cheerio.load(html);
         const items: RankingItem[] = [];
@@ -67,6 +68,7 @@ export async function getYoutubeRankings(revalidate: number): Promise<RankingSou
             headers: { 'User-Agent': USER_AGENT },
             next: { revalidate }
         });
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
         const html = await response.text();
         const $ = cheerio.load(html);
         const items: RankingItem[] = [];
@@ -95,8 +97,9 @@ export async function getSignalRankings(revalidate: number): Promise<RankingSour
             headers: { 'User-Agent': USER_AGENT },
             next: { revalidate }
         });
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
         const data = await response.json();
-        const items: RankingItem[] = data.top10.map((item: any) => ({
+        const items: RankingItem[] = (data.top10 ?? []).map((item: any) => ({
             rank: item.rank,
             keyword: item.keyword,
             link: `https://search.naver.com/search.naver?query=${encodeURIComponent(item.keyword)}`,
@@ -116,16 +119,19 @@ export async function getNateRankings(revalidate: number): Promise<RankingSource
             next: { revalidate }
         });
 
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
         const buffer = await response.arrayBuffer();
         const decoder = new TextDecoder('euc-kr');
         const text = decoder.decode(buffer);
         const data = JSON.parse(text);
 
-        const items: RankingItem[] = data.map((item: string[]) => ({
-            rank: parseInt(item[0], 10),
-            keyword: item[4], // 인덱스 4가 실제 검색 키워드
-            link: `https://search.daum.net/search?w=tot&q=${encodeURIComponent(item[4])}`,
-        }));
+        const items: RankingItem[] = (Array.isArray(data) ? data : [])
+            .filter((item: string[]) => Array.isArray(item) && item.length > 4 && item[4])
+            .map((item: string[]) => ({
+                rank: parseInt(item[0], 10),
+                keyword: item[4],
+                link: `https://search.daum.net/search?w=tot&q=${encodeURIComponent(item[4])}`,
+            }));
 
         return { title: 'Nate 이슈', items };
     } catch (error) {
@@ -140,6 +146,7 @@ export async function getGoogleTrends(revalidate: number): Promise<RankingSource
             headers: { 'User-Agent': USER_AGENT },
             next: { revalidate }
         });
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
         const xml = await response.text();
 
         const $ = cheerio.load(xml, { xmlMode: true });

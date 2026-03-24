@@ -6,7 +6,12 @@
     "dev": "next dev",
     "build": "next build",
     "build:push": "npm run build && git add . && git commit -m \"Build and update Trending Rankings\" && git push",
+    "generate": "node scripts/generate-summary.js",
     "generate:summary": "node scripts/generate-summary.js",
+    "collect:community": "node scripts/collect-community-mindmap.js",
+    "collect:stocks": "node scripts/collect-stocks-mindmap.js",
+    "collect:ipo": "node scripts/collect-ipo-mindmap.js",
+    "collect:all": "npm run collect:community && npm run collect:stocks && npm run collect:ipo",
     "start": "next start",
     "lint": "eslint"
   },
