@@ -35,7 +35,7 @@ export default function MindmapPage() {
     const SVG_SIZE = 800;
     const CENTER = SVG_SIZE / 2;
     const CENTER_SIZE = 140;
-    const HEADER_H = 48;
+    const HEADER_H = 72;
 
     const svgPx = win.w > 0 ? Math.min(win.w - 16, win.h - HEADER_H - 8) : 0;
     const svgLeft = win.w > 0 ? (win.w - svgPx) / 2 : 0;
