@@ -43,7 +43,7 @@ export default function StocksMindmapPage() {
                 <h1 className="text-3xl md:text-5xl font-black mb-3 bg-gradient-to-r from-emerald-400 to-blue-500 bg-clip-text text-transparent inline-block">
                     📈 주식 트렌드 마인드맵
                 </h1>
-                <p className="text-slate-400 text-sm">네이버 증권 실시간 트렌드</p>
+
             </header>
 
             {loading ? (
