@@ -59,7 +59,7 @@ export default function MindmapPage() {
                 <div className="flex-1 min-h-0 w-full flex items-center justify-center p-2">
                     <div
                         className="bg-[#1e293b] rounded-3xl shadow-2xl border border-[#334155] overflow-hidden"
-                        style={{ width: 'min(100%, min(calc(100dvh - 90px), 800px))', aspectRatio: '1' }}
+                        style={{ width: 'min(100%, calc(100dvh - 90px))', aspectRatio: '1' }}
                     >
                         <svg viewBox={`0 0 ${SVG_SIZE} ${SVG_SIZE}`} style={{ display: "block", width: "100%", height: "100%" }}>
 
