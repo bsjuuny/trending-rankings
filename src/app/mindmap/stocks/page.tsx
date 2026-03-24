@@ -34,7 +34,7 @@ export default function StocksMindmapPage() {
     const CENTER_SIZE = 140;
 
     return (
-        <div className="h-screen bg-[#0f172a] text-white flex flex-col items-center overflow-hidden font-sans">
+        <div className="h-[100dvh] bg-[#0f172a] text-white flex flex-col items-center overflow-hidden font-sans">
             <Head>
                 <title>주식 트렌드 마인드맵</title>
             </Head>
@@ -57,8 +57,11 @@ export default function StocksMindmapPage() {
                 </div>
             ) : (
                 <div className="flex-1 min-h-0 w-full flex items-center justify-center p-2">
-                    <div className="h-full w-full max-w-[800px] bg-[#1e293b] rounded-3xl shadow-2xl border border-[#334155] overflow-hidden">
-                        <svg viewBox={`0 0 ${SVG_SIZE} ${SVG_SIZE}`} className="w-full h-full drop-shadow-xl" style={{ display: "block" }}>
+                    <div
+                        className="bg-[#1e293b] rounded-3xl shadow-2xl border border-[#334155] overflow-hidden"
+                        style={{ width: 'min(100%, min(calc(100dvh - 90px), 800px))', aspectRatio: '1' }}
+                    >
+                        <svg viewBox={`0 0 ${SVG_SIZE} ${SVG_SIZE}`} style={{ display: "block", width: "100%", height: "100%" }}>
 
                             {words.map((w, idx) => {
                                 const isInner = idx < 6;

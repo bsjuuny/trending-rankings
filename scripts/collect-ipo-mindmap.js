@@ -12,28 +12,41 @@ const KoreanNLP = require('./utils/korean-nlp');
 const USER_AGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36';
 
 async function get38IPOListing() {
-  try {
-    const res = await fetch('http://www.38.co.kr/html/fund/index.htm?o=k', {
-      headers: { 'User-Agent': USER_AGENT },
-    });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const buf = await res.arrayBuffer();
-    const html = new TextDecoder('euc-kr').decode(buf);
-    const $ = cheerio.load(html);
+  const sources = [
+    'http://www.38.co.kr/html/fund/index.htm?o=k',
+    'http://www.38.co.kr/html/fund/index.htm?o=v',
+    'http://www.38.co.kr/html/ipo/ipo.htm?key=2', // 청구
+    'http://www.38.co.kr/html/ipo/ipo.htm?key=1'  // 승인
+  ];
+  
+  const allNames = [];
+  for (const url of sources) {
+    try {
+      const res = await fetch(url, { headers: { 'User-Agent': USER_AGENT } });
+      if (!res.ok) continue;
+      const buf = await res.arrayBuffer();
+      const html = new TextDecoder('euc-kr').decode(buf);
+      const $ = cheerio.load(html);
 
-    const names = [];
-    // 38.co.kr IPO 예정 주식 테이블에서 종목명 추출
-    $('a[href^="view.htm?no="]').each((i, el) => {
-      const name = $(el).text().trim();
-      if (name && name.length >= 2) names.push(name);
-    });
-
-    console.log(`[ipo] 38.co.kr IPO 종목: ${names.length}개`);
-    return names;
-  } catch (e) {
-    console.warn(`[ipo] 38.co.kr 실패: ${e.message}`);
-    return [];
+      // 38.co.kr 에서는 종목명이 보통 a 태그 내에 텍스트로 존재함
+      // "번호" 파라미터가 포함된 상세 링크들을 타겟팅
+      $('a[href*="no="]').each((i, el) => {
+        let name = $(el).text().trim();
+        // 날짜 등이 앞에 붙어 있는 경우 제거 (예: "03/23 니어스랩")
+        name = name.replace(/^\d{2}\/\d{2}\s+/, '');
+        // 괄호 포함된 메모 제거 (예: "종목명(유가)")
+        name = name.split('(')[0].trim();
+        
+        if (name && name.length >= 2 && name.length <= 15 && !name.includes('상세') && !name.includes('보기')) {
+          allNames.push(name);
+        }
+      });
+    } catch (e) {
+      console.warn(`[ipo] 38.co.kr ${url} 실패:`, e.message);
+    }
   }
+  console.log(`[ipo] 38.co.kr 합계 종목: ${allNames.length}개`);
+  return allNames;
 }
 
 async function getNaverIPOListing() {
@@ -47,9 +60,10 @@ async function getNaverIPOListing() {
     const $ = cheerio.load(html);
 
     const names = [];
-    $('a[href^="/item/main.naver?code="]').each((i, el) => {
+    // 네이버 IPO 페이지의 종목명 링크 패턴
+    $('a[href*="/item/main.naver?code="], a[href*="/ipo/A"]').each((i, el) => {
       const name = $(el).text().trim();
-      if (name && name.length >= 2) names.push(name);
+      if (name && name.length >= 2 && name.length <= 15) names.push(name);
     });
 
     console.log(`[ipo] 네이버 IPO 종목: ${names.length}개`);
@@ -85,7 +99,7 @@ async function main() {
   // 여기서는 수집된 리스트 자체가 IPO이므로 가중치만 조정
 
   const sorted = Object.entries(freq)
-    .filter(([, v]) => v >= 1) // IPO는 데이터가 적을 수 있으므로 1회 이상 허용
+    .filter(([, v]) => v >= 3) // 3회 이상 언급된 핵심 IPO 종목만 추출
     .sort((a, b) => b[1] - a[1])
     .slice(0, 50)
     .map(([text, value]) => ({ text, value }));
