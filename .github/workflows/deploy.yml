@@ -3,8 +3,9 @@ on:
   push:
     branches:
       - main
-  schedule:
-    - cron: '0 */2 * * *'  # 2시간마다 자동 실행
+  # schedule 비활성화 — PM2 스케줄러(run-trending-rankings.mjs)가 매시 13분 실행
+  # schedule:
+  #   - cron: '0 */2 * * *'
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
