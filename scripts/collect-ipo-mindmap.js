@@ -53,15 +53,61 @@ async function getNaverIPONews() {
   } catch (e) { return []; }
 }
 
+async function getIpoStockDiscussion() {
+  try {
+    const res = await fetch('https://www.ipostock.co.kr/view_pg/ipo_schedule01.asp', {
+      headers: { 'User-Agent': USER_AGENT },
+    });
+    if (!res.ok) return [];
+    const buf = await res.arrayBuffer();
+    const html = new TextDecoder('euc-kr').decode(buf);
+    const $ = cheerio.load(html);
+    const headlines = [];
+    $('td a').each((_i, el) => {
+      const text = $(el).text().trim();
+      if (text.length >= 2 && text.length <= 30 && /[가-힣]/.test(text)) headlines.push(text);
+    });
+    console.log(`[ipo] ipostock.co.kr: ${headlines.length}개`);
+    return headlines;
+  } catch (e) {
+    console.warn('[ipo] ipostock.co.kr 실패:', e.message);
+    return [];
+  }
+}
+
+async function getNaverIPOCalendar() {
+  try {
+    const res = await fetch('https://finance.naver.com/ipo/IPOList.naver', {
+      headers: { 'User-Agent': USER_AGENT },
+    });
+    if (!res.ok) return [];
+    const buf = await res.arrayBuffer();
+    const html = new TextDecoder('euc-kr').decode(buf);
+    const $ = cheerio.load(html);
+    const headlines = [];
+    $('.type_1 td a, .ipo_list td a').each((i, el) => {
+      const text = $(el).text().trim();
+      if (text.length >= 2 && text.length <= 30 && /[가-힣]/.test(text)) headlines.push(text);
+    });
+    console.log(`[ipo] 네이버 공모주 캘린더: ${headlines.length}개`);
+    return headlines;
+  } catch (e) {
+    console.warn('[ipo] 네이버 공모주 캘린더 실패:', e.message);
+    return [];
+  }
+}
+
 async function main() {
   console.log('[collect-ipo-mindmap] 시작...');
 
-  const [disc38, newsNaver] = await Promise.all([
+  const [disc38, newsNaver, ipoStock, naverCalendar] = await Promise.all([
     get38IPODiscussion(),
     getNaverIPONews(),
+    getIpoStockDiscussion(),
+    getNaverIPOCalendar(),
   ]);
 
-  const allHeadlines = [...disc38, ...newsNaver];
+  const allHeadlines = [...disc38, ...newsNaver, ...ipoStock, ...naverCalendar];
   
   // 형태소 분석을 통한 명사 빈도수 추출
   const freqMap = KoreanNLP.getFrequencies(allHeadlines);
