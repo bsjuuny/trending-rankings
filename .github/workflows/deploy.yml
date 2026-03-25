@@ -3,9 +3,8 @@ on:
   push:
     branches:
       - main
-  # schedule 비활성화 — PM2 스케줄러(run-trending-rankings.mjs)가 동일 작업을 수행하므로 중복 방지
-  # schedule:
-  #   - cron: '0,30 * * * *'
+  schedule:
+    - cron: '0 */2 * * *'  # 2시간마다 자동 실행
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
