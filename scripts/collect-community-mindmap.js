@@ -1,6 +1,6 @@
 /**
  * collect-community-mindmap.js
- * 루리웹/도그드립 커뮤니티 게시글 제목에서 키워드 추출
+ * 루리웹/도그드립/에펨코리아/클리앙/오늘의유머 커뮤니티 게시글 제목에서 키워드 추출
  * → public/data/mindmap.json 저장
  * (기존 generate-summary.js의 getCommunityKeywords 로직 분리)
  */
@@ -32,6 +32,36 @@ async function main() {
             if (text.length >= 5 && text.length <= 80 && /[가-힣]/.test(text)) titles.push(text);
         });
     } catch (e) { console.warn('[community] 도그드립 실패:', e.message); }
+
+    try {
+        const res3 = await fetch('https://www.fmkorea.com/best', { headers: { 'User-Agent': USER_AGENT } });
+        const html3 = await res3.text();
+        const $3 = cheerio.load(html3);
+        $3('.title a').each((_i, el) => {
+            const text = $3(el).text().trim();
+            if (text.length >= 5 && text.length <= 80 && /[가-힣]/.test(text)) titles.push(text);
+        });
+    } catch (e) { console.warn('[community] 에펨코리아 실패:', e.message); }
+
+    try {
+        const res4 = await fetch('https://www.clien.net/service/board/park', { headers: { 'User-Agent': USER_AGENT } });
+        const html4 = await res4.text();
+        const $4 = cheerio.load(html4);
+        $4('.subject_fixed .subject_span').each((_i, el) => {
+            const text = $4(el).text().trim();
+            if (text.length >= 5 && text.length <= 80 && /[가-힣]/.test(text)) titles.push(text);
+        });
+    } catch (e) { console.warn('[community] 클리앙 실패:', e.message); }
+
+    try {
+        const res5 = await fetch('https://www.todayhumor.co.kr/board/listtop.php?table=bestofbest', { headers: { 'User-Agent': USER_AGENT } });
+        const html5 = await res5.text();
+        const $5 = cheerio.load(html5);
+        $5('.subject a').each((_i, el) => {
+            const text = $5(el).text().trim();
+            if (text.length >= 5 && text.length <= 80 && /[가-힣]/.test(text)) titles.push(text);
+        });
+    } catch (e) { console.warn('[community] 오늘의유머 실패:', e.message); }
 
     // 고급 형태소 분석기를 통한 명사 빈도수 추출
     const wordCounts = KoreanNLP.getFrequencies(titles);
