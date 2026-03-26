@@ -17,8 +17,10 @@ const STOPWORDS = new Set([
     '예정', '확인', '참여', '방법', '추가', '변경', '적용', '안내', '문제', '이유',
     '사람', '하루', '우리', '누가', '어디', '저희', '분들', '사람들', '자체', '자신',
     '부분', '하나', '둘다', '전부', '모두', '누군가', '누구', '무엇', '어느', '어느것',
+    // ... (기존 불용어 유지)
     '주식', '상장', '공모주', '주가', '투자', '매수', '매도', '수익', '시장', '기업',
-    'jpg', 'png', 'gif', '베플', '추천', '비추', '실시간', '달라지', '단독', '기소', '정신', '차릴', '수가', '있네', '없네', '기대', '소멸'
+    'jpg', 'png', 'gif', '베플', '추천', '비추', '실시간', '달라지', '단독', '기소', '정신', '차릴', '수가', '있네', '없네', '기대', '소멸',
+    '진짜루', '암튼', '암턴', '어차피', '어짜피', '솔직히', '암튼간', '어떻게든', '어찌됐든'
 ]);
 
 // 억울하게 잘릴 위험이 있는 명사 원형 보호 (사전)
@@ -26,7 +28,10 @@ const DICTIONARY = new Set([
     '어린이', '고양이', '사나이', '지팡이', '원숭이', '호랑이', '거북이', '달팽이',
     '마늘', '하늘', '가을', '겨울', '오늘', '내일', '모레', '바늘', '연필', '지하철',
     '아이폰', '갤럭시', '컴퓨터', '스마트폰', '노트북', '카메라', '모니터',
-    '닌텐도', '세키로', '배틀필드', '엔씨소프트', '스마일게이트', '마비노기'
+    '닌텐도', '세키로', '배틀필드', '엔씨소프트', '스마일게이트', '마비노기',
+    // 신조어 및 커뮤니티 용어 보강
+    '갓생', '중꺾마', '중꺾단', '갑분싸', '뇌절', '추석', '설날', '민심', '어그로', 
+    '티메프', '큐텐', '위메프', '티몬', '복날', '복달임', '말복', '초복', '중복'
 ]);
 
 // 절대로 명사로 취급해서는 안 되는 동사/형용사 어간 (L-Part)
@@ -56,44 +61,33 @@ const EOMIS = [
 
 class KoreanNLP {
     static extractNouns(text) {
-        // 1. 특수문자 제거 및 띄어쓰기 1개로 정제
         let cleanText = text.replace(/\[.*?\]/g, ' ')
                             .replace(/[^\w가-힣\s]/g, ' ')
                             .replace(/\s+/g, ' ');
 
         const rawWords = cleanText.split(' ').map(w => w.trim()).filter(w => w.length > 0);
-        const nouns = [];
+        let nouns = [];
 
         for (let word of rawWords) {
-            // 0. 날짜/숫자 섞인 단어 1차 필터링 (예: 24일, 18일, 10위 등)
             if (/^\d+[일위개층회분초]$/.test(word)) continue;
             
-            // 2. 어미/조사 분리 무시 여부 (사전 등록 단어)
             let isException = DICTIONARY.has(word);
 
-            // 3. 서술형 어미(Verb Endings)가 포함된 덩어리 쳐내기
             if (!isException) {
-                let isVerb = false;
                 for (let eomi of EOMIS) {
                     if (word.endsWith(eomi)) {
                         const stem = word.slice(0, word.length - eomi.length);
-                        if (stem.length === 0 || BANNED_STEMS.has(stem)) {
-                            isVerb = true;
-                            break;
-                        }
+                        if (stem.length === 0 || BANNED_STEMS.has(stem)) return nouns; // Skip entire word if it's a verb
                         word = stem;
                         break;
                     }
                 }
-                if (isVerb) continue;
             }
 
-            // 4. 조사(Josa) 최장 일치 후단 자르기 (L-R 분리)
             if (!isException) {
                 for (let josa of JOSAS) {
                     if (word.endsWith(josa)) {
                         const nominal = word.slice(0, word.length - josa.length);
-                        // 잘라낸 앞부분이 최소 2글자 이상이거나 원형 사전에 있어야 함
                         if (DICTIONARY.has(nominal) || nominal.length >= 2) {
                             word = nominal;
                             break;
@@ -102,28 +96,87 @@ class KoreanNLP {
                 }
             }
 
-            // 5. 남은 Noun(명사) 찌꺼기 최종 검증
             if (word.length > 1 && !STOPWORDS.has(word) && !BANNED_STEMS.has(word) && isNaN(Number(word))) {
-                // 베플 등의 잡다한 접두어/명칭 추가 필터링
                 if (word.startsWith('베플')) word = word.replace('베플', '');
+                
+                // [고도화] 복합 명사 분해 시도 (단어가 길고 사전에 없는 경우)
+                if (word.length >= 5 && !DICTIONARY.has(word)) {
+                    const decomposed = this.decompose(word);
+                    if (decomposed.length > 1) {
+                        nouns.push(...decomposed);
+                        continue;
+                    }
+                }
+
                 if (word.length > 1 && !STOPWORDS.has(word)) {
                     nouns.push(word);
                 }
             }
         }
-
         return nouns;
+    }
+
+    /**
+     * [고도화] 복합 명사 분해 로직
+     * 단순 2분할 매칭 방식 (사전에 있는 단어 우선)
+     */
+    static decompose(word) {
+        for (let i = 2; i <= word.length - 2; i++) {
+            const left = word.slice(0, i);
+            const right = word.slice(i);
+            if (DICTIONARY.has(left) && (DICTIONARY.has(right) || right.length >= 2)) {
+                return [left, right];
+            }
+        }
+        return [word];
+    }
+
+    /**
+     * [고도화] N-gram (Bigram) 추출
+     * 의미 있는 단어 쌍 (예: '티몬 위메프') 추출
+     */
+    static getNGrams(texts, minCount = 3) {
+        const ngrams = {};
+        texts.forEach(t => {
+            const nouns = this.extractNouns(t);
+            for (let i = 0; i < nouns.length - 1; i++) {
+                const pair = `${nouns[i]} ${nouns[i+1]}`;
+                ngrams[pair] = (ngrams[pair] || 0) + 1;
+            }
+        });
+        return Object.fromEntries(Object.entries(ngrams).filter(([, v]) => v >= minCount));
     }
 
     static getFrequencies(texts) {
         const counts = {};
+        const docCounts = {}; // 특정 단어가 포함된 '문장 수' (DF)
         
         texts.forEach(t => {
             const nouns = this.extractNouns(t);
+            const uniqueNouns = new Set(nouns);
+            
             nouns.forEach(n => {
                 counts[n] = (counts[n] || 0) + 1;
             });
+            
+            // DF 카운트
+            uniqueNouns.forEach(n => {
+                docCounts[n] = (docCounts[n] || 0) + 1;
+            });
         });
+
+        // 🛡️ 통계 기반 자동 불용어 필터링 (IDF 원리 적용)
+        // 전체 문장의 50% 이상에서 등장하는 단어는 '도구어'로 판단하여 가감
+        const threshold = Math.max(5, texts.length * 0.5);
+        for (const word in counts) {
+            if (docCounts[word] > threshold) {
+                delete counts[word];
+            }
+        }
+
+        // [고도화] 유의미한 N-gram 추가
+        const ngrams = this.getNGrams(texts, 3);
+        Object.assign(counts, ngrams);
 
         return counts;
     }
