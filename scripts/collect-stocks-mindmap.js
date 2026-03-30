@@ -101,19 +101,17 @@ async function getNaverStockRanking() {
 }
 
 async function getDaumFinanceNews() {
+  console.log('[stocks] 다음 증권 뉴스 시도 (Puppeteer)...');
+  const browser = await puppeteer.launch({
+      headless: true,
+      args: ['--no-sandbox', '--disable-setuid-sandbox']
+  });
   try {
-    console.log('[stocks] 다음 증권 뉴스 시도 (Puppeteer)...');
-    const browser = await puppeteer.launch({ 
-        headless: true,
-        args: ['--no-sandbox', '--disable-setuid-sandbox']
-    });
     const page = await browser.newPage();
     await page.setUserAgent(USER_AGENT);
     await page.goto('https://finance.daum.net/news', { waitUntil: 'networkidle2', timeout: 30000 });
-    
-    const html = await page.content();
-    await browser.close();
 
+    const html = await page.content();
     const $ = cheerio.load(html);
     const headlines = [];
     $('a.link_txt, .tit_news a, .item_issue a, .list_news li a').each((_i, el) => {
@@ -126,6 +124,8 @@ async function getDaumFinanceNews() {
   } catch (e) {
     console.warn(`[stocks] 다음 증권 뉴스 실패: ${e.message}`);
     return [];
+  } finally {
+    await browser.close();
   }
 }
 
@@ -153,22 +153,20 @@ async function getHankyungFinanceNews() {
 }
 
 async function getMoneyTodayNews() {
+  console.log('[stocks] 머니투데이 뉴스 시도 (Puppeteer)...');
+  const browser = await puppeteer.launch({
+      headless: true,
+      args: ['--no-sandbox', '--disable-setuid-sandbox']
+  });
   try {
-    console.log('[stocks] 머니투데이 뉴스 시도 (Puppeteer)...');
-    const browser = await puppeteer.launch({ 
-        headless: true,
-        args: ['--no-sandbox', '--disable-setuid-sandbox']
-    });
     const page = await browser.newPage();
     await page.setUserAgent(USER_AGENT);
     await page.goto('https://www.mt.co.kr/stock/stocknews', { waitUntil: 'networkidle2', timeout: 30000 });
-    
-    const html = await page.content();
-    await browser.close();
 
+    const html = await page.content();
     const $ = cheerio.load(html);
     const headlines = [];
-    
+
     // 폭넓은 셀렉터로 헤드라인 수집
     $('.tit a, .subject a, .news_list a, h1 a, h2 a, h3 a, .list_news a').each((_i, el) => {
       const text = $(el).text().trim();
@@ -183,6 +181,8 @@ async function getMoneyTodayNews() {
   } catch (e) {
     console.warn(`[stocks] 머니투데이 뉴스 실패: ${e.message}`);
     return [];
+  } finally {
+    await browser.close();
   }
 }
 
