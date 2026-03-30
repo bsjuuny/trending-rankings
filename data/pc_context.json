@@ -1,0 +1,6751 @@
+{
+  "lastUpdate": "2026-03-27T08:40:27.901Z",
+  "projects": [
+    {
+      "name": "alpha-signal",
+      "tree": [
+        {
+          "name": "alphasignal-api",
+          "type": "dir",
+          "children": [
+            {
+              "name": "dist",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "scripts",
+                  "type": "dir",
+                  "children": []
+                },
+                {
+                  "name": "src",
+                  "type": "dir",
+                  "children": []
+                },
+                {
+                  "name": "tsconfig.build.tsbuildinfo",
+                  "type": "file"
+                }
+              ]
+            },
+            {
+              "name": "eslint.config.mjs",
+              "type": "file"
+            },
+            {
+              "name": "nest-cli.json",
+              "type": "file"
+            },
+            {
+              "name": "package-lock.json",
+              "type": "file"
+            },
+            {
+              "name": "package.json",
+              "type": "file"
+            },
+            {
+              "name": "prisma",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "schema.prisma",
+                  "type": "file"
+                }
+              ]
+            },
+            {
+              "name": "README.md",
+              "type": "file"
+            },
+            {
+              "name": "scripts",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "cleanup.ts",
+                  "type": "file"
+                }
+              ]
+            },
+            {
+              "name": "src",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "app.controller.spec.ts",
+                  "type": "file"
+                },
+                {
+                  "name": "app.controller.ts",
+                  "type": "file"
+                },
+                {
+                  "name": "app.module.ts",
+                  "type": "file"
+                },
+                {
+                  "name": "app.service.ts",
+                  "type": "file"
+                },
+                {
+                  "name": "main.ts",
+                  "type": "file"
+                },
+                {
+                  "name": "modules",
+                  "type": "dir",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "name": "test",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "app.e2e-spec.ts",
+                  "type": "file"
+                },
+                {
+                  "name": "jest-e2e.json",
+                  "type": "file"
+                }
+              ]
+            },
+            {
+              "name": "tsconfig.build.json",
+              "type": "file"
+            },
+            {
+              "name": "tsconfig.json",
+              "type": "file"
+            }
+          ]
+        },
+        {
+          "name": "alphasignal-web",
+          "type": "dir",
+          "children": [
+            {
+              "name": "eslint.config.mjs",
+              "type": "file"
+            },
+            {
+              "name": "next-env.d.ts",
+              "type": "file"
+            },
+            {
+              "name": "next.config.ts",
+              "type": "file"
+            },
+            {
+              "name": "out",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "404.html",
+                  "type": "file"
+                },
+                {
+                  "name": "archive",
+                  "type": "dir",
+                  "children": []
+                },
+                {
+                  "name": "archive.html",
+                  "type": "file"
+                },
+                {
+                  "name": "archive.txt",
+                  "type": "file"
+                },
+                {
+                  "name": "favicon.ico",
+                  "type": "file"
+                },
+                {
+                  "name": "file.svg",
+                  "type": "file"
+                },
+                {
+                  "name": "globe.svg",
+                  "type": "file"
+                },
+                {
+                  "name": "index.html",
+                  "type": "file"
+                },
+                {
+                  "name": "index.txt",
+                  "type": "file"
+                },
+                {
+                  "name": "market",
+                  "type": "dir",
+                  "children": []
+                },
+                {
+                  "name": "market.html",
+                  "type": "file"
+                },
+                {
+                  "name": "market.txt",
+                  "type": "file"
+                },
+                {
+                  "name": "next.svg",
+                  "type": "file"
+                },
+                {
+                  "name": "themes",
+                  "type": "dir",
+                  "children": []
+                },
+                {
+                  "name": "themes.html",
+                  "type": "file"
+                },
+                {
+                  "name": "themes.txt",
+                  "type": "file"
+                },
+                {
+                  "name": "vercel.svg",
+                  "type": "file"
+                },
+                {
+                  "name": "window.svg",
+                  "type": "file"
+                },
+                {
+                  "name": "_next",
+                  "type": "dir",
+                  "children": []
+                },
+                {
+                  "name": "_not-found",
+                  "type": "dir",
+                  "children": []
+                },
+                {
+                  "name": "_not-found.html",
+                  "type": "file"
+                },
+                {
+                  "name": "_not-found.txt",
+                  "type": "file"
+                },
+                {
+                  "name": "__next._full.txt",
+                  "type": "file"
+                },
+                {
+                  "name": "__next._head.txt",
+                  "type": "file"
+                },
+                {
+                  "name": "__next._index.txt",
+                  "type": "file"
+                },
+                {
+                  "name": "__next._tree.txt",
+                  "type": "file"
+                },
+                {
+                  "name": "__next.__PAGE__.txt",
+                  "type": "file"
+                }
+              ]
+            },
+            {
+              "name": "package-lock.json",
+              "type": "file"
+            },
+            {
+              "name": "package.json",
+              "type": "file"
+            },
+            {
+              "name": "postcss.config.mjs",
+              "type": "file"
+            },
+            {
+              "name": "public",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "file.svg",
+                  "type": "file"
+                },
+                {
+                  "name": "globe.svg",
+                  "type": "file"
+                },
+                {
+                  "name": "next.svg",
+                  "type": "file"
+                },
+                {
+                  "name": "vercel.svg",
+                  "type": "file"
+                },
+                {
+                  "name": "window.svg",
+                  "type": "file"
+                }
+              ]
+            },
+            {
+              "name": "README.md",
+              "type": "file"
+            },
+            {
+              "name": "src",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "app",
+                  "type": "dir",
+                  "children": []
+                },
+                {
+                  "name": "components",
+                  "type": "dir",
+                  "children": []
+                },
+                {
+                  "name": "lib",
+                  "type": "dir",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "name": "tsconfig.json",
+              "type": "file"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "anime-finder",
+      "tree": [
+        {
+          "name": "CLAUDE_MASTER_PROMPT.md",
+          "type": "file"
+        },
+        {
+          "name": "components.json",
+          "type": "file"
+        },
+        {
+          "name": "eslint.config.mjs",
+          "type": "file"
+        },
+        {
+          "name": "GEMINI_MASTER_PROMPT.md",
+          "type": "file"
+        },
+        {
+          "name": "messages",
+          "type": "dir",
+          "children": [
+            {
+              "name": "en.json",
+              "type": "file"
+            },
+            {
+              "name": "ko.json",
+              "type": "file"
+            }
+          ]
+        },
+        {
+          "name": "next.config.ts",
+          "type": "file"
+        },
+        {
+          "name": "package-lock.json",
+          "type": "file"
+        },
+        {
+          "name": "package.json",
+          "type": "file"
+        },
+        {
+          "name": "postcss.config.mjs",
+          "type": "file"
+        },
+        {
+          "name": "public",
+          "type": "dir",
+          "children": [
+            {
+              "name": "donation-qr.png",
+              "type": "file"
+            },
+            {
+              "name": "file.svg",
+              "type": "file"
+            },
+            {
+              "name": "globe.svg",
+              "type": "file"
+            },
+            {
+              "name": "hero_banner_1_1772217359967.png",
+              "type": "file"
+            },
+            {
+              "name": "next.svg",
+              "type": "file"
+            },
+            {
+              "name": "poster_1_1772217390916.png",
+              "type": "file"
+            },
+            {
+              "name": "poster_2_1772217417254.png",
+              "type": "file"
+            },
+            {
+              "name": "vercel.svg",
+              "type": "file"
+            },
+            {
+              "name": "window.svg",
+              "type": "file"
+            }
+          ]
+        },
+        {
+          "name": "README.md",
+          "type": "file"
+        },
+        {
+          "name": "src",
+          "type": "dir",
+          "children": [
+            {
+              "name": "app",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "anime",
+                  "type": "dir",
+                  "children": []
+                },
+                {
+                  "name": "favicon.ico",
+                  "type": "file"
+                },
+                {
+                  "name": "globals.css",
+                  "type": "file"
+                },
+                {
+                  "name": "layout.tsx",
+                  "type": "file"
+                },
+                {
+                  "name": "page.tsx",
+                  "type": "file"
+                },
+                {
+                  "name": "search",
+                  "type": "dir",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "name": "components",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "anime",
+                  "type": "dir",
+                  "children": []
+                },
+                {
+                  "name": "home",
+                  "type": "dir",
+                  "children": []
+                },
+                {
+                  "name": "layout",
+                  "type": "dir",
+                  "children": []
+                },
+                {
+                  "name": "providers.tsx",
+                  "type": "file"
+                },
+                {
+                  "name": "search",
+                  "type": "dir",
+                  "children": []
+                },
+                {
+                  "name": "ui",
+                  "type": "dir",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "name": "i18n",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "request.ts",
+                  "type": "file"
+                }
+              ]
+            },
+            {
+              "name": "lib",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "api.ts",
+                  "type": "file"
+                },
+                {
+                  "name": "i18n-keys.ts",
+                  "type": "file"
+                },
+                {
+                  "name": "mock-data.ts",
+                  "type": "file"
+                },
+                {
+                  "name": "t.ts",
+                  "type": "file"
+                },
+                {
+                  "name": "tmdb.ts",
+                  "type": "file"
+                },
+                {
+                  "name": "translator.ts",
+                  "type": "file"
+                },
+                {
+                  "name": "utils.ts",
+                  "type": "file"
+                }
+              ]
+            },
+            {
+              "name": "navigation.ts",
+              "type": "file"
+            }
+          ]
+        },
+        {
+          "name": "test-import.js",
+          "type": "file"
+        },
+        {
+          "name": "tsconfig.json",
+          "type": "file"
+        }
+      ]
+    },
+    {
+      "name": "antigravity-bot",
+      "tree": [
+        {
+          "name": "data",
+          "type": "dir",
+          "children": [
+            {
+              "name": "notify_status.json",
+              "type": "file"
+            },
+            {
+              "name": "pc_context.json",
+              "type": "file"
+            }
+          ]
+        },
+        {
+          "name": "ecosystem.config.cjs",
+          "type": "file"
+        },
+        {
+          "name": "package-lock.json",
+          "type": "file"
+        },
+        {
+          "name": "package.json",
+          "type": "file"
+        },
+        {
+          "name": "scripts",
+          "type": "dir",
+          "children": [
+            {
+              "name": "notify.mjs",
+              "type": "file"
+            },
+            {
+              "name": "sync-context.mjs",
+              "type": "file"
+            }
+          ]
+        },
+        {
+          "name": "src",
+          "type": "dir",
+          "children": [
+            {
+              "name": "index.mjs",
+              "type": "file"
+            },
+            {
+              "name": "monitor.mjs",
+              "type": "file"
+            }
+          ]
+        },
+        {
+          "name": "walkthrough_bot.md",
+          "type": "file"
+        }
+      ]
+    },
+    {
+      "name": "art-finder",
+      "tree": [
+        {
+          "name": "CLAUDE_MASTER_PROMPT.md",
+          "type": "file"
+        },
+        {
+          "name": "eslint.config.mjs",
+          "type": "file"
+        },
+        {
+          "name": "GEMINI_MASTER_PROMPT.md",
+          "type": "file"
+        },
+        {
+          "name": "next-env.d.ts",
+          "type": "file"
+        },
+        {
+          "name": "next.config.ts",
+          "type": "file"
+        },
+        {
+          "name": "out",
+          "type": "dir",
+          "children": [
+            {
+              "name": "404",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "index.html",
+                  "type": "file"
+                }
+              ]
+            },
+            {
+              "name": "404.html",
+              "type": "file"
+            },
+            {
+              "name": "calendar",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "index.html",
+                  "type": "file"
+                },
+                {
+                  "name": "index.txt",
+                  "type": "file"
+                },
+                {
+                  "name": "__next.calendar",
+                  "type": "dir",
+                  "children": []
+                },
+                {
+                  "name": "__next.calendar.txt",
+                  "type": "file"
+                },
+                {
+                  "name": "__next._full.txt",
+                  "type": "file"
+                },
+                {
+                  "name": "__next._head.txt",
+                  "type": "file"
+                },
+                {
+                  "name": "__next._index.txt",
+                  "type": "file"
+                },
+                {
+                  "name": "__next._tree.txt",
+                  "type": "file"
+                }
+              ]
+            },
+            {
+              "name": "donation-qr.png",
+              "type": "file"
+            },
+            {
+              "name": "event",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "index.html",
+                  "type": "file"
+                },
+                {
+                  "name": "index.txt",
+                  "type": "file"
+                },
+                {
+                  "name": "__next.event",
+                  "type": "dir",
+                  "children": []
+                },
+                {
+                  "name": "__next.event.txt",
+                  "type": "file"
+                },
+                {
+                  "name": "__next._full.txt",
+                  "type": "file"
+                },
+                {
+                  "name": "__next._head.txt",
+                  "type": "file"
+                },
+                {
+                  "name": "__next._index.txt",
+                  "type": "file"
+                },
+                {
+                  "name": "__next._tree.txt",
+                  "type": "file"
+                }
+              ]
+            },
+            {
+              "name": "favicon.ico",
+              "type": "file"
+            },
+            {
+              "name": "favorites",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "index.html",
+                  "type": "file"
+                },
+                {
+                  "name": "index.txt",
+                  "type": "file"
+                },
+                {
+                  "name": "__next.favorites",
+                  "type": "dir",
+                  "children": []
+                },
+                {
+                  "name": "__next.favorites.txt",
+                  "type": "file"
+                },
+                {
+                  "name": "__next._full.txt",
+                  "type": "file"
+                },
+                {
+                  "name": "__next._head.txt",
+                  "type": "file"
+                },
+                {
+                  "name": "__next._index.txt",
+                  "type": "file"
+                },
+                {
+                  "name": "__next._tree.txt",
+                  "type": "file"
+                }
+              ]
+            },
+            {
+              "name": "file.svg",
+              "type": "file"
+            },
+            {
+              "name": "globe.svg",
+              "type": "file"
+            },
+            {
+              "name": "index.html",
+              "type": "file"
+            },
+            {
+              "name": "index.txt",
+              "type": "file"
+            },
+            {
+              "name": "naver_proxy.php",
+              "type": "file"
+            },
+            {
+              "name": "next.svg",
+              "type": "file"
+            },
+            {
+              "name": "proxy.php",
+              "type": "file"
+            },
+            {
+              "name": "vercel.svg",
+              "type": "file"
+            },
+            {
+              "name": "window.svg",
+              "type": "file"
+            },
+            {
+              "name": "_next",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "cLAMCZo3WtRI8EKiRLGmb",
+                  "type": "dir",
+                  "children": []
+                },
+                {
+                  "name": "static",
+                  "type": "dir",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "name": "_not-found",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "index.html",
+                  "type": "file"
+                },
+                {
+                  "name": "index.txt",
+                  "type": "file"
+                },
+                {
+                  "name": "__next._full.txt",
+                  "type": "file"
+                },
+                {
+                  "name": "__next._head.txt",
+                  "type": "file"
+                },
+                {
+                  "name": "__next._index.txt",
+                  "type": "file"
+                },
+                {
+                  "name": "__next._not-found",
+                  "type": "dir",
+                  "children": []
+                },
+                {
+                  "name": "__next._not-found.txt",
+                  "type": "file"
+                },
+                {
+                  "name": "__next._tree.txt",
+                  "type": "file"
+                }
+              ]
+            },
+            {
+              "name": "__next._full.txt",
+              "type": "file"
+            },
+            {
+              "name": "__next._head.txt",
+              "type": "file"
+            },
+            {
+              "name": "__next._index.txt",
+              "type": "file"
+            },
+            {
+              "name": "__next._tree.txt",
+              "type": "file"
+            },
+            {
+              "name": "__next.__PAGE__.txt",
+              "type": "file"
+            }
+          ]
+        },
+        {
+          "name": "package-lock.json",
+          "type": "file"
+        },
+        {
+          "name": "package.json",
+          "type": "file"
+        },
+        {
+          "name": "postcss.config.mjs",
+          "type": "file"
+        },
+        {
+          "name": "public",
+          "type": "dir",
+          "children": [
+            {
+              "name": "donation-qr.png",
+              "type": "file"
+            },
+            {
+              "name": "file.svg",
+              "type": "file"
+            },
+            {
+              "name": "globe.svg",
+              "type": "file"
+            },
+            {
+              "name": "naver_proxy.php",
+              "type": "file"
+            },
+            {
+              "name": "next.svg",
+              "type": "file"
+            },
+            {
+              "name": "proxy.php",
+              "type": "file"
+            },
+            {
+              "name": "vercel.svg",
+              "type": "file"
+            },
+            {
+              "name": "window.svg",
+              "type": "file"
+            }
+          ]
+        },
+        {
+          "name": "README.md",
+          "type": "file"
+        },
+        {
+          "name": "src",
+          "type": "dir",
+          "children": [
+            {
+              "name": "app",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "calendar",
+                  "type": "dir",
+                  "children": []
+                },
+                {
+                  "name": "event",
+                  "type": "dir",
+                  "children": []
+                },
+                {
+                  "name": "favicon.ico",
+                  "type": "file"
+                },
+                {
+                  "name": "favorites",
+                  "type": "dir",
+                  "children": []
+                },
+                {
+                  "name": "globals.css",
+                  "type": "file"
+                },
+                {
+                  "name": "layout.tsx",
+                  "type": "file"
+                },
+                {
+                  "name": "page.tsx",
+                  "type": "file"
+                }
+              ]
+            },
+            {
+              "name": "components",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "ArtCard.tsx",
+                  "type": "file"
+                },
+                {
+                  "name": "DonationPopup.tsx",
+                  "type": "file"
+                },
+                {
+                  "name": "EventDetailContent.tsx",
+                  "type": "file"
+                },
+                {
+                  "name": "FavoriteButton.tsx",
+                  "type": "file"
+                },
+                {
+                  "name": "GlobalEventModal.tsx",
+                  "type": "file"
+                },
+                {
+                  "name": "Modal.tsx",
+                  "type": "file"
+                },
+                {
+                  "name": "ReviewSection.tsx",
+                  "type": "file"
+                },
+                {
+                  "name": "ThemeToggle.tsx",
+                  "type": "file"
+                }
+              ]
+            },
+            {
+              "name": "constants",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "culture.ts",
+                  "type": "file"
+                }
+              ]
+            },
+            {
+              "name": "hooks",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "useCultureEvents.ts",
+                  "type": "file"
+                },
+                {
+                  "name": "useDebounce.ts",
+                  "type": "file"
+                },
+                {
+                  "name": "useFavorites.ts",
+                  "type": "file"
+                },
+                {
+                  "name": "useTheme.ts",
+                  "type": "file"
+                }
+              ]
+            },
+            {
+              "name": "lib",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "utils.ts",
+                  "type": "file"
+                }
+              ]
+            },
+            {
+              "name": "middleware.ts",
+              "type": "file"
+            },
+            {
+              "name": "types",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "index.ts",
+                  "type": "file"
+                }
+              ]
+            },
+            {
+              "name": "utils",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "api.ts",
+                  "type": "file"
+                },
+                {
+                  "name": "recommendations.ts",
+                  "type": "file"
+                },
+                {
+                  "name": "reviewApi.ts",
+                  "type": "file"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "test-api-brute.js",
+          "type": "file"
+        },
+        {
+          "name": "test-api-date.js",
+          "type": "file"
+        },
+        {
+          "name": "test-api-detail.js",
+          "type": "file"
+        },
+        {
+          "name": "test-api-no-date.js",
+          "type": "file"
+        },
+        {
+          "name": "test-api-params.js",
+          "type": "file"
+        },
+        {
+          "name": "test-api-rows.js",
+          "type": "file"
+        },
+        {
+          "name": "test-pagination-keys.js",
+          "type": "file"
+        },
+        {
+          "name": "test-pagination.js",
+          "type": "file"
+        },
+        {
+          "name": "tsconfig.json",
+          "type": "file"
+        },
+        {
+          "name": "tsconfig.tsbuildinfo",
+          "type": "file"
+        }
+      ]
+    },
+    {
+      "name": "forex-signal",
+      "tree": [
+        {
+          "name": "app",
+          "type": "dir",
+          "children": [
+            {
+              "name": "components",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "Calculator.tsx",
+                  "type": "file"
+                },
+                {
+                  "name": "ClientDashboard.tsx",
+                  "type": "file"
+                },
+                {
+                  "name": "DetailPanel.tsx",
+                  "type": "file"
+                },
+                {
+                  "name": "DisclaimerModal.tsx",
+                  "type": "file"
+                },
+                {
+                  "name": "RateChart.tsx",
+                  "type": "file"
+                },
+                {
+                  "name": "SignalCard.tsx",
+                  "type": "file"
+                },
+                {
+                  "name": "WeekendGate.tsx",
+                  "type": "file"
+                }
+              ]
+            },
+            {
+              "name": "favicon.ico",
+              "type": "file"
+            },
+            {
+              "name": "globals.css",
+              "type": "file"
+            },
+            {
+              "name": "hooks",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "useLiveRates.ts",
+                  "type": "file"
+                }
+              ]
+            },
+            {
+              "name": "layout.tsx",
+              "type": "file"
+            },
+            {
+              "name": "page.tsx",
+              "type": "file"
+            }
+          ]
+        },
+        {
+          "name": "eslint.config.mjs",
+          "type": "file"
+        },
+        {
+          "name": "lib",
+          "type": "dir",
+          "children": [
+            {
+              "name": "indicators.ts",
+              "type": "file"
+            },
+            {
+              "name": "kis-api.ts",
+              "type": "file"
+            },
+            {
+              "name": "koreaexim-api.ts",
+              "type": "file"
+            },
+            {
+              "name": "live-rates.ts",
+              "type": "file"
+            },
+            {
+              "name": "macro-api.ts",
+              "type": "file"
+            },
+            {
+              "name": "signal-colors.ts",
+              "type": "file"
+            },
+            {
+              "name": "signals.ts",
+              "type": "file"
+            }
+          ]
+        },
+        {
+          "name": "next-env.d.ts",
+          "type": "file"
+        },
+        {
+          "name": "next.config.ts",
+          "type": "file"
+        },
+        {
+          "name": "out",
+          "type": "dir",
+          "children": [
+            {
+              "name": "404",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "index.html",
+                  "type": "file"
+                }
+              ]
+            },
+            {
+              "name": "404.html",
+              "type": "file"
+            },
+            {
+              "name": "data",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "base_rates.json",
+                  "type": "file"
+                },
+                {
+                  "name": "exchange_rates.json",
+                  "type": "file"
+                }
+              ]
+            },
+            {
+              "name": "favicon.ico",
+              "type": "file"
+            },
+            {
+              "name": "file.svg",
+              "type": "file"
+            },
+            {
+              "name": "globe.svg",
+              "type": "file"
+            },
+            {
+              "name": "index.html",
+              "type": "file"
+            },
+            {
+              "name": "index.txt",
+              "type": "file"
+            },
+            {
+              "name": "next.svg",
+              "type": "file"
+            },
+            {
+              "name": "vercel.svg",
+              "type": "file"
+            },
+            {
+              "name": "window.svg",
+              "type": "file"
+            },
+            {
+              "name": "_next",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "static",
+                  "type": "dir",
+                  "children": []
+                },
+                {
+                  "name": "yfZYT2RoIzNqK_xOgdWHw",
+                  "type": "dir",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "name": "_not-found",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "index.html",
+                  "type": "file"
+                },
+                {
+                  "name": "index.txt",
+                  "type": "file"
+                },
+                {
+                  "name": "__next._full.txt",
+                  "type": "file"
+                },
+                {
+                  "name": "__next._head.txt",
+                  "type": "file"
+                },
+                {
+                  "name": "__next._index.txt",
+                  "type": "file"
+                },
+                {
+                  "name": "__next._not-found",
+                  "type": "dir",
+                  "children": []
+                },
+                {
+                  "name": "__next._not-found.txt",
+                  "type": "file"
+                },
+                {
+                  "name": "__next._tree.txt",
+                  "type": "file"
+                }
+              ]
+            },
+            {
+              "name": "__next._full.txt",
+              "type": "file"
+            },
+            {
+              "name": "__next._head.txt",
+              "type": "file"
+            },
+            {
+              "name": "__next._index.txt",
+              "type": "file"
+            },
+            {
+              "name": "__next._tree.txt",
+              "type": "file"
+            },
+            {
+              "name": "__next.__PAGE__.txt",
+              "type": "file"
+            }
+          ]
+        },
+        {
+          "name": "package-lock.json",
+          "type": "file"
+        },
+        {
+          "name": "package.json",
+          "type": "file"
+        },
+        {
+          "name": "postcss.config.mjs",
+          "type": "file"
+        },
+        {
+          "name": "public",
+          "type": "dir",
+          "children": [
+            {
+              "name": "data",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "base_rates.json",
+                  "type": "file"
+                },
+                {
+                  "name": "exchange_rates.json",
+                  "type": "file"
+                }
+              ]
+            },
+            {
+              "name": "file.svg",
+              "type": "file"
+            },
+            {
+              "name": "globe.svg",
+              "type": "file"
+            },
+            {
+              "name": "next.svg",
+              "type": "file"
+            },
+            {
+              "name": "vercel.svg",
+              "type": "file"
+            },
+            {
+              "name": "window.svg",
+              "type": "file"
+            }
+          ]
+        },
+        {
+          "name": "README.md",
+          "type": "file"
+        },
+        {
+          "name": "scripts",
+          "type": "dir",
+          "children": [
+            {
+              "name": "collect-data.ts",
+              "type": "file"
+            },
+            {
+              "name": "notify-telegram.ts",
+              "type": "file"
+            }
+          ]
+        },
+        {
+          "name": "tsconfig.json",
+          "type": "file"
+        },
+        {
+          "name": "tsconfig.scripts.json",
+          "type": "file"
+        },
+        {
+          "name": "tsconfig.tsbuildinfo",
+          "type": "file"
+        }
+      ]
+    },
+    {
+      "name": "gostop-pro",
+      "tree": [
+        {
+          "name": "AGENTS.md",
+          "type": "file"
+        },
+        {
+          "name": "app",
+          "type": "dir",
+          "children": [
+            {
+              "name": "favicon.ico",
+              "type": "file"
+            },
+            {
+              "name": "globals.css",
+              "type": "file"
+            },
+            {
+              "name": "layout.tsx",
+              "type": "file"
+            },
+            {
+              "name": "page.module.css",
+              "type": "file"
+            },
+            {
+              "name": "page.tsx",
+              "type": "file"
+            }
+          ]
+        },
+        {
+          "name": "CLAUDE.md",
+          "type": "file"
+        },
+        {
+          "name": "eslint.config.mjs",
+          "type": "file"
+        },
+        {
+          "name": "next-env.d.ts",
+          "type": "file"
+        },
+        {
+          "name": "next.config.ts",
+          "type": "file"
+        },
+        {
+          "name": "package-lock.json",
+          "type": "file"
+        },
+        {
+          "name": "package.json",
+          "type": "file"
+        },
+        {
+          "name": "public",
+          "type": "dir",
+          "children": [
+            {
+              "name": "file.svg",
+              "type": "file"
+            },
+            {
+              "name": "globe.svg",
+              "type": "file"
+            },
+            {
+              "name": "gostop_mat.png",
+              "type": "file"
+            },
+            {
+              "name": "hwatu_sprite.png",
+              "type": "file"
+            },
+            {
+              "name": "next.svg",
+              "type": "file"
+            },
+            {
+              "name": "vercel.svg",
+              "type": "file"
+            },
+            {
+              "name": "window.svg",
+              "type": "file"
+            }
+          ]
+        },
+        {
+          "name": "README.md",
+          "type": "file"
+        },
+        {
+          "name": "src",
+          "type": "dir",
+          "children": [
+            {
+              "name": "constants",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "cards.ts",
+                  "type": "file"
+                }
+              ]
+            },
+            {
+              "name": "hooks",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "useAudio.ts",
+                  "type": "file"
+                }
+              ]
+            },
+            {
+              "name": "store",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "useGameStore.ts",
+                  "type": "file"
+                }
+              ]
+            },
+            {
+              "name": "types",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "game.ts",
+                  "type": "file"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "tsconfig.json",
+          "type": "file"
+        },
+        {
+          "name": "tsconfig.tsbuildinfo",
+          "type": "file"
+        }
+      ]
+    },
+    {
+      "name": "housing-calendar",
+      "tree": [
+        {
+          "name": "AGENTS.md",
+          "type": "file"
+        },
+        {
+          "name": "CLAUDE.md",
+          "type": "file"
+        },
+        {
+          "name": "eslint.config.mjs",
+          "type": "file"
+        },
+        {
+          "name": "next-env.d.ts",
+          "type": "file"
+        },
+        {
+          "name": "next.config.ts",
+          "type": "file"
+        },
+        {
+          "name": "out",
+          "type": "dir",
+          "children": [
+            {
+              "name": "404",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "index.html",
+                  "type": "file"
+                }
+              ]
+            },
+            {
+              "name": "404.html",
+              "type": "file"
+            },
+            {
+              "name": "favicon.ico",
+              "type": "file"
+            },
+            {
+              "name": "file.svg",
+              "type": "file"
+            },
+            {
+              "name": "globe.svg",
+              "type": "file"
+            },
+            {
+              "name": "index.html",
+              "type": "file"
+            },
+            {
+              "name": "index.txt",
+              "type": "file"
+            },
+            {
+              "name": "next.svg",
+              "type": "file"
+            },
+            {
+              "name": "vercel.svg",
+              "type": "file"
+            },
+            {
+              "name": "window.svg",
+              "type": "file"
+            },
+            {
+              "name": "_next",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "8AZAto_nSxapOjvZkBIxR",
+                  "type": "dir",
+                  "children": []
+                },
+                {
+                  "name": "static",
+                  "type": "dir",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "name": "_not-found",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "index.html",
+                  "type": "file"
+                },
+                {
+                  "name": "index.txt",
+                  "type": "file"
+                },
+                {
+                  "name": "__next._full.txt",
+                  "type": "file"
+                },
+                {
+                  "name": "__next._head.txt",
+                  "type": "file"
+                },
+                {
+                  "name": "__next._index.txt",
+                  "type": "file"
+                },
+                {
+                  "name": "__next._not-found",
+                  "type": "dir",
+                  "children": []
+                },
+                {
+                  "name": "__next._not-found.txt",
+                  "type": "file"
+                },
+                {
+                  "name": "__next._tree.txt",
+                  "type": "file"
+                }
+              ]
+            },
+            {
+              "name": "__next._full.txt",
+              "type": "file"
+            },
+            {
+              "name": "__next._head.txt",
+              "type": "file"
+            },
+            {
+              "name": "__next._index.txt",
+              "type": "file"
+            },
+            {
+              "name": "__next._tree.txt",
+              "type": "file"
+            },
+            {
+              "name": "__next.__PAGE__.txt",
+              "type": "file"
+            }
+          ]
+        },
+        {
+          "name": "package-lock.json",
+          "type": "file"
+        },
+        {
+          "name": "package.json",
+          "type": "file"
+        },
+        {
+          "name": "postcss.config.mjs",
+          "type": "file"
+        },
+        {
+          "name": "public",
+          "type": "dir",
+          "children": [
+            {
+              "name": "file.svg",
+              "type": "file"
+            },
+            {
+              "name": "globe.svg",
+              "type": "file"
+            },
+            {
+              "name": "next.svg",
+              "type": "file"
+            },
+            {
+              "name": "vercel.svg",
+              "type": "file"
+            },
+            {
+              "name": "window.svg",
+              "type": "file"
+            }
+          ]
+        },
+        {
+          "name": "README.md",
+          "type": "file"
+        },
+        {
+          "name": "scripts",
+          "type": "dir",
+          "children": [
+            {
+              "name": "force-test.mjs",
+              "type": "file"
+            },
+            {
+              "name": "telegram-notifier.mjs",
+              "type": "file"
+            },
+            {
+              "name": "test-api.ts",
+              "type": "file"
+            },
+            {
+              "name": "test-telegram.mjs",
+              "type": "file"
+            }
+          ]
+        },
+        {
+          "name": "src",
+          "type": "dir",
+          "children": [
+            {
+              "name": "app",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "favicon.ico",
+                  "type": "file"
+                },
+                {
+                  "name": "globals.css",
+                  "type": "file"
+                },
+                {
+                  "name": "layout.tsx",
+                  "type": "file"
+                },
+                {
+                  "name": "page.tsx",
+                  "type": "file"
+                }
+              ]
+            },
+            {
+              "name": "components",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "calendar",
+                  "type": "dir",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "name": "lib",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "api",
+                  "type": "dir",
+                  "children": []
+                },
+                {
+                  "name": "types",
+                  "type": "dir",
+                  "children": []
+                },
+                {
+                  "name": "utils.ts",
+                  "type": "file"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "tsconfig.json",
+          "type": "file"
+        }
+      ]
+    },
+    {
+      "name": "ipo-master",
+      "tree": [
+        {
+          "name": "all_finuts_names.txt",
+          "type": "file"
+        },
+        {
+          "name": "debug-playwright-login.ts",
+          "type": "file"
+        },
+        {
+          "name": "debug_login_page.html",
+          "type": "file"
+        },
+        {
+          "name": "debug_login_page.png",
+          "type": "file"
+        },
+        {
+          "name": "ipo-summary.txt",
+          "type": "file"
+        },
+        {
+          "name": "list-names.ts",
+          "type": "file"
+        },
+        {
+          "name": "next-env.d.ts",
+          "type": "file"
+        },
+        {
+          "name": "next.config.mjs",
+          "type": "file"
+        },
+        {
+          "name": "out",
+          "type": "dir",
+          "children": [
+            {
+              "name": "404",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "index.html",
+                  "type": "file"
+                }
+              ]
+            },
+            {
+              "name": "404.html",
+              "type": "file"
+            },
+            {
+              "name": "admin",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "index.html",
+                  "type": "file"
+                },
+                {
+                  "name": "index.txt",
+                  "type": "file"
+                }
+              ]
+            },
+            {
+              "name": "analysis",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "index.html",
+                  "type": "file"
+                },
+                {
+                  "name": "index.txt",
+                  "type": "file"
+                }
+              ]
+            },
+            {
+              "name": "calendar",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "index.html",
+                  "type": "file"
+                },
+                {
+                  "name": "index.txt",
+                  "type": "file"
+                }
+              ]
+            },
+            {
+              "name": "data",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "competition_override.json",
+                  "type": "file"
+                },
+                {
+                  "name": "ipo_history.json",
+                  "type": "file"
+                },
+                {
+                  "name": "ipo_list.json",
+                  "type": "file"
+                }
+              ]
+            },
+            {
+              "name": "favicon.ico",
+              "type": "file"
+            },
+            {
+              "name": "index.html",
+              "type": "file"
+            },
+            {
+              "name": "index.txt",
+              "type": "file"
+            },
+            {
+              "name": "ipo",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "2231",
+                  "type": "dir",
+                  "children": []
+                },
+                {
+                  "name": "2247",
+                  "type": "dir",
+                  "children": []
+                },
+                {
+                  "name": "2248",
+                  "type": "dir",
+                  "children": []
+                },
+                {
+                  "name": "2252",
+                  "type": "dir",
+                  "children": []
+                },
+                {
+                  "name": "2255",
+                  "type": "dir",
+                  "children": []
+                },
+                {
+                  "name": "2257",
+                  "type": "dir",
+                  "children": []
+                },
+                {
+                  "name": "2258",
+                  "type": "dir",
+                  "children": []
+                },
+                {
+                  "name": "2262",
+                  "type": "dir",
+                  "children": []
+                },
+                {
+                  "name": "2263",
+                  "type": "dir",
+                  "children": []
+                },
+                {
+                  "name": "2264",
+                  "type": "dir",
+                  "children": []
+                },
+                {
+                  "name": "2265",
+                  "type": "dir",
+                  "children": []
+                },
+                {
+                  "name": "2266",
+                  "type": "dir",
+                  "children": []
+                },
+                {
+                  "name": "2267",
+                  "type": "dir",
+                  "children": []
+                },
+                {
+                  "name": "2268",
+                  "type": "dir",
+                  "children": []
+                },
+                {
+                  "name": "2269",
+                  "type": "dir",
+                  "children": []
+                },
+                {
+                  "name": "2270",
+                  "type": "dir",
+                  "children": []
+                },
+                {
+                  "name": "2271",
+                  "type": "dir",
+                  "children": []
+                },
+                {
+                  "name": "2272",
+                  "type": "dir",
+                  "children": []
+                },
+                {
+                  "name": "2273",
+                  "type": "dir",
+                  "children": []
+                },
+                {
+                  "name": "2274",
+                  "type": "dir",
+                  "children": []
+                },
+                {
+                  "name": "2275",
+                  "type": "dir",
+                  "children": []
+                },
+                {
+                  "name": "2276",
+                  "type": "dir",
+                  "children": []
+                },
+                {
+                  "name": "2277",
+                  "type": "dir",
+                  "children": []
+                },
+                {
+                  "name": "2278",
+                  "type": "dir",
+                  "children": []
+                },
+                {
+                  "name": "2279",
+                  "type": "dir",
+                  "children": []
+                },
+                {
+                  "name": "2280",
+                  "type": "dir",
+                  "children": []
+                },
+                {
+                  "name": "2281",
+                  "type": "dir",
+                  "children": []
+                },
+                {
+                  "name": "2282",
+                  "type": "dir",
+                  "children": []
+                },
+                {
+                  "name": "2284",
+                  "type": "dir",
+                  "children": []
+                },
+                {
+                  "name": "2285",
+                  "type": "dir",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "name": "_next",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "BThs2Ut6DnYrDZjWFwjKx",
+                  "type": "dir",
+                  "children": []
+                },
+                {
+                  "name": "static",
+                  "type": "dir",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "package-lock.json",
+          "type": "file"
+        },
+        {
+          "name": "package.json",
+          "type": "file"
+        },
+        {
+          "name": "playwright_sync_check.txt",
+          "type": "file"
+        },
+        {
+          "name": "playwright_sync_check_v2.txt",
+          "type": "file"
+        },
+        {
+          "name": "playwright_sync_check_v3.txt",
+          "type": "file"
+        },
+        {
+          "name": "playwright_sync_check_v4.txt",
+          "type": "file"
+        },
+        {
+          "name": "playwright_sync_final.txt",
+          "type": "file"
+        },
+        {
+          "name": "playwright_sync_proportional_check.txt",
+          "type": "file"
+        },
+        {
+          "name": "postcss.config.mjs",
+          "type": "file"
+        },
+        {
+          "name": "public",
+          "type": "dir",
+          "children": [
+            {
+              "name": "data",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "competition_override.json",
+                  "type": "file"
+                },
+                {
+                  "name": "ipo_history.json",
+                  "type": "file"
+                },
+                {
+                  "name": "ipo_list.json",
+                  "type": "file"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "README.md",
+          "type": "file"
+        },
+        {
+          "name": "scripts",
+          "type": "dir",
+          "children": [
+            {
+              "name": "aggregate.ts",
+              "type": "file"
+            },
+            {
+              "name": "apply-override.ts",
+              "type": "file"
+            },
+            {
+              "name": "check-json.js",
+              "type": "file"
+            },
+            {
+              "name": "clean-conflict-markers.js",
+              "type": "file"
+            },
+            {
+              "name": "debug-chars.js",
+              "type": "file"
+            },
+            {
+              "name": "generate-ipo-summary.ts",
+              "type": "file"
+            },
+            {
+              "name": "scrapers",
+              "type": "dir",
+              "children": []
+            },
+            {
+              "name": "test-telegram-network.js",
+              "type": "file"
+            }
+          ]
+        },
+        {
+          "name": "src",
+          "type": "dir",
+          "children": [
+            {
+              "name": "app",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "admin",
+                  "type": "dir",
+                  "children": []
+                },
+                {
+                  "name": "analysis",
+                  "type": "dir",
+                  "children": []
+                },
+                {
+                  "name": "api",
+                  "type": "dir",
+                  "children": []
+                },
+                {
+                  "name": "calendar",
+                  "type": "dir",
+                  "children": []
+                },
+                {
+                  "name": "favicon.ico",
+                  "type": "file"
+                },
+                {
+                  "name": "fonts",
+                  "type": "dir",
+                  "children": []
+                },
+                {
+                  "name": "globals.css",
+                  "type": "file"
+                },
+                {
+                  "name": "ipo",
+                  "type": "dir",
+                  "children": []
+                },
+                {
+                  "name": "layout.tsx",
+                  "type": "file"
+                },
+                {
+                  "name": "page.tsx",
+                  "type": "file"
+                }
+              ]
+            },
+            {
+              "name": "components",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "CompetitionTable.tsx",
+                  "type": "file"
+                },
+                {
+                  "name": "IPODetailClient.tsx",
+                  "type": "file"
+                },
+                {
+                  "name": "Navigation.tsx",
+                  "type": "file"
+                }
+              ]
+            },
+            {
+              "name": "lib",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "scraper",
+                  "type": "dir",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "name": "types",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "ipo.ts",
+                  "type": "file"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "tailwind.config.ts",
+          "type": "file"
+        },
+        {
+          "name": "temp_check.txt",
+          "type": "file"
+        },
+        {
+          "name": "test-list-only.ts",
+          "type": "file"
+        },
+        {
+          "name": "test-login-only.ts",
+          "type": "file"
+        },
+        {
+          "name": "test_aggregation_debug.txt",
+          "type": "file"
+        },
+        {
+          "name": "test_aggregation_debug_v2.txt",
+          "type": "file"
+        },
+        {
+          "name": "test_auth_debug.txt",
+          "type": "file"
+        },
+        {
+          "name": "test_cookie_debug.txt",
+          "type": "file"
+        },
+        {
+          "name": "test_debug_matching.txt",
+          "type": "file"
+        },
+        {
+          "name": "test_final_debug_v2.txt",
+          "type": "file"
+        },
+        {
+          "name": "test_final_login_fix.txt",
+          "type": "file"
+        },
+        {
+          "name": "test_final_success_check.txt",
+          "type": "file"
+        },
+        {
+          "name": "test_final_verification.txt",
+          "type": "file"
+        },
+        {
+          "name": "test_headers_output.txt",
+          "type": "file"
+        },
+        {
+          "name": "test_list_full.txt",
+          "type": "file"
+        },
+        {
+          "name": "test_login_status_debug.txt",
+          "type": "file"
+        },
+        {
+          "name": "test_names_log.txt",
+          "type": "file"
+        },
+        {
+          "name": "test_referer_fix.txt",
+          "type": "file"
+        },
+        {
+          "name": "test_session_flow.txt",
+          "type": "file"
+        },
+        {
+          "name": "test_special_match.txt",
+          "type": "file"
+        },
+        {
+          "name": "test_ui_debug.txt",
+          "type": "file"
+        },
+        {
+          "name": "tsconfig.json",
+          "type": "file"
+        },
+        {
+          "name": "tsconfig.tsbuildinfo",
+          "type": "file"
+        }
+      ]
+    },
+    {
+      "name": "kindergarten-compare",
+      "tree": []
+    },
+    {
+      "name": "kis-trader",
+      "tree": [
+        {
+          "name": "auth.py",
+          "type": "file"
+        },
+        {
+          "name": "backtest.py",
+          "type": "file"
+        },
+        {
+          "name": "bot.log",
+          "type": "file"
+        },
+        {
+          "name": "bot.py",
+          "type": "file"
+        },
+        {
+          "name": "candidate_manager.py",
+          "type": "file"
+        },
+        {
+          "name": "config",
+          "type": "dir",
+          "children": [
+            {
+              "name": "fallback_universe.json",
+              "type": "file"
+            },
+            {
+              "name": "fallback_universe_small.json",
+              "type": "file"
+            }
+          ]
+        },
+        {
+          "name": "current_test_report.xml",
+          "type": "file"
+        },
+        {
+          "name": "data",
+          "type": "dir",
+          "children": [
+            {
+              "name": "2026-03-21",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "trades_real.json",
+                  "type": "file"
+                }
+              ]
+            },
+            {
+              "name": "2026-03-23",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "trades_real.json",
+                  "type": "file"
+                }
+              ]
+            },
+            {
+              "name": "2026-03-24",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "trades_real.json",
+                  "type": "file"
+                }
+              ]
+            },
+            {
+              "name": "2026-03-25",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "trades_real.json",
+                  "type": "file"
+                }
+              ]
+            },
+            {
+              "name": "2026-03-26",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "trades_real.json",
+                  "type": "file"
+                }
+              ]
+            },
+            {
+              "name": "2026-03-27",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "trades_real.json",
+                  "type": "file"
+                }
+              ]
+            },
+            {
+              "name": "backtest",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "report_20260327.json",
+                  "type": "file"
+                }
+              ]
+            },
+            {
+              "name": "briefing_20260326.flag",
+              "type": "file"
+            },
+            {
+              "name": "briefing_20260327.flag",
+              "type": "file"
+            },
+            {
+              "name": "started_20260326.flag",
+              "type": "file"
+            },
+            {
+              "name": "started_20260327.flag",
+              "type": "file"
+            },
+            {
+              "name": "today",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "daily_blacklist.json",
+                  "type": "file"
+                },
+                {
+                  "name": "pbr_candidates.json",
+                  "type": "file"
+                },
+                {
+                  "name": "premarket_candidates.json",
+                  "type": "file"
+                },
+                {
+                  "name": "today_signal.json",
+                  "type": "file"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "ecosystem.config.js",
+          "type": "file"
+        },
+        {
+          "name": "EMERGENCY_MANUAL.md",
+          "type": "file"
+        },
+        {
+          "name": "fee_calculator.py",
+          "type": "file"
+        },
+        {
+          "name": "final_qa_report.xml",
+          "type": "file"
+        },
+        {
+          "name": "int_report.xml",
+          "type": "file"
+        },
+        {
+          "name": "kis_api.py",
+          "type": "file"
+        },
+        {
+          "name": "kis_data.py",
+          "type": "file"
+        },
+        {
+          "name": "logger.py",
+          "type": "file"
+        },
+        {
+          "name": "main.py",
+          "type": "file"
+        },
+        {
+          "name": "market_mode.py",
+          "type": "file"
+        },
+        {
+          "name": "ml_model.py",
+          "type": "file"
+        },
+        {
+          "name": "notifier.py",
+          "type": "file"
+        },
+        {
+          "name": "order.py",
+          "type": "file"
+        },
+        {
+          "name": "pbr_screener.py",
+          "type": "file"
+        },
+        {
+          "name": "portfolio.py",
+          "type": "file"
+        },
+        {
+          "name": "position_store.py",
+          "type": "file"
+        },
+        {
+          "name": "premarket_scanner.py",
+          "type": "file"
+        },
+        {
+          "name": "pyrightconfig.json",
+          "type": "file"
+        },
+        {
+          "name": "README.md",
+          "type": "file"
+        },
+        {
+          "name": "requirements.txt",
+          "type": "file"
+        },
+        {
+          "name": "scanner.py",
+          "type": "file"
+        },
+        {
+          "name": "SCENARIO.md",
+          "type": "file"
+        },
+        {
+          "name": "scorer.py",
+          "type": "file"
+        },
+        {
+          "name": "scripts",
+          "type": "dir",
+          "children": [
+            {
+              "name": "check_external_data.py",
+              "type": "file"
+            },
+            {
+              "name": "check_scenario_consistency.py",
+              "type": "file"
+            },
+            {
+              "name": "test_connection.py",
+              "type": "file"
+            },
+            {
+              "name": "test_quote.py",
+              "type": "file"
+            },
+            {
+              "name": "__pycache__",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "test_connection.cpython-313-pytest-9.0.2.pyc",
+                  "type": "file"
+                },
+                {
+                  "name": "test_quote.cpython-313-pytest-9.0.2.pyc",
+                  "type": "file"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "server.py",
+          "type": "file"
+        },
+        {
+          "name": "setup_server.sh",
+          "type": "file"
+        },
+        {
+          "name": "signal_engine.py",
+          "type": "file"
+        },
+        {
+          "name": "start-ngrok.bat",
+          "type": "file"
+        },
+        {
+          "name": "start-terminal.bat",
+          "type": "file"
+        },
+        {
+          "name": "start_bot.bat",
+          "type": "file"
+        },
+        {
+          "name": "start_trader.bat",
+          "type": "file"
+        },
+        {
+          "name": "static",
+          "type": "dir",
+          "children": [
+            {
+              "name": "index.html",
+              "type": "file"
+            }
+          ]
+        },
+        {
+          "name": "TESTING_GUIDE.md",
+          "type": "file"
+        },
+        {
+          "name": "tests",
+          "type": "dir",
+          "children": [
+            {
+              "name": "integration",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "test_trader_flow.py",
+                  "type": "file"
+                },
+                {
+                  "name": "__pycache__",
+                  "type": "dir",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "name": "test_portfolio.py",
+              "type": "file"
+            },
+            {
+              "name": "test_risk_management.py",
+              "type": "file"
+            },
+            {
+              "name": "__pycache__",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "test_portfolio.cpython-313-pytest-9.0.2.pyc",
+                  "type": "file"
+                },
+                {
+                  "name": "test_risk_management.cpython-313-pytest-9.0.2.pyc",
+                  "type": "file"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "tmp_scan_quote.py",
+          "type": "file"
+        },
+        {
+          "name": "tmp_test_quote.py",
+          "type": "file"
+        },
+        {
+          "name": "trader.log",
+          "type": "file"
+        },
+        {
+          "name": "trader.py",
+          "type": "file"
+        },
+        {
+          "name": "unit_report.xml",
+          "type": "file"
+        },
+        {
+          "name": "universe.py",
+          "type": "file"
+        },
+        {
+          "name": "websocket_feed.py",
+          "type": "file"
+        },
+        {
+          "name": "ws_auth.py",
+          "type": "file"
+        },
+        {
+          "name": "__pycache__",
+          "type": "dir",
+          "children": [
+            {
+              "name": "auth.cpython-313.pyc",
+              "type": "file"
+            },
+            {
+              "name": "backtest.cpython-313.pyc",
+              "type": "file"
+            },
+            {
+              "name": "candidate_manager.cpython-313.pyc",
+              "type": "file"
+            },
+            {
+              "name": "fee_calculator.cpython-313.pyc",
+              "type": "file"
+            },
+            {
+              "name": "kis_api.cpython-313.pyc",
+              "type": "file"
+            },
+            {
+              "name": "kis_data.cpython-313.pyc",
+              "type": "file"
+            },
+            {
+              "name": "logger.cpython-313.pyc",
+              "type": "file"
+            },
+            {
+              "name": "market_mode.cpython-313.pyc",
+              "type": "file"
+            },
+            {
+              "name": "ml_model.cpython-313.pyc",
+              "type": "file"
+            },
+            {
+              "name": "notifier.cpython-313.pyc",
+              "type": "file"
+            },
+            {
+              "name": "order.cpython-313.pyc",
+              "type": "file"
+            },
+            {
+              "name": "pbr_screener.cpython-313.pyc",
+              "type": "file"
+            },
+            {
+              "name": "portfolio.cpython-313.pyc",
+              "type": "file"
+            },
+            {
+              "name": "position_store.cpython-313.pyc",
+              "type": "file"
+            },
+            {
+              "name": "premarket_scanner.cpython-313.pyc",
+              "type": "file"
+            },
+            {
+              "name": "scanner.cpython-313.pyc",
+              "type": "file"
+            },
+            {
+              "name": "scorer.cpython-313.pyc",
+              "type": "file"
+            },
+            {
+              "name": "server.cpython-313.pyc",
+              "type": "file"
+            },
+            {
+              "name": "signal_engine.cpython-313.pyc",
+              "type": "file"
+            },
+            {
+              "name": "trader.cpython-313.pyc",
+              "type": "file"
+            },
+            {
+              "name": "universe.cpython-313.pyc",
+              "type": "file"
+            },
+            {
+              "name": "websocket_feed.cpython-313.pyc",
+              "type": "file"
+            },
+            {
+              "name": "ws_auth.cpython-313.pyc",
+              "type": "file"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "kopis",
+      "tree": [
+        {
+          "name": "CAFE24_DEPLOYMENT.md",
+          "type": "file"
+        },
+        {
+          "name": "deploy.sh",
+          "type": "file"
+        },
+        {
+          "name": "DEPLOYMENT.md",
+          "type": "file"
+        },
+        {
+          "name": "dist",
+          "type": "dir",
+          "children": [
+            {
+              "name": "assets",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "index-8dabcc80.css",
+                  "type": "file"
+                },
+                {
+                  "name": "index-da199492.js",
+                  "type": "file"
+                }
+              ]
+            },
+            {
+              "name": "donation-qr.png",
+              "type": "file"
+            },
+            {
+              "name": "index.html",
+              "type": "file"
+            },
+            {
+              "name": "naver_proxy.php",
+              "type": "file"
+            },
+            {
+              "name": "proxy.php",
+              "type": "file"
+            },
+            {
+              "name": "vite.svg",
+              "type": "file"
+            }
+          ]
+        },
+        {
+          "name": "GEMINI_MASTER_PROMPT.md",
+          "type": "file"
+        },
+        {
+          "name": "legacy-vite",
+          "type": "dir",
+          "children": [
+            {
+              "name": "index.html",
+              "type": "file"
+            },
+            {
+              "name": "package-lock.json",
+              "type": "file"
+            },
+            {
+              "name": "package.json",
+              "type": "file"
+            },
+            {
+              "name": "postcss.config.js",
+              "type": "file"
+            },
+            {
+              "name": "public",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "donation-qr.png",
+                  "type": "file"
+                },
+                {
+                  "name": "naver_proxy.php",
+                  "type": "file"
+                },
+                {
+                  "name": "vite.svg",
+                  "type": "file"
+                }
+              ]
+            },
+            {
+              "name": "src",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "App.jsx",
+                  "type": "file"
+                },
+                {
+                  "name": "components",
+                  "type": "dir",
+                  "children": []
+                },
+                {
+                  "name": "hooks",
+                  "type": "dir",
+                  "children": []
+                },
+                {
+                  "name": "index.css",
+                  "type": "file"
+                },
+                {
+                  "name": "main.jsx",
+                  "type": "file"
+                },
+                {
+                  "name": "pages",
+                  "type": "dir",
+                  "children": []
+                },
+                {
+                  "name": "services",
+                  "type": "dir",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "name": "tailwind.config.js",
+              "type": "file"
+            },
+            {
+              "name": "vite.config.js",
+              "type": "file"
+            }
+          ]
+        },
+        {
+          "name": "LINUX_DEPLOYMENT.md",
+          "type": "file"
+        },
+        {
+          "name": "MASTER_PROMPT.md",
+          "type": "file"
+        },
+        {
+          "name": "netlify.toml",
+          "type": "file"
+        },
+        {
+          "name": "next-env.d.ts",
+          "type": "file"
+        },
+        {
+          "name": "next.config.ts",
+          "type": "file"
+        },
+        {
+          "name": "nginx.conf",
+          "type": "file"
+        },
+        {
+          "name": "out",
+          "type": "dir",
+          "children": [
+            {
+              "name": "404",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "index.html",
+                  "type": "file"
+                }
+              ]
+            },
+            {
+              "name": "404.html",
+              "type": "file"
+            },
+            {
+              "name": "favorites",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "index.html",
+                  "type": "file"
+                },
+                {
+                  "name": "index.txt",
+                  "type": "file"
+                }
+              ]
+            },
+            {
+              "name": "index.html",
+              "type": "file"
+            },
+            {
+              "name": "index.txt",
+              "type": "file"
+            },
+            {
+              "name": "login",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "index.html",
+                  "type": "file"
+                },
+                {
+                  "name": "index.txt",
+                  "type": "file"
+                }
+              ]
+            },
+            {
+              "name": "naver_proxy.php",
+              "type": "file"
+            },
+            {
+              "name": "performance",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "detail",
+                  "type": "dir",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "name": "proxy.php",
+              "type": "file"
+            },
+            {
+              "name": "recommendations",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "index.html",
+                  "type": "file"
+                },
+                {
+                  "name": "index.txt",
+                  "type": "file"
+                }
+              ]
+            },
+            {
+              "name": "_next",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "cH2cZanGIMcWcHeoAz00S",
+                  "type": "dir",
+                  "children": []
+                },
+                {
+                  "name": "static",
+                  "type": "dir",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "package-lock.json",
+          "type": "file"
+        },
+        {
+          "name": "package.json",
+          "type": "file"
+        },
+        {
+          "name": "postcss.config.js",
+          "type": "file"
+        },
+        {
+          "name": "public",
+          "type": "dir",
+          "children": [
+            {
+              "name": "naver_proxy.php",
+              "type": "file"
+            },
+            {
+              "name": "proxy.php",
+              "type": "file"
+            }
+          ]
+        },
+        {
+          "name": "README.md",
+          "type": "file"
+        },
+        {
+          "name": "server.js",
+          "type": "file"
+        },
+        {
+          "name": "src",
+          "type": "dir",
+          "children": [
+            {
+              "name": "app",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "favorites",
+                  "type": "dir",
+                  "children": []
+                },
+                {
+                  "name": "globals.css",
+                  "type": "file"
+                },
+                {
+                  "name": "layout.tsx",
+                  "type": "file"
+                },
+                {
+                  "name": "login",
+                  "type": "dir",
+                  "children": []
+                },
+                {
+                  "name": "page.tsx",
+                  "type": "file"
+                },
+                {
+                  "name": "performance",
+                  "type": "dir",
+                  "children": []
+                },
+                {
+                  "name": "providers.tsx",
+                  "type": "file"
+                },
+                {
+                  "name": "recommendations",
+                  "type": "dir",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "name": "components",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "FavoriteButton.tsx",
+                  "type": "file"
+                },
+                {
+                  "name": "Header.tsx",
+                  "type": "file"
+                },
+                {
+                  "name": "PerformanceCard.tsx",
+                  "type": "file"
+                },
+                {
+                  "name": "ReviewSection.tsx",
+                  "type": "file"
+                },
+                {
+                  "name": "SanitizedContent.tsx",
+                  "type": "file"
+                },
+                {
+                  "name": "ScrollToTop.tsx",
+                  "type": "file"
+                }
+              ]
+            },
+            {
+              "name": "hooks",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "useFavorites.ts",
+                  "type": "file"
+                },
+                {
+                  "name": "useTheme.ts",
+                  "type": "file"
+                }
+              ]
+            },
+            {
+              "name": "lib",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "recommendation.ts",
+                  "type": "file"
+                },
+                {
+                  "name": "security.ts",
+                  "type": "file"
+                },
+                {
+                  "name": "utils.ts",
+                  "type": "file"
+                }
+              ]
+            },
+            {
+              "name": "middleware.ts",
+              "type": "file"
+            },
+            {
+              "name": "services",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "api.ts",
+                  "type": "file"
+                },
+                {
+                  "name": "reviewApi.ts",
+                  "type": "file"
+                }
+              ]
+            },
+            {
+              "name": "types",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "index.ts",
+                  "type": "file"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "tailwind.config.ts",
+          "type": "file"
+        },
+        {
+          "name": "tsconfig.json",
+          "type": "file"
+        },
+        {
+          "name": "vercel.json",
+          "type": "file"
+        }
+      ]
+    },
+    {
+      "name": "krxwatch",
+      "tree": [
+        {
+          "name": "eslint.config.mjs",
+          "type": "file"
+        },
+        {
+          "name": "next.config.ts",
+          "type": "file"
+        },
+        {
+          "name": "postcss.config.mjs",
+          "type": "file"
+        },
+        {
+          "name": "public",
+          "type": "dir",
+          "children": [
+            {
+              "name": "donation-qr.png",
+              "type": "file"
+            }
+          ]
+        },
+        {
+          "name": "README.md",
+          "type": "file"
+        },
+        {
+          "name": "src",
+          "type": "dir",
+          "children": [
+            {
+              "name": "app",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "favicon.ico",
+                  "type": "file"
+                },
+                {
+                  "name": "globals.css",
+                  "type": "file"
+                },
+                {
+                  "name": "layout.tsx",
+                  "type": "file"
+                },
+                {
+                  "name": "page.tsx",
+                  "type": "file"
+                }
+              ]
+            },
+            {
+              "name": "components",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "DonationPopup.tsx",
+                  "type": "file"
+                },
+                {
+                  "name": "PriceList.tsx",
+                  "type": "file"
+                }
+              ]
+            },
+            {
+              "name": "utils",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "api.ts",
+                  "type": "file"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "tsconfig.json",
+          "type": "file"
+        }
+      ]
+    },
+    {
+      "name": "market-checker",
+      "tree": [
+        {
+          "name": "docs",
+          "type": "dir",
+          "children": [
+            {
+              "name": "donation-qr.png",
+              "type": "file"
+            },
+            {
+              "name": "example.html",
+              "type": "file"
+            },
+            {
+              "name": "index.html",
+              "type": "file"
+            }
+          ]
+        },
+        {
+          "name": "package-lock.json",
+          "type": "file"
+        },
+        {
+          "name": "package.json",
+          "type": "file"
+        },
+        {
+          "name": "public",
+          "type": "dir",
+          "children": [
+            {
+              "name": "donation-qr.png",
+              "type": "file"
+            }
+          ]
+        },
+        {
+          "name": "README.md",
+          "type": "file"
+        },
+        {
+          "name": "src",
+          "type": "dir",
+          "children": [
+            {
+              "name": "builder.js",
+              "type": "file"
+            },
+            {
+              "name": "logic.js",
+              "type": "file"
+            },
+            {
+              "name": "main.js",
+              "type": "file"
+            },
+            {
+              "name": "notifier.js",
+              "type": "file"
+            },
+            {
+              "name": "scraper.js",
+              "type": "file"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "scheduler",
+      "tree": [
+        {
+          "name": "ecosystem.config.cjs",
+          "type": "file"
+        },
+        {
+          "name": "lib",
+          "type": "dir",
+          "children": [
+            {
+              "name": "ftp.mjs",
+              "type": "file"
+            },
+            {
+              "name": "shell.mjs",
+              "type": "file"
+            },
+            {
+              "name": "telegram.mjs",
+              "type": "file"
+            }
+          ]
+        },
+        {
+          "name": "package-lock.json",
+          "type": "file"
+        },
+        {
+          "name": "package.json",
+          "type": "file"
+        },
+        {
+          "name": "run-forex-signal.mjs",
+          "type": "file"
+        },
+        {
+          "name": "run-ipo-master-deploy.mjs",
+          "type": "file"
+        },
+        {
+          "name": "run-ipo-master-watch.mjs",
+          "type": "file"
+        },
+        {
+          "name": "run-ipo-master.mjs",
+          "type": "file"
+        },
+        {
+          "name": "run-kis-trader.mjs",
+          "type": "file"
+        },
+        {
+          "name": "run-market-checker.mjs",
+          "type": "file"
+        },
+        {
+          "name": "run-pbr-screener.mjs",
+          "type": "file"
+        },
+        {
+          "name": "run-today-signal.mjs",
+          "type": "file"
+        },
+        {
+          "name": "run-trending-rankings.mjs",
+          "type": "file"
+        },
+        {
+          "name": "scheduler.mjs",
+          "type": "file"
+        },
+        {
+          "name": "SETUP.md",
+          "type": "file"
+        }
+      ]
+    },
+    {
+      "name": "today-signal",
+      "tree": [
+        {
+          "name": "app",
+          "type": "dir",
+          "children": [
+            {
+              "name": "components",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "Disclaimer.tsx",
+                  "type": "file"
+                },
+                {
+                  "name": "MarketBanner.tsx",
+                  "type": "file"
+                },
+                {
+                  "name": "ProfitCalculator.tsx",
+                  "type": "file"
+                },
+                {
+                  "name": "SignalCard.tsx",
+                  "type": "file"
+                },
+                {
+                  "name": "SignalList.tsx",
+                  "type": "file"
+                },
+                {
+                  "name": "SignalView.tsx",
+                  "type": "file"
+                },
+                {
+                  "name": "TabBar.tsx",
+                  "type": "file"
+                }
+              ]
+            },
+            {
+              "name": "favicon.ico",
+              "type": "file"
+            },
+            {
+              "name": "globals.css",
+              "type": "file"
+            },
+            {
+              "name": "layout.tsx",
+              "type": "file"
+            },
+            {
+              "name": "page.tsx",
+              "type": "file"
+            }
+          ]
+        },
+        {
+          "name": "eslint.config.mjs",
+          "type": "file"
+        },
+        {
+          "name": "lib",
+          "type": "dir",
+          "children": [
+            {
+              "name": "kis-api.ts",
+              "type": "file"
+            },
+            {
+              "name": "scoring.ts",
+              "type": "file"
+            }
+          ]
+        },
+        {
+          "name": "next-env.d.ts",
+          "type": "file"
+        },
+        {
+          "name": "next.config.ts",
+          "type": "file"
+        },
+        {
+          "name": "out",
+          "type": "dir",
+          "children": [
+            {
+              "name": "404",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "index.html",
+                  "type": "file"
+                }
+              ]
+            },
+            {
+              "name": "404.html",
+              "type": "file"
+            },
+            {
+              "name": "data",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "today_signal.json",
+                  "type": "file"
+                }
+              ]
+            },
+            {
+              "name": "favicon.ico",
+              "type": "file"
+            },
+            {
+              "name": "file.svg",
+              "type": "file"
+            },
+            {
+              "name": "globe.svg",
+              "type": "file"
+            },
+            {
+              "name": "index.html",
+              "type": "file"
+            },
+            {
+              "name": "index.txt",
+              "type": "file"
+            },
+            {
+              "name": "next.svg",
+              "type": "file"
+            },
+            {
+              "name": "vercel.svg",
+              "type": "file"
+            },
+            {
+              "name": "window.svg",
+              "type": "file"
+            },
+            {
+              "name": "_next",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "7nOmphDnEFfqaEU4H0Vdt",
+                  "type": "dir",
+                  "children": []
+                },
+                {
+                  "name": "static",
+                  "type": "dir",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "name": "_not-found",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "index.html",
+                  "type": "file"
+                },
+                {
+                  "name": "index.txt",
+                  "type": "file"
+                },
+                {
+                  "name": "__next._full.txt",
+                  "type": "file"
+                },
+                {
+                  "name": "__next._head.txt",
+                  "type": "file"
+                },
+                {
+                  "name": "__next._index.txt",
+                  "type": "file"
+                },
+                {
+                  "name": "__next._not-found",
+                  "type": "dir",
+                  "children": []
+                },
+                {
+                  "name": "__next._not-found.txt",
+                  "type": "file"
+                },
+                {
+                  "name": "__next._tree.txt",
+                  "type": "file"
+                }
+              ]
+            },
+            {
+              "name": "__next._full.txt",
+              "type": "file"
+            },
+            {
+              "name": "__next._head.txt",
+              "type": "file"
+            },
+            {
+              "name": "__next._index.txt",
+              "type": "file"
+            },
+            {
+              "name": "__next._tree.txt",
+              "type": "file"
+            },
+            {
+              "name": "__next.__PAGE__.txt",
+              "type": "file"
+            }
+          ]
+        },
+        {
+          "name": "package-lock.json",
+          "type": "file"
+        },
+        {
+          "name": "package.json",
+          "type": "file"
+        },
+        {
+          "name": "postcss.config.mjs",
+          "type": "file"
+        },
+        {
+          "name": "public",
+          "type": "dir",
+          "children": [
+            {
+              "name": "data",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "today_signal.json",
+                  "type": "file"
+                }
+              ]
+            },
+            {
+              "name": "file.svg",
+              "type": "file"
+            },
+            {
+              "name": "globe.svg",
+              "type": "file"
+            },
+            {
+              "name": "next.svg",
+              "type": "file"
+            },
+            {
+              "name": "vercel.svg",
+              "type": "file"
+            },
+            {
+              "name": "window.svg",
+              "type": "file"
+            }
+          ]
+        },
+        {
+          "name": "README.md",
+          "type": "file"
+        },
+        {
+          "name": "scripts",
+          "type": "dir",
+          "children": [
+            {
+              "name": "collect-data.ts",
+              "type": "file"
+            }
+          ]
+        },
+        {
+          "name": "tsconfig.json",
+          "type": "file"
+        },
+        {
+          "name": "tsconfig.tsbuildinfo",
+          "type": "file"
+        },
+        {
+          "name": "types",
+          "type": "dir",
+          "children": [
+            {
+              "name": "stock.ts",
+              "type": "file"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "trending-rankings",
+      "tree": [
+        {
+          "name": "build_log.txt",
+          "type": "file"
+        },
+        {
+          "name": "data",
+          "type": "dir",
+          "children": [
+            {
+              "name": "nate_rankings.json",
+              "type": "file"
+            },
+            {
+              "name": "signal_rankings.json",
+              "type": "file"
+            }
+          ]
+        },
+        {
+          "name": "daum-all-json-responses.txt",
+          "type": "file"
+        },
+        {
+          "name": "daum-all-urls.txt",
+          "type": "file"
+        },
+        {
+          "name": "daum-main-api-all.txt",
+          "type": "file"
+        },
+        {
+          "name": "daum-main-dom.html",
+          "type": "file"
+        },
+        {
+          "name": "daum-main-script-5.js",
+          "type": "file"
+        },
+        {
+          "name": "daum-search-dom.html",
+          "type": "file"
+        },
+        {
+          "name": "daum-tiller-data.json",
+          "type": "file"
+        },
+        {
+          "name": "daum-trend-search-dom.html",
+          "type": "file"
+        },
+        {
+          "name": "daum_m.html",
+          "type": "file"
+        },
+        {
+          "name": "deploy_log_3.txt",
+          "type": "file"
+        },
+        {
+          "name": "eslint.config.mjs",
+          "type": "file"
+        },
+        {
+          "name": "extract-daum-json.js",
+          "type": "file"
+        },
+        {
+          "name": "fmkorea_raw.html",
+          "type": "file"
+        },
+        {
+          "name": "next-env.d.ts",
+          "type": "file"
+        },
+        {
+          "name": "next.config.ts",
+          "type": "file"
+        },
+        {
+          "name": "out",
+          "type": "dir",
+          "children": [
+            {
+              "name": "404",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "index.html",
+                  "type": "file"
+                }
+              ]
+            },
+            {
+              "name": "404.html",
+              "type": "file"
+            },
+            {
+              "name": "data",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "mindmap.json",
+                  "type": "file"
+                },
+                {
+                  "name": "mindmap_ipo.json",
+                  "type": "file"
+                },
+                {
+                  "name": "mindmap_stocks.json",
+                  "type": "file"
+                }
+              ]
+            },
+            {
+              "name": "donation-qr.png",
+              "type": "file"
+            },
+            {
+              "name": "favicon.ico",
+              "type": "file"
+            },
+            {
+              "name": "file.svg",
+              "type": "file"
+            },
+            {
+              "name": "globe.svg",
+              "type": "file"
+            },
+            {
+              "name": "index.html",
+              "type": "file"
+            },
+            {
+              "name": "index.txt",
+              "type": "file"
+            },
+            {
+              "name": "mindmap",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "index.html",
+                  "type": "file"
+                },
+                {
+                  "name": "index.txt",
+                  "type": "file"
+                },
+                {
+                  "name": "ipo",
+                  "type": "dir",
+                  "children": []
+                },
+                {
+                  "name": "stocks",
+                  "type": "dir",
+                  "children": []
+                },
+                {
+                  "name": "__next.mindmap",
+                  "type": "dir",
+                  "children": []
+                },
+                {
+                  "name": "__next.mindmap.txt",
+                  "type": "file"
+                },
+                {
+                  "name": "__next._full.txt",
+                  "type": "file"
+                },
+                {
+                  "name": "__next._head.txt",
+                  "type": "file"
+                },
+                {
+                  "name": "__next._index.txt",
+                  "type": "file"
+                },
+                {
+                  "name": "__next._tree.txt",
+                  "type": "file"
+                }
+              ]
+            },
+            {
+              "name": "next.svg",
+              "type": "file"
+            },
+            {
+              "name": "vercel.svg",
+              "type": "file"
+            },
+            {
+              "name": "window.svg",
+              "type": "file"
+            },
+            {
+              "name": "_next",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "qoHYaefdQqiyjNxkEineI",
+                  "type": "dir",
+                  "children": []
+                },
+                {
+                  "name": "static",
+                  "type": "dir",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "name": "_not-found",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "index.html",
+                  "type": "file"
+                },
+                {
+                  "name": "index.txt",
+                  "type": "file"
+                },
+                {
+                  "name": "__next._full.txt",
+                  "type": "file"
+                },
+                {
+                  "name": "__next._head.txt",
+                  "type": "file"
+                },
+                {
+                  "name": "__next._index.txt",
+                  "type": "file"
+                },
+                {
+                  "name": "__next._not-found",
+                  "type": "dir",
+                  "children": []
+                },
+                {
+                  "name": "__next._not-found.txt",
+                  "type": "file"
+                },
+                {
+                  "name": "__next._tree.txt",
+                  "type": "file"
+                }
+              ]
+            },
+            {
+              "name": "__next._full.txt",
+              "type": "file"
+            },
+            {
+              "name": "__next._head.txt",
+              "type": "file"
+            },
+            {
+              "name": "__next._index.txt",
+              "type": "file"
+            },
+            {
+              "name": "__next._tree.txt",
+              "type": "file"
+            },
+            {
+              "name": "__next.__PAGE__.txt",
+              "type": "file"
+            }
+          ]
+        },
+        {
+          "name": "package-lock.json",
+          "type": "file"
+        },
+        {
+          "name": "package.json",
+          "type": "file"
+        },
+        {
+          "name": "parse-daum-main.js",
+          "type": "file"
+        },
+        {
+          "name": "postcss.config.mjs",
+          "type": "file"
+        },
+        {
+          "name": "public",
+          "type": "dir",
+          "children": [
+            {
+              "name": "data",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "mindmap.json",
+                  "type": "file"
+                },
+                {
+                  "name": "mindmap_ipo.json",
+                  "type": "file"
+                },
+                {
+                  "name": "mindmap_stocks.json",
+                  "type": "file"
+                }
+              ]
+            },
+            {
+              "name": "donation-qr.png",
+              "type": "file"
+            },
+            {
+              "name": "file.svg",
+              "type": "file"
+            },
+            {
+              "name": "globe.svg",
+              "type": "file"
+            },
+            {
+              "name": "next.svg",
+              "type": "file"
+            },
+            {
+              "name": "vercel.svg",
+              "type": "file"
+            },
+            {
+              "name": "window.svg",
+              "type": "file"
+            }
+          ]
+        },
+        {
+          "name": "README.md",
+          "type": "file"
+        },
+        {
+          "name": "scripts",
+          "type": "dir",
+          "children": [
+            {
+              "name": "collect-community-mindmap.js",
+              "type": "file"
+            },
+            {
+              "name": "collect-ipo-mindmap.js",
+              "type": "file"
+            },
+            {
+              "name": "collect-stocks-mindmap.js",
+              "type": "file"
+            },
+            {
+              "name": "generate-summary.js",
+              "type": "file"
+            },
+            {
+              "name": "utils",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "korean-nlp.js",
+                  "type": "file"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "src",
+          "type": "dir",
+          "children": [
+            {
+              "name": "app",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "favicon.ico",
+                  "type": "file"
+                },
+                {
+                  "name": "globals.css",
+                  "type": "file"
+                },
+                {
+                  "name": "layout.tsx",
+                  "type": "file"
+                },
+                {
+                  "name": "mindmap",
+                  "type": "dir",
+                  "children": []
+                },
+                {
+                  "name": "page.tsx",
+                  "type": "file"
+                }
+              ]
+            },
+            {
+              "name": "components",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "DonationPopup.tsx",
+                  "type": "file"
+                },
+                {
+                  "name": "RankingCard.tsx",
+                  "type": "file"
+                },
+                {
+                  "name": "RealTimeRanking.tsx",
+                  "type": "file"
+                },
+                {
+                  "name": "ThemeToggle.tsx",
+                  "type": "file"
+                }
+              ]
+            },
+            {
+              "name": "lib",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "api.ts",
+                  "type": "file"
+                },
+                {
+                  "name": "ranking.ts",
+                  "type": "file"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "summary.txt",
+          "type": "file"
+        },
+        {
+          "name": "test-daum-fetch.js",
+          "type": "file"
+        },
+        {
+          "name": "test-daum-json-responses.js",
+          "type": "file"
+        },
+        {
+          "name": "test-daum-main-api.js",
+          "type": "file"
+        },
+        {
+          "name": "test-daum-main-trends.js",
+          "type": "file"
+        },
+        {
+          "name": "test-daum-main.js",
+          "type": "file"
+        },
+        {
+          "name": "test-daum-search.js",
+          "type": "file"
+        },
+        {
+          "name": "test-daum-trend-search.js",
+          "type": "file"
+        },
+        {
+          "name": "test-daum-urls.js",
+          "type": "file"
+        },
+        {
+          "name": "test-daum.js",
+          "type": "file"
+        },
+        {
+          "name": "test-endpoints.js",
+          "type": "file"
+        },
+        {
+          "name": "test-rankings.ts",
+          "type": "file"
+        },
+        {
+          "name": "test-signal.js",
+          "type": "file"
+        },
+        {
+          "name": "test-user-selector-deep.js",
+          "type": "file"
+        },
+        {
+          "name": "test-user-selector.js",
+          "type": "file"
+        },
+        {
+          "name": "test_raw.json",
+          "type": "file"
+        },
+        {
+          "name": "tsconfig.json",
+          "type": "file"
+        }
+      ]
+    },
+    {
+      "name": "yourpick",
+      "tree": [
+        {
+          "name": "ACCESSIBILITY_AUDIT.md",
+          "type": "file"
+        },
+        {
+          "name": "docs",
+          "type": "dir",
+          "children": [
+            {
+              "name": "cpmsapi030_spec.pdf",
+              "type": "file"
+            },
+            {
+              "name": "cpmsapi030_spec.txt",
+              "type": "file"
+            },
+            {
+              "name": "parse-pdf.js",
+              "type": "file"
+            },
+            {
+              "name": "어린이집-OpenAPI서비스명세서_030_v1.6.pdf",
+              "type": "file"
+            }
+          ]
+        },
+        {
+          "name": "eslint.config.mjs",
+          "type": "file"
+        },
+        {
+          "name": "next-env.d.ts",
+          "type": "file"
+        },
+        {
+          "name": "next.config.ts",
+          "type": "file"
+        },
+        {
+          "name": "out",
+          "type": "dir",
+          "children": [
+            {
+              "name": "404",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "index.html",
+                  "type": "file"
+                }
+              ]
+            },
+            {
+              "name": "404.html",
+              "type": "file"
+            },
+            {
+              "name": "compare",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "index.html",
+                  "type": "file"
+                },
+                {
+                  "name": "index.txt",
+                  "type": "file"
+                },
+                {
+                  "name": "__next.compare",
+                  "type": "dir",
+                  "children": []
+                },
+                {
+                  "name": "__next.compare.txt",
+                  "type": "file"
+                },
+                {
+                  "name": "__next._full.txt",
+                  "type": "file"
+                },
+                {
+                  "name": "__next._head.txt",
+                  "type": "file"
+                },
+                {
+                  "name": "__next._index.txt",
+                  "type": "file"
+                },
+                {
+                  "name": "__next._tree.txt",
+                  "type": "file"
+                }
+              ]
+            },
+            {
+              "name": "data",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "11_11110.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11110_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11140.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11140_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11170.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11170_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11200.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11200_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11215.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11215_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11230.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11230_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11260.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11260_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11290.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11290_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11305.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11305_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11320.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11320_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11350.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11350_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11380.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11380_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11410.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11410_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11440.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11440_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11470.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11470_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11500.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11500_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11530.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11530_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11545.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11545_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11560.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11560_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11590.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11590_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11620.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11620_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11650.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11650_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11680.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11680_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11710.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11710_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11740.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11740_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "26_26110.json",
+                  "type": "file"
+                },
+                {
+                  "name": "26_26110_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "26_26140.json",
+                  "type": "file"
+                },
+                {
+                  "name": "26_26140_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "26_26170.json",
+                  "type": "file"
+                },
+                {
+                  "name": "26_26170_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "26_26200.json",
+                  "type": "file"
+                },
+                {
+                  "name": "26_26200_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "26_26230.json",
+                  "type": "file"
+                },
+                {
+                  "name": "26_26230_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "26_26260.json",
+                  "type": "file"
+                },
+                {
+                  "name": "26_26260_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "26_26290.json",
+                  "type": "file"
+                },
+                {
+                  "name": "26_26290_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "26_26320.json",
+                  "type": "file"
+                },
+                {
+                  "name": "26_26320_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "26_26350.json",
+                  "type": "file"
+                },
+                {
+                  "name": "26_26350_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "26_26380.json",
+                  "type": "file"
+                },
+                {
+                  "name": "26_26380_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "26_26410.json",
+                  "type": "file"
+                },
+                {
+                  "name": "26_26410_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "26_26440.json",
+                  "type": "file"
+                },
+                {
+                  "name": "26_26440_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "26_26470.json",
+                  "type": "file"
+                },
+                {
+                  "name": "26_26470_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "26_26500.json",
+                  "type": "file"
+                },
+                {
+                  "name": "26_26500_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "26_26530.json",
+                  "type": "file"
+                },
+                {
+                  "name": "26_26530_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "26_26710.json",
+                  "type": "file"
+                },
+                {
+                  "name": "26_26710_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "27_27110.json",
+                  "type": "file"
+                },
+                {
+                  "name": "27_27110_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "27_27140.json",
+                  "type": "file"
+                },
+                {
+                  "name": "27_27140_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "27_27170.json",
+                  "type": "file"
+                },
+                {
+                  "name": "27_27170_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "27_27200.json",
+                  "type": "file"
+                },
+                {
+                  "name": "27_27200_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "27_27230.json",
+                  "type": "file"
+                },
+                {
+                  "name": "27_27230_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "27_27260.json",
+                  "type": "file"
+                },
+                {
+                  "name": "27_27260_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "27_27290.json",
+                  "type": "file"
+                },
+                {
+                  "name": "27_27290_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "27_27710.json",
+                  "type": "file"
+                },
+                {
+                  "name": "27_27710_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "27_27720.json",
+                  "type": "file"
+                },
+                {
+                  "name": "27_27720_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "28_28110.json",
+                  "type": "file"
+                },
+                {
+                  "name": "28_28110_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "28_28140.json",
+                  "type": "file"
+                },
+                {
+                  "name": "28_28140_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "28_28177.json",
+                  "type": "file"
+                },
+                {
+                  "name": "28_28177_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "28_28185.json",
+                  "type": "file"
+                },
+                {
+                  "name": "28_28185_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "28_28200.json",
+                  "type": "file"
+                },
+                {
+                  "name": "28_28200_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "28_28237.json",
+                  "type": "file"
+                },
+                {
+                  "name": "28_28237_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "28_28245.json",
+                  "type": "file"
+                },
+                {
+                  "name": "28_28245_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "28_28260.json",
+                  "type": "file"
+                },
+                {
+                  "name": "28_28260_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "28_28710.json",
+                  "type": "file"
+                },
+                {
+                  "name": "28_28710_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "28_28720.json",
+                  "type": "file"
+                },
+                {
+                  "name": "28_28720_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "29_29110.json",
+                  "type": "file"
+                },
+                {
+                  "name": "29_29110_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "29_29140.json",
+                  "type": "file"
+                },
+                {
+                  "name": "29_29140_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "29_29155.json",
+                  "type": "file"
+                },
+                {
+                  "name": "29_29155_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "29_29170.json",
+                  "type": "file"
+                },
+                {
+                  "name": "29_29170_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "29_29200.json",
+                  "type": "file"
+                },
+                {
+                  "name": "29_29200_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "30_30110.json",
+                  "type": "file"
+                },
+                {
+                  "name": "30_30110_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "30_30140.json",
+                  "type": "file"
+                },
+                {
+                  "name": "30_30140_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "30_30170.json",
+                  "type": "file"
+                },
+                {
+                  "name": "30_30170_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "30_30200.json",
+                  "type": "file"
+                },
+                {
+                  "name": "30_30200_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "30_30230.json",
+                  "type": "file"
+                },
+                {
+                  "name": "30_30230_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "31_31110.json",
+                  "type": "file"
+                },
+                {
+                  "name": "31_31110_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "31_31140.json",
+                  "type": "file"
+                },
+                {
+                  "name": "31_31140_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "31_31170.json",
+                  "type": "file"
+                },
+                {
+                  "name": "31_31170_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "31_31200.json",
+                  "type": "file"
+                },
+                {
+                  "name": "31_31200_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "31_31710.json",
+                  "type": "file"
+                },
+                {
+                  "name": "31_31710_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "36_36110.json",
+                  "type": "file"
+                },
+                {
+                  "name": "36_36110_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41110.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41110_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41130.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41130_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41150.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41150_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41170.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41170_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41190.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41190_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41210.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41210_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41220.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41220_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41250.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41250_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41270.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41270_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41280.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41280_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41290.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41290_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41310.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41310_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41360.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41360_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41370.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41370_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41390.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41390_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41410.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41410_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41430.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41430_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41450.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41450_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41460.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41460_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41480.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41480_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41500.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41500_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41550.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41550_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41570.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41570_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41590.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41590_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41610.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41610_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41630.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41630_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41650.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41650_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41670.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41670_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41800.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41800_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41820.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41820_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41830.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41830_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "regions.json",
+                  "type": "file"
+                }
+              ]
+            },
+            {
+              "name": "donation-qr.png",
+              "type": "file"
+            },
+            {
+              "name": "favicon.ico",
+              "type": "file"
+            },
+            {
+              "name": "file.svg",
+              "type": "file"
+            },
+            {
+              "name": "globe.svg",
+              "type": "file"
+            },
+            {
+              "name": "index.html",
+              "type": "file"
+            },
+            {
+              "name": "index.txt",
+              "type": "file"
+            },
+            {
+              "name": "list",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "index.html",
+                  "type": "file"
+                },
+                {
+                  "name": "index.txt",
+                  "type": "file"
+                },
+                {
+                  "name": "__next.list",
+                  "type": "dir",
+                  "children": []
+                },
+                {
+                  "name": "__next.list.txt",
+                  "type": "file"
+                },
+                {
+                  "name": "__next._full.txt",
+                  "type": "file"
+                },
+                {
+                  "name": "__next._head.txt",
+                  "type": "file"
+                },
+                {
+                  "name": "__next._index.txt",
+                  "type": "file"
+                },
+                {
+                  "name": "__next._tree.txt",
+                  "type": "file"
+                }
+              ]
+            },
+            {
+              "name": "next.svg",
+              "type": "file"
+            },
+            {
+              "name": "vercel.svg",
+              "type": "file"
+            },
+            {
+              "name": "window.svg",
+              "type": "file"
+            },
+            {
+              "name": "_next",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "iLQxdGvOB0xbwdhl4tYnv",
+                  "type": "dir",
+                  "children": []
+                },
+                {
+                  "name": "static",
+                  "type": "dir",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "name": "_not-found",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "index.html",
+                  "type": "file"
+                },
+                {
+                  "name": "index.txt",
+                  "type": "file"
+                },
+                {
+                  "name": "__next._full.txt",
+                  "type": "file"
+                },
+                {
+                  "name": "__next._head.txt",
+                  "type": "file"
+                },
+                {
+                  "name": "__next._index.txt",
+                  "type": "file"
+                },
+                {
+                  "name": "__next._not-found",
+                  "type": "dir",
+                  "children": []
+                },
+                {
+                  "name": "__next._not-found.txt",
+                  "type": "file"
+                },
+                {
+                  "name": "__next._tree.txt",
+                  "type": "file"
+                }
+              ]
+            },
+            {
+              "name": "__next._full.txt",
+              "type": "file"
+            },
+            {
+              "name": "__next._head.txt",
+              "type": "file"
+            },
+            {
+              "name": "__next._index.txt",
+              "type": "file"
+            },
+            {
+              "name": "__next._tree.txt",
+              "type": "file"
+            },
+            {
+              "name": "__next.__PAGE__.txt",
+              "type": "file"
+            }
+          ]
+        },
+        {
+          "name": "package-lock.json",
+          "type": "file"
+        },
+        {
+          "name": "package.json",
+          "type": "file"
+        },
+        {
+          "name": "postcss.config.mjs",
+          "type": "file"
+        },
+        {
+          "name": "public",
+          "type": "dir",
+          "children": [
+            {
+              "name": "data",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "11_11110.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11110_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11140.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11140_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11170.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11170_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11200.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11200_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11215.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11215_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11230.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11230_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11260.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11260_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11290.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11290_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11305.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11305_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11320.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11320_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11350.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11350_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11380.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11380_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11410.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11410_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11440.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11440_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11470.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11470_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11500.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11500_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11530.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11530_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11545.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11545_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11560.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11560_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11590.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11590_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11620.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11620_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11650.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11650_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11680.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11680_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11710.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11710_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11740.json",
+                  "type": "file"
+                },
+                {
+                  "name": "11_11740_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "26_26110.json",
+                  "type": "file"
+                },
+                {
+                  "name": "26_26110_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "26_26140.json",
+                  "type": "file"
+                },
+                {
+                  "name": "26_26140_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "26_26170.json",
+                  "type": "file"
+                },
+                {
+                  "name": "26_26170_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "26_26200.json",
+                  "type": "file"
+                },
+                {
+                  "name": "26_26200_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "26_26230.json",
+                  "type": "file"
+                },
+                {
+                  "name": "26_26230_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "26_26260.json",
+                  "type": "file"
+                },
+                {
+                  "name": "26_26260_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "26_26290.json",
+                  "type": "file"
+                },
+                {
+                  "name": "26_26290_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "26_26320.json",
+                  "type": "file"
+                },
+                {
+                  "name": "26_26320_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "26_26350.json",
+                  "type": "file"
+                },
+                {
+                  "name": "26_26350_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "26_26380.json",
+                  "type": "file"
+                },
+                {
+                  "name": "26_26380_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "26_26410.json",
+                  "type": "file"
+                },
+                {
+                  "name": "26_26410_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "26_26440.json",
+                  "type": "file"
+                },
+                {
+                  "name": "26_26440_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "26_26470.json",
+                  "type": "file"
+                },
+                {
+                  "name": "26_26470_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "26_26500.json",
+                  "type": "file"
+                },
+                {
+                  "name": "26_26500_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "26_26530.json",
+                  "type": "file"
+                },
+                {
+                  "name": "26_26530_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "26_26710.json",
+                  "type": "file"
+                },
+                {
+                  "name": "26_26710_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "27_27110.json",
+                  "type": "file"
+                },
+                {
+                  "name": "27_27110_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "27_27140.json",
+                  "type": "file"
+                },
+                {
+                  "name": "27_27140_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "27_27170.json",
+                  "type": "file"
+                },
+                {
+                  "name": "27_27170_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "27_27200.json",
+                  "type": "file"
+                },
+                {
+                  "name": "27_27200_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "27_27230.json",
+                  "type": "file"
+                },
+                {
+                  "name": "27_27230_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "27_27260.json",
+                  "type": "file"
+                },
+                {
+                  "name": "27_27260_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "27_27290.json",
+                  "type": "file"
+                },
+                {
+                  "name": "27_27290_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "27_27710.json",
+                  "type": "file"
+                },
+                {
+                  "name": "27_27710_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "27_27720.json",
+                  "type": "file"
+                },
+                {
+                  "name": "27_27720_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "28_28110.json",
+                  "type": "file"
+                },
+                {
+                  "name": "28_28110_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "28_28140.json",
+                  "type": "file"
+                },
+                {
+                  "name": "28_28140_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "28_28177.json",
+                  "type": "file"
+                },
+                {
+                  "name": "28_28177_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "28_28185.json",
+                  "type": "file"
+                },
+                {
+                  "name": "28_28185_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "28_28200.json",
+                  "type": "file"
+                },
+                {
+                  "name": "28_28200_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "28_28237.json",
+                  "type": "file"
+                },
+                {
+                  "name": "28_28237_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "28_28245.json",
+                  "type": "file"
+                },
+                {
+                  "name": "28_28245_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "28_28260.json",
+                  "type": "file"
+                },
+                {
+                  "name": "28_28260_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "28_28710.json",
+                  "type": "file"
+                },
+                {
+                  "name": "28_28710_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "28_28720.json",
+                  "type": "file"
+                },
+                {
+                  "name": "28_28720_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "29_29110.json",
+                  "type": "file"
+                },
+                {
+                  "name": "29_29110_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "29_29140.json",
+                  "type": "file"
+                },
+                {
+                  "name": "29_29140_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "29_29155.json",
+                  "type": "file"
+                },
+                {
+                  "name": "29_29155_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "29_29170.json",
+                  "type": "file"
+                },
+                {
+                  "name": "29_29170_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "29_29200.json",
+                  "type": "file"
+                },
+                {
+                  "name": "29_29200_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "30_30110.json",
+                  "type": "file"
+                },
+                {
+                  "name": "30_30110_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "30_30140.json",
+                  "type": "file"
+                },
+                {
+                  "name": "30_30140_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "30_30170.json",
+                  "type": "file"
+                },
+                {
+                  "name": "30_30170_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "30_30200.json",
+                  "type": "file"
+                },
+                {
+                  "name": "30_30200_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "30_30230.json",
+                  "type": "file"
+                },
+                {
+                  "name": "30_30230_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "31_31110.json",
+                  "type": "file"
+                },
+                {
+                  "name": "31_31110_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "31_31140.json",
+                  "type": "file"
+                },
+                {
+                  "name": "31_31140_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "31_31170.json",
+                  "type": "file"
+                },
+                {
+                  "name": "31_31170_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "31_31200.json",
+                  "type": "file"
+                },
+                {
+                  "name": "31_31200_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "31_31710.json",
+                  "type": "file"
+                },
+                {
+                  "name": "31_31710_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "36_36110.json",
+                  "type": "file"
+                },
+                {
+                  "name": "36_36110_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41110.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41110_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41130.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41130_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41150.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41150_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41170.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41170_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41190.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41190_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41210.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41210_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41220.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41220_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41250.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41250_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41270.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41270_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41280.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41280_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41290.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41290_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41310.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41310_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41360.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41360_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41370.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41370_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41390.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41390_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41410.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41410_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41430.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41430_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41450.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41450_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41460.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41460_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41480.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41480_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41500.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41500_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41550.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41550_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41570.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41570_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41590.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41590_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41610.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41610_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41630.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41630_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41650.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41650_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41670.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41670_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41800.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41800_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41820.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41820_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41830.json",
+                  "type": "file"
+                },
+                {
+                  "name": "41_41830_childcare.json",
+                  "type": "file"
+                },
+                {
+                  "name": "regions.json",
+                  "type": "file"
+                }
+              ]
+            },
+            {
+              "name": "donation-qr.png",
+              "type": "file"
+            },
+            {
+              "name": "file.svg",
+              "type": "file"
+            },
+            {
+              "name": "globe.svg",
+              "type": "file"
+            },
+            {
+              "name": "next.svg",
+              "type": "file"
+            },
+            {
+              "name": "vercel.svg",
+              "type": "file"
+            },
+            {
+              "name": "window.svg",
+              "type": "file"
+            }
+          ]
+        },
+        {
+          "name": "README.md",
+          "type": "file"
+        },
+        {
+          "name": "scripts",
+          "type": "dir",
+          "children": [
+            {
+              "name": "add-age-breakdown.js",
+              "type": "file"
+            },
+            {
+              "name": "augment-data.js",
+              "type": "file"
+            },
+            {
+              "name": "fetch-data.js",
+              "type": "file"
+            },
+            {
+              "name": "test-api.js",
+              "type": "file"
+            }
+          ]
+        },
+        {
+          "name": "src",
+          "type": "dir",
+          "children": [
+            {
+              "name": "app",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "compare",
+                  "type": "dir",
+                  "children": []
+                },
+                {
+                  "name": "favicon.ico",
+                  "type": "file"
+                },
+                {
+                  "name": "globals.css",
+                  "type": "file"
+                },
+                {
+                  "name": "layout.tsx",
+                  "type": "file"
+                },
+                {
+                  "name": "list",
+                  "type": "dir",
+                  "children": []
+                },
+                {
+                  "name": "page.tsx",
+                  "type": "file"
+                },
+                {
+                  "name": "providers.tsx",
+                  "type": "file"
+                }
+              ]
+            },
+            {
+              "name": "components",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "CompareTable.tsx",
+                  "type": "file"
+                },
+                {
+                  "name": "DonationPopup.tsx",
+                  "type": "file"
+                },
+                {
+                  "name": "InstitutionCard.tsx",
+                  "type": "file"
+                },
+                {
+                  "name": "layout",
+                  "type": "dir",
+                  "children": []
+                },
+                {
+                  "name": "SearchForm.tsx",
+                  "type": "file"
+                }
+              ]
+            },
+            {
+              "name": "hooks",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "useInstitutions.ts",
+                  "type": "file"
+                }
+              ]
+            },
+            {
+              "name": "store",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "useCompareStore.ts",
+                  "type": "file"
+                }
+              ]
+            },
+            {
+              "name": "types",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "institution.ts",
+                  "type": "file"
+                }
+              ]
+            },
+            {
+              "name": "utils",
+              "type": "dir",
+              "children": [
+                {
+                  "name": "institutionSanitizer.ts",
+                  "type": "file"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "tsconfig.json",
+          "type": "file"
+        }
+      ]
+    }
+  ],
+  "pm2": [
+    {
+      "name": "kis-bot",
+      "status": "online",
+      "cpu": 0,
+      "memory": "0MB"
+    },
+    {
+      "name": "scheduler",
+      "status": "online",
+      "cpu": 0,
+      "memory": "0MB"
+    },
+    {
+      "name": "antigravity-bot",
+      "status": "online",
+      "cpu": 0,
+      "memory": "0MB"
+    },
+    {
+      "name": "housing-calendar-bot",
+      "status": "online",
+      "cpu": 0,
+      "memory": "0MB"
+    },
+    {
+      "name": "kis-trader",
+      "status": "waiting restart",
+      "cpu": 0,
+      "memory": "0MB"
+    },
+    {
+      "name": "market-checker",
+      "status": "stopped",
+      "cpu": 0,
+      "memory": "0MB"
+    },
+    {
+      "name": "antigravity-monitor",
+      "status": "online",
+      "cpu": 0,
+      "memory": "0MB"
+    }
+  ],
+  "system": {
+    "platform": "win32",
+    "nodeVersion": "v24.14.0"
+  }
+}

@@ -76,11 +76,9 @@ export default function MindmapPage() {
                         return <line key={`line-${idx}`} x1={CENTER} y1={CENTER} x2={x} y2={y} stroke={color} strokeWidth={isInner ? 4 : 2} strokeOpacity={0.5} />;
                     })}
 
-                    <foreignObject x={CENTER - CENTER_SIZE/2} y={CENTER - CENTER_SIZE/2} width={CENTER_SIZE} height={CENTER_SIZE}>
-                        <div style={{ width: '100%', height: '100%', borderRadius: '50%', backgroundColor: '#0f172a', border: '6px solid #334155', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', color: 'white', textAlign: 'center' }}>
-                            <span style={{ fontSize: '28px', fontWeight: 900, lineHeight: 1.1 }}>HOT<br/>이슈</span>
-                        </div>
-                    </foreignObject>
+                    <circle cx={CENTER} cy={CENTER} r={CENTER_SIZE / 2} fill="#0f172a" stroke="#334155" strokeWidth={6} />
+                    <text x={CENTER} y={CENTER - 10} textAnchor="middle" dominantBaseline="middle" fill="white" fontSize={28} fontWeight={900}>HOT</text>
+                    <text x={CENTER} y={CENTER + 22} textAnchor="middle" dominantBaseline="middle" fill="white" fontSize={28} fontWeight={900}>이슈</text>
 
                     {words.map((w, idx) => {
                         const ratio = maxVal === minVal ? 0.5 : (w.value - minVal) / (maxVal - minVal);
@@ -95,15 +93,13 @@ export default function MindmapPage() {
                         const x = CENTER + Math.cos(theta) * distance;
                         const y = CENTER + Math.sin(theta) * distance;
                         const color = colors[w.text.split('').reduce((acc, c) => acc + c.charCodeAt(0), 0) % colors.length];
+                        const r = nodeSize / 2;
                         return (
-                            <foreignObject key={`bubble-${idx}`} x={x - nodeSize/2} y={y - nodeSize/2} width={nodeSize} height={nodeSize} style={{ overflow: 'visible' }}>
-                                <div style={{ width: '100%', height: '100%', borderRadius: '50%', backgroundColor: color, border: '4px solid #0f172a', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', color: 'white', boxShadow: '0 8px 20px rgba(0,0,0,0.4)', transition: 'transform 0.3s cubic-bezier(0.175,0.885,0.32,1.275)', cursor: 'default' }}
-                                    onMouseEnter={e => { e.currentTarget.style.transform = 'scale(1.15)'; }}
-                                    onMouseLeave={e => { e.currentTarget.style.transform = 'scale(1)'; }}>
-                                    <span style={{ fontSize: `${fontSize}px`, fontWeight: 900, textAlign: 'center', lineHeight: 1.1, padding: '0 6px', wordBreak: 'keep-all' }}>{w.text}</span>
-                                    <span style={{ fontSize: '14px', fontWeight: 'bold', color: 'rgba(255,255,255,0.85)', marginTop: '4px' }}>{w.value}회</span>
-                                </div>
-                            </foreignObject>
+                            <g key={`bubble-${idx}`}>
+                                <circle cx={x} cy={y} r={r} fill={color} stroke="#0f172a" strokeWidth={4} />
+                                <text x={x} y={y - 8} textAnchor="middle" dominantBaseline="middle" fill="white" fontSize={fontSize} fontWeight={900}>{w.text}</text>
+                                <text x={x} y={y + fontSize * 0.9} textAnchor="middle" dominantBaseline="middle" fill="rgba(255,255,255,0.85)" fontSize={13} fontWeight={700}>{w.value}회</text>
+                            </g>
                         );
                     })}
                 </svg>

@@ -53,27 +53,50 @@ async function getNaverIPONews() {
   } catch (e) { return []; }
 }
 
-async function getIpoStockDiscussion() {
+async function getHankyungIPONews() {
   try {
-    const res = await fetch('https://www.ipostock.co.kr/view_pg/ipo_schedule01.asp', {
+    const res = await fetch('https://www.hankyung.com/tag/공모주', {
       headers: { 'User-Agent': USER_AGENT },
+      signal: AbortSignal.timeout(10000),
     });
     if (!res.ok) return [];
-    const buf = await res.arrayBuffer();
-    const html = new TextDecoder('euc-kr').decode(buf);
+    const html = await res.text();
     const $ = cheerio.load(html);
     const headlines = [];
-    $('td a').each((_i, el) => {
+    $('h2 a').each((_i, el) => {
       const text = $(el).text().trim();
-      if (text.length >= 2 && text.length <= 30 && /[가-힣]/.test(text)) headlines.push(text);
+      if (text.length >= 4 && text.length <= 50 && /[가-힣]/.test(text)) headlines.push(text);
     });
-    console.log(`[ipo] ipostock.co.kr: ${headlines.length}개`);
+    console.log(`[ipo] 한국경제 공모주: ${headlines.length}개`);
     return headlines;
   } catch (e) {
-    console.warn('[ipo] ipostock.co.kr 실패:', e.message);
+    console.warn('[ipo] 한국경제 실패:', e.message);
     return [];
   }
 }
+
+async function getDaumIPONews() {
+  try {
+    const res = await fetch('https://search.daum.net/search?w=news&q=공모주&DA=PGD&spacing=0', {
+      headers: { 'User-Agent': USER_AGENT },
+      signal: AbortSignal.timeout(10000),
+    });
+    if (!res.ok) return [];
+    const html = await res.text();
+    const $ = cheerio.load(html);
+    const headlines = [];
+    $('strong').each((_i, el) => {
+      const text = $(el).text().trim();
+      if (text.length >= 6 && text.length <= 60 && /공모|청약|상장|IPO/.test(text)) headlines.push(text);
+    });
+    console.log(`[ipo] 다음뉴스 공모주: ${headlines.length}개`);
+    return headlines;
+  } catch (e) {
+    console.warn('[ipo] 다음뉴스 실패:', e.message);
+    return [];
+  }
+}
+
 
 async function getNaverIPOCalendar() {
   try {
@@ -100,14 +123,15 @@ async function getNaverIPOCalendar() {
 async function main() {
   console.log('[collect-ipo-mindmap] 시작...');
 
-  const [disc38, newsNaver, ipoStock, naverCalendar] = await Promise.all([
+  const [disc38, newsNaver, hankyung, daumNews, naverCalendar] = await Promise.all([
     get38IPODiscussion(),
     getNaverIPONews(),
-    getIpoStockDiscussion(),
+    getHankyungIPONews(),
+    getDaumIPONews(),
     getNaverIPOCalendar(),
   ]);
 
-  const allHeadlines = [...disc38, ...newsNaver, ...ipoStock, ...naverCalendar];
+  const allHeadlines = [...disc38, ...newsNaver, ...hankyung, ...daumNews, ...naverCalendar];
   
   // 형태소 분석을 통한 명사 빈도수 추출
   const freqMap = KoreanNLP.getFrequencies(allHeadlines);

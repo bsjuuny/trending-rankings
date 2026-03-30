@@ -189,7 +189,23 @@ async function main() {
 
     fs.writeFileSync('summary.txt', summary, 'utf8');
     console.log('Summary generated and saved to summary.txt');
-    console.log(summary);
+
+    // 텔레그램 발송 (Global Hub)
+    if (process.argv.includes('--send')) {
+        try {
+            const { execSync } = require('child_process');
+            const notifyScript = 'C:/github/antigravity-bot/scripts/notify.mjs';
+            const cmd = `node ${notifyScript} --prefix "🔥 [Trending]" --html --force`;
+            execSync(cmd, {
+                input: summary,
+                encoding: 'utf-8',
+                windowsHide: true
+            });
+            console.log('✅ Telegram summary sent successfully.');
+        } catch (e) {
+            console.error('❌ Failed to send Telegram summary:', e.message);
+        }
+    }
 }
 
 main();
