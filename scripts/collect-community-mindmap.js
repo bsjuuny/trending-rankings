@@ -18,7 +18,7 @@ async function main() {
     const titles = [];
     try {
         console.log('[community] 루리웹 시도...');
-        const res1 = await fetch('https://m.ruliweb.com/best', { headers: { 'User-Agent': USER_AGENT } });
+        const res1 = await fetch('https://m.ruliweb.com/best', { headers: { 'User-Agent': USER_AGENT }, signal: AbortSignal.timeout(10000) });
         const html1 = await res1.text();
         const $1 = cheerio.load(html1);
         $1('.subject').each((i, el) => titles.push($1(el).text().trim()));
@@ -27,7 +27,7 @@ async function main() {
 
     try {
         console.log('[community] 도그드립 시도...');
-        const res2 = await fetch('https://www.dogdrip.net', { headers: { 'User-Agent': USER_AGENT } });
+        const res2 = await fetch('https://www.dogdrip.net', { headers: { 'User-Agent': USER_AGENT }, signal: AbortSignal.timeout(10000) });
         const html2 = await res2.text();
         const $2 = cheerio.load(html2);
         let count = 0;
@@ -44,7 +44,7 @@ async function main() {
     try {
         console.log('[community] 에펨코리아 시도...');
         // FMKorea는 강력한 항성계(Turnstile) 차단 중... 
-        const res3 = await fetch('https://www.fmkorea.com/best', { headers: { 'User-Agent': USER_AGENT } });
+        const res3 = await fetch('https://www.fmkorea.com/best', { headers: { 'User-Agent': USER_AGENT }, signal: AbortSignal.timeout(10000) });
         console.log(`[community] 에펨코리아 Status: ${res3.status}`);
 
         const html3 = await res3.text();
@@ -62,7 +62,7 @@ async function main() {
 
     try {
         console.log('[community] 클리앙 시도...');
-        const res4 = await fetch('https://www.clien.net/service/board/park', { headers: { 'User-Agent': USER_AGENT } });
+        const res4 = await fetch('https://www.clien.net/service/board/park', { headers: { 'User-Agent': USER_AGENT }, signal: AbortSignal.timeout(10000) });
         const html4 = await res4.text();
         const $4 = cheerio.load(html4);
         let count = 0;
@@ -79,7 +79,7 @@ async function main() {
     try {
         console.log('[community] 오늘의유머 시도...');
         // URL 수정: listtop.php -> list.php?table=bestofbest
-        const res5 = await fetch('https://www.todayhumor.co.kr/board/list.php?table=bestofbest', { headers: { 'User-Agent': USER_AGENT } });
+        const res5 = await fetch('https://www.todayhumor.co.kr/board/list.php?table=bestofbest', { headers: { 'User-Agent': USER_AGENT }, signal: AbortSignal.timeout(10000) });
         const html5 = await res5.text();
         const $5 = cheerio.load(html5);
         let count = 0;
