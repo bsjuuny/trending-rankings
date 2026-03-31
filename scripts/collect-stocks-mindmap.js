@@ -10,7 +10,6 @@ const path = require('path');
 const KoreanNLP = require('./utils/korean-nlp');
 
 const USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36';
-const puppeteer = require('puppeteer');
 
 // 제외할 일반 단어 (주식과 무관한 불용어 또는 ETF 관련 검색어)
 const STOPWORDS = new Set([
@@ -100,35 +99,6 @@ async function getNaverStockRanking() {
   }
 }
 
-async function getDaumFinanceNews() {
-  console.log('[stocks] 다음 증권 뉴스 시도 (Puppeteer)...');
-  const browser = await puppeteer.launch({
-      headless: true,
-      args: ['--no-sandbox', '--disable-setuid-sandbox']
-  });
-  try {
-    const page = await browser.newPage();
-    await page.setUserAgent(USER_AGENT);
-    await page.goto('https://finance.daum.net/news', { waitUntil: 'networkidle2', timeout: 30000 });
-
-    const html = await page.content();
-    const $ = cheerio.load(html);
-    const headlines = [];
-    $('a.link_txt, .tit_news a, .item_issue a, .list_news li a').each((_i, el) => {
-      const text = $(el).text().trim();
-      if (text.length >= 5 && text.length <= 80 && /[가-힣]/.test(text)) headlines.push(text);
-    });
-    const freqMap = KoreanNLP.getFrequencies(headlines);
-    console.log(`[stocks] 다음 증권 뉴스: ${Object.keys(freqMap).length}개`);
-    return Object.keys(freqMap);
-  } catch (e) {
-    console.warn(`[stocks] 다음 증권 뉴스 실패: ${e.message}`);
-    return [];
-  } finally {
-    await browser.close();
-  }
-}
-
 async function getHankyungFinanceNews() {
   try {
     // URL 수정: economy 섹션으로 변경 (기존 /finance는 404)
@@ -152,59 +122,21 @@ async function getHankyungFinanceNews() {
   }
 }
 
-async function getMoneyTodayNews() {
-  console.log('[stocks] 머니투데이 뉴스 시도 (Puppeteer)...');
-  const browser = await puppeteer.launch({
-      headless: true,
-      args: ['--no-sandbox', '--disable-setuid-sandbox']
-  });
-  try {
-    const page = await browser.newPage();
-    await page.setUserAgent(USER_AGENT);
-    await page.goto('https://www.mt.co.kr/stock/stocknews', { waitUntil: 'networkidle2', timeout: 30000 });
-
-    const html = await page.content();
-    const $ = cheerio.load(html);
-    const headlines = [];
-
-    // 폭넓은 셀렉터로 헤드라인 수집
-    $('.tit a, .subject a, .news_list a, h1 a, h2 a, h3 a, .list_news a').each((_i, el) => {
-      const text = $(el).text().trim();
-      if (text.length >= 5 && text.length <= 80 && /[가-힣]/.test(text)) {
-        headlines.push(text);
-      }
-    });
-
-    const freqMap = KoreanNLP.getFrequencies(headlines);
-    console.log(`[stocks] 머니투데이 뉴스: ${Object.keys(freqMap).length}개`);
-    return Object.keys(freqMap);
-  } catch (e) {
-    console.warn(`[stocks] 머니투데이 뉴스 실패: ${e.message}`);
-    return [];
-  } finally {
-    await browser.close();
-  }
-}
-
 async function main() {
   console.log('[collect-stocks-mindmap] 시작...');
 
-  const [searchRanking, newsKeywords, volumeRanking, daumNews, hankyungNews, mtNews] = await Promise.all([
+  const [searchRanking, newsKeywords, volumeRanking, hankyungNews] = await Promise.all([
     getNaverStockSearchRanking(),
     getNaverFinanceNews(),
     getNaverStockRanking(),
-    getDaumFinanceNews(),
     getHankyungFinanceNews(),
-    getMoneyTodayNews(),
   ]);
 
   const freq = {};
   volumeRanking.forEach(k => { freq[k] = (freq[k] || 0) + 3; });
   searchRanking.forEach(k => { freq[k] = (freq[k] || 0) + 2; });
   newsKeywords.forEach(k => { freq[k] = (freq[k] || 0) + 1; });
-  daumNews.forEach(k => { freq[k] = (freq[k] || 0) + 1; });
   hankyungNews.forEach(k => { freq[k] = (freq[k] || 0) + 1; });
-  mtNews.forEach(k => { freq[k] = (freq[k] || 0) + 1; });
 
   const sorted = Object.entries(freq)
     .filter(([text, v]) => {

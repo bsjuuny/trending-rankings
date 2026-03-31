@@ -1,6 +1,6 @@
 /**
  * collect-community-mindmap.js
- * 루리웹/도그드립/에펨코리아/클리앙/오늘의유머 커뮤니티 게시글 제목에서 키워드 추출
+ * 루리웹/도그드립/클리앙/오늘의유머 커뮤니티 게시글 제목에서 키워드 추출
  * → public/data/mindmap.json 저장
  * (기존 generate-summary.js의 getCommunityKeywords 로직 분리)
  */
@@ -40,25 +40,6 @@ async function main() {
         });
         console.log(`[community] 도그드립 완료 (+${count}개)`);
     } catch (e) { console.warn('[community] 도그드립 실패:', e.message); }
-
-    try {
-        console.log('[community] 에펨코리아 시도...');
-        // FMKorea는 강력한 항성계(Turnstile) 차단 중... 
-        const res3 = await fetch('https://www.fmkorea.com/best', { headers: { 'User-Agent': USER_AGENT }, signal: AbortSignal.timeout(10000) });
-        console.log(`[community] 에펨코리아 Status: ${res3.status}`);
-
-        const html3 = await res3.text();
-        const $3 = cheerio.load(html3);
-        let count = 0;
-        $3('.title a').each((_i, el) => {
-            const text = $3(el).text().trim();
-            if (text.length >= 5 && text.length <= 80 && /[가-힣]/.test(text)) {
-                titles.push(text);
-                count++;
-            }
-        });
-        console.log(`[community] 에펨코리아 완료 (+${count}개)`);
-    } catch (e) { console.warn('[community] 에펨코리아 실패:', e.message); }
 
     try {
         console.log('[community] 클리앙 시도...');
