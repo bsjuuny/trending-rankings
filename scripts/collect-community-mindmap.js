@@ -1,6 +1,6 @@
 /**
  * collect-community-mindmap.js
- * 루리웹/도그드립/클리앙/오늘의유머 커뮤니티 게시글 제목에서 키워드 추출
+ * 루리웹/도그드립/클리앙/오늘의유머/더쿠 커뮤니티 게시글 제목에서 키워드 추출
  * → public/data/mindmap.json 저장
  * (기존 generate-summary.js의 getCommunityKeywords 로직 분리)
  */
@@ -73,6 +73,22 @@ async function main() {
         });
         console.log(`[community] 오늘의유머 완료 (+${count}개)`);
     } catch (e) { console.warn('[community] 오늘의유머 실패:', e.message); }
+
+    try {
+        console.log('[community] 더쿠 시도...');
+        const res6 = await fetch('https://theqoo.net/hot', { headers: { 'User-Agent': USER_AGENT }, signal: AbortSignal.timeout(10000) });
+        const html6 = await res6.text();
+        const $6 = cheerio.load(html6);
+        let count = 0;
+        $6('tbody tr td.title a').each((_i, el) => {
+            const text = $6(el).text().trim().replace(/\s+/g, ' ');
+            if (text.length >= 5 && text.length <= 60 && /[가-힣]/.test(text)) {
+                titles.push(text);
+                count++;
+            }
+        });
+        console.log(`[community] 더쿠 완료 (+${count}개)`);
+    } catch (e) { console.warn('[community] 더쿠 실패:', e.message); }
 
     // 고급 형태소 분석기를 통한 명사 빈도수 추출
     const wordCounts = KoreanNLP.getFrequencies(titles);
