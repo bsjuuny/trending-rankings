@@ -11,7 +11,6 @@ const KoreanNLP = require('./utils/korean-nlp');
 
 const USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36';
 
-// 제외할 일반 단어 (주식과 무관한 불용어 또는 ETF 관련 검색어)
 const STOPWORDS = new Set([
   '관련', '이후', '주가', '시장', '투자', '매수', '매도', '상승', '하락',
   '전망', '분석', '결과', '발표', '예상', '오늘', '내일', '최근', '국내',
@@ -31,7 +30,6 @@ async function getNaverStockSearchRanking() {
     const $ = cheerio.load(html);
 
     const keywords = [];
-    // 인기검색어 영역 (.aside_popular 클래스 내의 종목명)
     $('.aside_popular .tbl_home tr th a, .search_rank_list li a, .rnk_list li a').each((i, el) => {
       const text = $(el).text().trim().replace(/\d+\s*/, '');
       if (text && text.length >= 2 && text.length <= 10 && !STOPWORDS.has(text)) {
@@ -64,13 +62,9 @@ async function getNaverFinanceNews() {
 
     const freqMap = KoreanNLP.getFrequencies(headlines);
     const keywords = Object.keys(freqMap);
-
     console.log(`[stocks] 네이버 뉴스 키워드: ${keywords.length}개`);
     return keywords;
-  } catch (e) {
-    console.warn(`[stocks] 네이버 뉴스 실패: ${e.message}`);
-    return [];
-  }
+  } catch (e) { return []; }
 }
 
 async function getNaverStockRanking() {
@@ -90,18 +84,13 @@ async function getNaverStockRanking() {
         keywords.push(text);
       }
     });
-
     console.log(`[stocks] 거래량 상위: ${keywords.length}개`);
     return keywords;
-  } catch (e) {
-    console.warn(`[stocks] 거래량 상위 실패: ${e.message}`);
-    return [];
-  }
+  } catch (e) { return []; }
 }
 
 async function getHankyungFinanceNews() {
   try {
-    // URL 수정: economy 섹션으로 변경 (기존 /finance는 404)
     const res = await fetch('https://www.hankyung.com/economy', {
       headers: { 'User-Agent': USER_AGENT },
     });
@@ -116,15 +105,11 @@ async function getHankyungFinanceNews() {
     const freqMap = KoreanNLP.getFrequencies(headlines);
     console.log(`[stocks] 한국경제 뉴스: ${Object.keys(freqMap).length}개`);
     return Object.keys(freqMap);
-  } catch (e) {
-    console.warn(`[stocks] 한국경제 뉴스 실패: ${e.message}`);
-    return [];
-  }
+  } catch (e) { return []; }
 }
 
 async function main() {
   console.log('[collect-stocks-mindmap] 시작...');
-
   const [searchRanking, newsKeywords, volumeRanking, hankyungNews] = await Promise.all([
     getNaverStockSearchRanking(),
     getNaverFinanceNews(),
@@ -140,7 +125,7 @@ async function main() {
 
   const sorted = Object.entries(freq)
     .filter(([text, v]) => {
-      if (v < 3) return false;
+      if (v < 2) return false;
       const etfKeywords = ['KODEX', 'TIGER', '인버스', '레버리지', '선물', 'ETN', 'ETF', '2X', 'ACE', 'KOSEF'];
       if (etfKeywords.some(k => text.includes(k))) return false;
       return true;
@@ -152,7 +137,6 @@ async function main() {
   const outDir = path.join(__dirname, '..', 'public', 'data');
   if (!fs.existsSync(outDir)) fs.mkdirSync(outDir, { recursive: true });
   fs.writeFileSync(path.join(outDir, 'mindmap_stocks.json'), JSON.stringify(sorted, null, 2), 'utf8');
-
   console.log(`[collect-stocks-mindmap] 완료: ${sorted.length}개 키워드 저장`);
 }
 

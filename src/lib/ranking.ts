@@ -1,6 +1,8 @@
 import * as cheerio from 'cheerio';
 import puppeteer from 'puppeteer';
 import { unstable_cache } from 'next/cache';
+import fs from 'fs';
+import path from 'path';
 export interface RankingItem {
     rank: number;
     keyword: string;
@@ -218,15 +220,71 @@ export async function getDaumRankings(): Promise<RankingSource> {
     return fetchDaumRankings();
 }
 
-export async function getAllRankings(): Promise<RankingSource[]> {
+export async function getGlobalBuzz(): Promise<RankingSource[]> {
+    try {
+        const filePath = path.join(process.cwd(), 'public', 'data', 'global-buzz.json');
+        if (!fs.existsSync(filePath)) return [];
+        
+        const data = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+        const sources: RankingSource[] = [];
+
+        // 1. BBC World News
+        if (data.bbc && data.bbc.length > 0) {
+            sources.push({
+                title: 'BBC World News',
+                items: data.bbc.slice(0, 10).map((item: any, idx: number) => ({
+                    rank: idx + 1,
+                    keyword: item.text,
+                    link: `https://www.bbc.com/search?q=${encodeURIComponent(item.text)}`,
+                }))
+            });
+        }
+
+        // 2. Reddit
+        if (data.reddit && data.reddit.length > 0) {
+            sources.push({
+                title: 'Reddit Hot (r/all)',
+                items: data.reddit.slice(0, 10).map((item: any, idx: number) => ({
+                    rank: idx + 1,
+                    keyword: item.text,
+                    link: `https://www.reddit.com/search?q=${encodeURIComponent(item.text)}`,
+                }))
+            });
+        }
+
+        // 3. Hacker News
+        if (data.hn && data.hn.length > 0) {
+            sources.push({
+                title: 'Hacker News Top',
+                items: data.hn.slice(0, 10).map((item: any, idx: number) => ({
+                    rank: idx + 1,
+                    keyword: item.text,
+                    link: `https://www.google.com/search?q=${encodeURIComponent(item.text)}`,
+                }))
+            });
+        }
+
+        return sources;
+    } catch (error) {
+        console.error('Error reading global buzz:', error);
+        return [];
+    }
+}
+
+export async function getAllRankings(): Promise<{ domestic: RankingSource[], overseas: RankingSource[] }> {
     const revalidate = getRevalidateSeconds();
-    const [nate, google, signal, x, youtube, daum] = await Promise.all([
+    const [nate, googleKR, signal, x, youtube, daum, globalBuzzSources] = await Promise.all([
         getNateRankings(revalidate),
         getGoogleTrends(revalidate),
         getSignalRankings(revalidate),
         getXRankings(revalidate),
         getYoutubeRankings(revalidate),
         getDaumRankings(),
+        getGlobalBuzz(),
     ]);
-    return [nate, google, signal, x, youtube, daum];
+
+    return {
+        domestic: [nate, googleKR, signal, x, youtube, daum],
+        overseas: globalBuzzSources
+    };
 }

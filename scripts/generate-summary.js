@@ -141,11 +141,25 @@ async function getCommunityKeywords(fs) {
         fs.writeFileSync('public/data/mindmap.json', JSON.stringify(sortedWords.slice(0, 50).map(w => ({text: w[0], value: w[1]})), null, 2), 'utf8');
     }
 
-    const keywords = sortedWords.slice(0, 10);
+    const keywords = sortedWords.slice(0, 20);
     if (keywords.length > 0) {
         return keywords.map((w, i) => `${i + 1}. ${w[0]} (${w[1]}회)`).join('\n');
     }
     return '데이터를 가져올 수 없습니다.';
+}
+
+async function getJSONMindmap(fs, filename, title) {
+    try {
+        const filePath = `public/data/${filename}`;
+        if (!fs.existsSync(filePath)) return '데이터가 아직 준비되지 않았습니다.';
+        const data = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+        const items = Array.isArray(data) ? data : (data.items || []);
+        const keywords = items.slice(0, 20); // 상위 20개
+        if (keywords.length > 0) {
+            return keywords.map((w, i) => `${i + 1}. ${w.text} (${w.value}회)`).join('\n');
+        }
+        return '수집된 키워드가 없습니다.';
+    } catch (e) { return '데이터를 가져올 수 없습니다.'; }
 }
 
 async function main() {
@@ -157,10 +171,13 @@ async function main() {
         getXRankings(),
         getYoutubeRankings(),
         getDaumRankings(),
-        getCommunityKeywords(fs)
+        getCommunityKeywords(fs) // 20개 가져오도록 내부 수정 필요
     ]);
 
-    // Simple escape for HTML
+    // 주식 및 공모주 마인드맵 추가 로드
+    const stocksBuzz = await getJSONMindmap(fs, 'mindmap_stocks.json', '주식 트렌드');
+    const ipoBuzz = await getJSONMindmap(fs, 'mindmap_ipo.json', '공모주 트렌드');
+
     const escapeHTML = (str) => str.replace(/[&<>"']/g, m => ({
         '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
     })[m]);
@@ -171,14 +188,13 @@ async function main() {
         return `<b>${icon} ${title}</b>\n${escapeHTML(formattedData)}`;
     };
 
-    const summary = [
-        formatSection('종합 커뮤니티 트렌드', '🔥', comm),
-        '',
+    // 1. 메인 리포트 (포털 실시간 순위 중심)
+    const mainSummary = [
         formatSection('Nate 이슈', '🏙', nate),
         '',
         formatSection('Google Trends', '🔍', google),
         '',
-        formatSection('Daum 트렌드 (Beta)', '🟡', daum),
+        formatSection('Daum 트렌드', '🟡', daum),
         '',
         formatSection('Signal.bz', '🚥', signal),
         '',
@@ -187,21 +203,35 @@ async function main() {
         formatSection('YouTube 인기 급상승', '🎬', youtube),
     ].join('\n');
 
-    fs.writeFileSync('summary.txt', summary, 'utf8');
-    console.log('Summary generated and saved to summary.txt');
+    // 2. 통합 트렌드 리포트 (커뮤니티 + 주식 + 공모주)
+    const buzzSummary = [
+        formatSection('종합 커뮤니티 트렌드', '🔥', comm),
+        '',
+        formatSection('주식 트렌드 마인드맵', '📈', stocksBuzz),
+        '',
+        formatSection('공모주 트렌드 마인드맵', '💎', ipoBuzz),
+    ].join('\n');
 
-    // 텔레그램 발송 (Global Hub)
+    fs.writeFileSync('summary.txt', mainSummary, 'utf8');
+    fs.writeFileSync('buzz_summary.txt', buzzSummary, 'utf8');
+    console.log('Summaries generated successfully.');
+
     if (process.argv.includes('--send')) {
         try {
             const { execSync } = require('child_process');
             const notifyScript = 'C:/github/antigravity-bot/scripts/notify.mjs';
-            const cmd = `node ${notifyScript} --prefix "🔥 [Trending]" --html --force`;
-            execSync(cmd, {
-                input: summary,
-                encoding: 'utf-8',
-                windowsHide: true
+            
+            // 메인 리포트 발송
+            execSync(`node ${notifyScript} --prefix "📑 [Main Rankings]" --html --force`, {
+                input: mainSummary, encoding: 'utf-8', windowsHide: true
             });
-            console.log('✅ Telegram summary sent successfully.');
+
+            // 통합 트렌드 리포트 발송
+            execSync(`node ${notifyScript} --prefix "🧠 [Intelligence Buzz]" --html --force`, {
+                input: buzzSummary, encoding: 'utf-8', windowsHide: true
+            });
+            
+            console.log('✅ All Telegram summaries sent successfully.');
         } catch (e) {
             console.error('❌ Failed to send Telegram summary:', e.message);
         }

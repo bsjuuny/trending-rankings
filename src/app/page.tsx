@@ -24,7 +24,7 @@ export default async function Home() {
         <span className="text-[10px] px-2 py-0.5 rounded-full bg-white/5 border border-white/10 text-slate-400">Snapshot</span>
       </p>
 
-      <RealTimeRanking initialSources={sources} />
+      <RealTimeRanking initialData={sources} />
       <div className="mt-16 flex justify-center w-full" style={{ animation: 'fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards', opacity: 0, animationDelay: '0.5s' }}>
         <DonationPopup />
       </div>
