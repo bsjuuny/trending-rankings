@@ -1,6 +1,29 @@
 const cheerio = require('cheerio');
-const puppeteer = require('puppeteer'); 
+const puppeteer = require('puppeteer');
 const KoreanNLP = require('./utils/korean-nlp');
+const fs = require('fs');
+const path = require('path');
+
+// .env 및 .env.local 수동 로드 로직 (node 직접 실행 대응)
+const loadEnv = () => {
+    ['.env', '.env.local'].forEach(file => {
+        const envPath = path.resolve(process.cwd(), file);
+        if (fs.existsSync(envPath)) {
+            const content = fs.readFileSync(envPath, 'utf8');
+            content.split('\n').forEach(line => {
+                const parts = line.split('=');
+                if (parts.length >= 2) {
+                    const key = parts[0].trim();
+                    const value = parts.slice(1).join('=').trim().replace(/^["']|["']$/g, '');
+                    if (key && value) {
+                        process.env[key] = value; // 덮어씌우기 허용
+                    }
+                }
+            });
+        }
+    });
+};
+loadEnv();
 
 const USER_AGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36';
 
@@ -138,7 +161,7 @@ async function getCommunityKeywords(fs) {
 
     if (fs) {
         if (!fs.existsSync('public/data')) fs.mkdirSync('public/data', { recursive: true });
-        fs.writeFileSync('public/data/mindmap.json', JSON.stringify(sortedWords.slice(0, 50).map(w => ({text: w[0], value: w[1]})), null, 2), 'utf8');
+        fs.writeFileSync('public/data/mindmap.json', JSON.stringify(sortedWords.slice(0, 50).map(w => ({ text: w[0], value: w[1] })), null, 2), 'utf8');
     }
 
     const keywords = sortedWords.slice(0, 20);
@@ -203,35 +226,43 @@ async function main() {
         formatSection('YouTube 인기 급상승', '🎬', youtube),
     ].join('\n');
 
-    // 2. 통합 트렌드 리포트 (커뮤니티 + 주식 + 공모주)
+    // 2. 통합 인텔리전스 버즈 리포트 (커뮤니티 + 마인드맵)
     const buzzSummary = [
-        formatSection('종합 커뮤니티 트렌드', '🔥', comm),
+        formatSection('종합 커뮤니티 트렌드 (TOP 20)', '🔥', comm),
         '',
-        formatSection('주식 트렌드 마인드맵', '📈', stocksBuzz),
+        formatSection('주식 트렌드 마인드맵 (TOP 20)', '📈', stocksBuzz),
         '',
-        formatSection('공모주 트렌드 마인드맵', '💎', ipoBuzz),
+        formatSection('공모주 트렌드 마인드맵 (TOP 20)', '💎', ipoBuzz),
     ].join('\n');
 
-    fs.writeFileSync('summary.txt', mainSummary, 'utf8');
-    fs.writeFileSync('buzz_summary.txt', buzzSummary, 'utf8');
-    console.log('Summaries generated successfully.');
+    fs.writeFileSync('summary_main.txt', mainSummary, 'utf8');
+    fs.writeFileSync('summary_buzz.txt', buzzSummary, 'utf8');
+    console.log('Dual-bot summaries generated successfully.');
 
     if (process.argv.includes('--send')) {
         try {
             const { execSync } = require('child_process');
             const notifyScript = 'C:/github/antigravity-bot/scripts/notify.mjs';
-            
-            // 메인 리포트 발송
-            execSync(`node ${notifyScript} --prefix "📑 [Main Rankings]" --html --force`, {
-                input: mainSummary, encoding: 'utf-8', windowsHide: true
+            const gap = '\u200B\n\n';
+
+            // 1. 메인 리포트 발송 (기존 봇)
+            const mainToken = process.env.TELEGRAM_BOT_TOKEN;
+            console.log(`Sending Main Report... (Token: ${mainToken ? mainToken.substring(0,6) : 'N/A'}...)`);
+            execSync(`node ${notifyScript} --prefix "📑 [Main Rankings]" --html --force --token "${mainToken}"`, {
+                input: gap + mainSummary, encoding: 'utf-8', windowsHide: true
             });
 
-            // 통합 트렌드 리포트 발송
-            execSync(`node ${notifyScript} --prefix "🧠 [Intelligence Buzz]" --html --force`, {
-                input: buzzSummary, encoding: 'utf-8', windowsHide: true
+            // 2. 인텔리전스 버즈 발송 (새로운 전용 봇)
+            const buzzToken = process.env.TELEGRAM_BOT_TOKEN_BUZZ || mainToken;
+            console.log(`Sending Intelligence Buzz Report via dedicated bot... (Token: ${buzzToken ? buzzToken.substring(0,6) : 'N/A'}...)`);
+            
+            execSync(`node ${notifyScript} --prefix "🧠 [Intelligence Buzz]" --html --force --token "${buzzToken}"`, {
+                input: gap + buzzSummary, 
+                encoding: 'utf-8', 
+                windowsHide: true
             });
             
-            console.log('✅ All Telegram summaries sent successfully.');
+            console.log('✅ All specialized Telegram reports sent successfully.');
         } catch (e) {
             console.error('❌ Failed to send Telegram summary:', e.message);
         }
