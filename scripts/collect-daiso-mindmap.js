@@ -16,7 +16,7 @@ async function main() {
     const titles = [];
 
     // 클리앙 다이소 검색결과 (여러 페이지)
-    for (let i = 0; i <= 2; i++) {
+    for (let i = 0; i <= 5; i++) {
         try {
             const page = i;
             const res = await fetch(`https://www.clien.net/service/search?q=${encodeURIComponent('다이소')}&p=${page}`, { 
@@ -27,12 +27,31 @@ async function main() {
             const $ = cheerio.load(html);
             $('.list_title .subject_fixed').each((_i, el) => {
                 const text = $(el).text().trim();
-                // '다이소', '추천', '추천템' 등 너무 뻔한 단어 제외 (KoreanNLP에서 걸러질 수도 있지만 명시적으로 필터 목적)
                 const filterText = text.replace(/다이소|추천템|추천/g, ' ');
                 if (filterText.length >= 2) titles.push(filterText);
             });
         } catch (e) {
-            console.warn(`[daiso] 검색 추출 실패: ${e.message}`);
+            console.warn(`[daiso-clien] 검색 추출 실패: ${e.message}`);
+        }
+    }
+
+    // 루리웹 다이소 검색결과 (여러 페이지)
+    for (let i = 1; i <= 5; i++) {
+        try {
+            const page = i;
+            const res = await fetch(`https://bbs.ruliweb.com/search?q=${encodeURIComponent('다이소')}&page=${page}`, { 
+                headers: { 'User-Agent': USER_AGENT },
+                signal: AbortSignal.timeout(10000)
+            });
+            const html = await res.text();
+            const $ = cheerio.load(html);
+            $('.subject a').each((_i, el) => {
+                const text = $(el).text().trim();
+                const filterText = text.replace(/다이소|추천템|추천/g, ' ');
+                if (filterText.length >= 2) titles.push(filterText);
+            });
+        } catch (e) {
+            console.warn(`[daiso-ruliweb] 검색 추출 실패: ${e.message}`);
         }
     }
 

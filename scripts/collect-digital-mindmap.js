@@ -16,7 +16,7 @@ async function main() {
     const titles = [];
 
     // 퀘이사존 핫딜 (여러 페이지)
-    for (let page = 1; page <= 3; page++) {
+    for (let page = 1; page <= 8; page++) {
         try {
             const res = await fetch(`https://quasarzone.com/bbs/qb_saleinfo?page=${page}`, { 
                 headers: { 'User-Agent': USER_AGENT },
