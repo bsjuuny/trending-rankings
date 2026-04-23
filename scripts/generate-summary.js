@@ -240,6 +240,20 @@ async function main() {
     console.log('Dual-bot summaries generated successfully.');
 
     if (process.argv.includes('--send')) {
+        // 새벽 (01시~05시) 및 일요일 알림 건너뜀
+        const nowKST = new Date(Date.now() + (new Date().getTimezoneOffset() + 540) * 60000);
+        const hour = nowKST.getHours();
+        const day = nowKST.getDay(); // 0: 일요일
+
+        if (day === 0) {
+            console.log('[scheduler] 일요일은 텔레그램 알림을 발송하지 않습니다.');
+            return;
+        }
+        if (hour >= 1 && hour < 5) {
+            console.log(`[scheduler] 새벽 시간대(${hour}시) 알림 발송 건너뜀 (01:00~05:00)`);
+            return;
+        }
+
         try {
             const { execSync } = require('child_process');
             const notifyScript = 'C:/github/antigravity-bot/scripts/notify.mjs';

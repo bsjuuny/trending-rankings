@@ -12,7 +12,9 @@
     "collect:stocks": "node scripts/collect-stocks-mindmap.js",
     "collect:ipo": "node scripts/collect-ipo-mindmap.js",
     "collect:global": "node scripts/collect-global-buzz.js",
-    "collect:all": "npm run collect:community && npm run collect:stocks && npm run collect:ipo && npm run collect:global",
+    "collect:daiso": "node scripts/collect-daiso-mindmap.js",
+    "collect:digital": "node scripts/collect-digital-mindmap.js",
+    "collect:all": "npm run collect:community && npm run collect:stocks && npm run collect:ipo && npm run collect:global && npm run collect:daiso && npm run collect:digital",
     "start": "next start",
     "lint": "eslint"
   },

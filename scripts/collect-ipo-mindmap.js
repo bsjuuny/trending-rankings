@@ -1,3 +1,4 @@
+
 const cheerio = require('cheerio');
 const fs = require('fs');
 const path = require('path');
@@ -10,7 +11,7 @@ async function get38IPODiscussion() {
     'http://www.38.co.kr/html/fund/index.htm?o=k',
     'http://www.38.co.kr/html/board/board.htm?code=ipo',
   ];
-  
+
   const headlines = [];
   for (const url of sources) {
     try {
@@ -129,8 +130,13 @@ async function main() {
 
   const allHeadlines = [...disc38, ...newsNaver, ...hankyung, ...daumNews, ...naverCalendar];
   const freqMap = KoreanNLP.getFrequencies(allHeadlines);
-  const STOPWORDS = new Set(['오늘', '내일', '진행', '확인', '정보', '관련', '내역', '결과', '발표', '안내', '방법', '이후', '검색', '순위', '전망', '분석', '기대', '급등', '하락', '예상', '최근', '추가', '신규', '모습', '상승', '하락']);
-  
+  const STOPWORDS = new Set([
+    '오늘', '내일', '진행', '확인', '정보', '관련', '내역', '결과', '발표', '안내',
+    '방법', '이후', '검색', '순위', '전망', '분석', '기대', '급등', '하락', '예상',
+    '최근', '추가', '신규', '모습', '상승', '하락', '일정', '청약', '공모', '상장',
+    'IPO', '열풍', '종목', '분석', '기준', '첫날', '돌파', '마감', '시작'
+  ]);
+
   const sorted = Object.entries(freqMap)
     .filter(([text, v]) => {
       if (text.length < 2) return false;
