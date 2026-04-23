@@ -60,8 +60,23 @@ async function main() {
     }
 
     const wordCounts = KoreanNLP.getFrequencies(titles);
+    
+    const excludeWords = [
+        '대통령', '광주', '서울', '동네', '계신', '도보여행기', '갔다', '새로운', '하게된', '이야기', 
+        '최종', '제품', '사용', '괜찮', '반월', '있을까요', '질문', '추천', '다이소', '추천템', '구매', '가격', '얼마', 
+        '어디서', '파나요', '있나요', '가성비', '이거', '저거', '써보신분', '어떤가요', '비교', '품절', '재고'
+    ];
+
     const sorted = Object.entries(wordCounts)
-        .filter(([, v]) => v >= 2)
+        .filter(([k, v]) => {
+            if (v < 2) return false;
+            // 제외 단어 완전 일치 및 포함 (부분 일치) 필터링
+            if (excludeWords.includes(k) || excludeWords.some(ew => k.includes(ew))) return false;
+            // 5천원짜리 등 숫자+문자 조합 제거
+            if (/^\d+[a-zA-Z가-힣]+$/.test(k)) return false;
+            if (/^\d+$/.test(k)) return false;
+            return true;
+        })
         .sort((a, b) => b[1] - a[1])
         .slice(0, 50)
         .map(([text, value]) => ({ text, value }));

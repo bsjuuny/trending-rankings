@@ -1,33 +1,5 @@
 [
   {
-    "text": "네이버페",
-    "value": 11
-  },
-  {
-    "text": "적립",
-    "value": 11
-  },
-  {
-    "text": "네이버페 적립",
-    "value": 11
-  },
-  {
-    "text": "쇼핑라이브",
-    "value": 9
-  },
-  {
-    "text": "12원",
-    "value": 9
-  },
-  {
-    "text": "종합",
-    "value": 9
-  },
-  {
-    "text": "차트",
-    "value": 9
-  },
-  {
     "text": "무선",
     "value": 9
   },
@@ -36,27 +8,11 @@
     "value": 9
   },
   {
-    "text": "쇼핑라이브 12원",
-    "value": 9
-  },
-  {
-    "text": "12원 종합",
-    "value": 9
-  },
-  {
-    "text": "종합 차트",
-    "value": 9
-  },
-  {
     "text": "화이트",
     "value": 7
   },
   {
     "text": "AMD",
-    "value": 7
-  },
-  {
-    "text": "16GB",
     "value": 7
   },
   {
@@ -88,15 +44,7 @@
     "value": 5
   },
   {
-    "text": "4K",
-    "value": 5
-  },
-  {
     "text": "PRO",
-    "value": 5
-  },
-  {
-    "text": "32GB",
     "value": 5
   },
   {
@@ -132,10 +80,6 @@
     "value": 4
   },
   {
-    "text": "농심",
-    "value": 4
-  },
-  {
     "text": "9800X3D",
     "value": 4
   },
@@ -152,10 +96,6 @@
     "value": 4
   },
   {
-    "text": "8GB",
-    "value": 4
-  },
-  {
     "text": "삼성전자",
     "value": 4
   },
@@ -165,14 +105,6 @@
   },
   {
     "text": "IPS",
-    "value": 4
-  },
-  {
-    "text": "2종",
-    "value": 4
-  },
-  {
-    "text": "세트",
     "value": 4
   },
   {
@@ -188,15 +120,83 @@
     "value": 4
   },
   {
-    "text": "롯데리아",
+    "text": "X50",
     "value": 3
   },
   {
-    "text": "1kg",
+    "text": "직배수",
     "value": 3
   },
   {
-    "text": "200g",
+    "text": "슬릭",
+    "value": 3
+  },
+  {
+    "text": "BLDC",
+    "value": 3
+  },
+  {
+    "text": "커세어",
+    "value": 3
+  },
+  {
+    "text": "미니",
+    "value": 3
+  },
+  {
+    "text": "증정",
+    "value": 3
+  },
+  {
+    "text": "제로슈거",
+    "value": 3
+  },
+  {
+    "text": "WORX",
+    "value": 3
+  },
+  {
+    "text": "드라이버",
+    "value": 3
+  },
+  {
+    "text": "전동",
+    "value": 3
+  },
+  {
+    "text": "앤커",
+    "value": 3
+  },
+  {
+    "text": "육개장",
+    "value": 3
+  },
+  {
+    "text": "키보드",
+    "value": 3
+  },
+  {
+    "text": "게이밍모니터",
+    "value": 3
+  },
+  {
+    "text": "본체",
+    "value": 3
+  },
+  {
+    "text": "라이젠7",
+    "value": 3
+  },
+  {
+    "text": "7800x3D",
+    "value": 3
+  },
+  {
+    "text": "QLED",
+    "value": 3
+  },
+  {
+    "text": "샤오신",
     "value": 3
   }
 ]

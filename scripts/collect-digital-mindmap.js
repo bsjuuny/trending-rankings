@@ -42,10 +42,17 @@ async function main() {
     const wordCounts = KoreanNLP.getFrequencies(titles);
     
     // 특가 용어, 불필요한 단어 제거 옵션
-    const excludeWords = ['무배', '할인', '특가', '배송', '무료', '체감가', '원', '만', '쿠폰'];
+    const excludeWords = ['무배', '할인', '특가', '배송', '무료', '체감가', '원', '만', '쿠폰', '적립', '네이버페', '네이버페이', '쇼핑라이브', '종합', '차트', '롯데리아', '농심', '세트'];
     
     const sorted = Object.entries(wordCounts)
-        .filter(([k, v]) => v >= 2 && !excludeWords.includes(k) && !/^\d+$/.test(k))
+        .filter(([k, v]) => {
+            if (v < 2) return false;
+            if (excludeWords.includes(k) || excludeWords.some(ew => k.includes(ew))) return false;
+            // 1kg, 200g, 12원, 2종 등 숫자+단위 필터링
+            if (/^\d+[a-zA-Z가-힣]+$/.test(k)) return false;
+            if (/^\d+$/.test(k)) return false;
+            return true;
+        })
         .sort((a, b) => b[1] - a[1])
         .slice(0, 50)
         .map(([text, value]) => ({ text, value }));
