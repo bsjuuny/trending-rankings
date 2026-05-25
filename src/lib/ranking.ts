@@ -14,7 +14,7 @@ export interface RankingSource {
     items: RankingItem[];
 }
 
-const USER_AGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36';
+const USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36';
 
 /**
  * Calculates the number of seconds remaining until the 59th minute of the current hour.
@@ -182,6 +182,8 @@ async function fetchDaumRankings(): Promise<RankingSource> {
         });
         const page = await browser.newPage();
         await page.setUserAgent(USER_AGENT);
+        // Daum 차단 방지를 위한 랜덤 지연 (1~3초)
+        await new Promise(r => setTimeout(r, 1000 + Math.random() * 2000));
         await page.goto('https://www.daum.net/', { waitUntil: 'networkidle2', timeout: 30000 });
 
         const trends = await page.evaluate(() => {

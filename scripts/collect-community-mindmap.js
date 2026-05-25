@@ -9,7 +9,7 @@ const fs = require('fs');
 const path = require('path');
 const KoreanNLP = require('./utils/korean-nlp');
 
-const USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36';
+const USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36';
 
 async function main() {
     console.log('[collect-community-mindmap] 시작...');
@@ -68,7 +68,8 @@ async function main() {
         });
     } catch (e) { console.warn('[community] 더쿠 실패:', e.message); }
 
-    const wordCounts = KoreanNLP.getFrequencies(titles);
+    const wordCounts = KoreanNLP.getTrendScores(titles);
+
     const sorted = Object.entries(wordCounts)
         .filter(([, v]) => v >= 3)
         .sort((a, b) => b[1] - a[1])

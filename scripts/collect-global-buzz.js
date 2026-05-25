@@ -1,4 +1,4 @@
-/**
+﻿/**
  * collect-global-buzz.js
  * Google Trends (Global), Reddit, Hacker News에서 글로벌 키워드 추출
  * → public/data/global-buzz.json 저장
@@ -8,7 +8,7 @@ const cheerio = require('cheerio');
 const fs = require('fs');
 const path = require('path');
 
-const USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36';
+const USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36';
 
 async function main() {
     console.log('[collect-global-buzz] 글로벌 트렌드 수집 시작...');

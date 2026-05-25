@@ -25,7 +25,27 @@ const loadEnv = () => {
 };
 loadEnv();
 
-const USER_AGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36';
+const USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36';
+
+function getKeywordScores(texts) {
+    if (typeof KoreanNLP.getTrendScores === 'function') {
+        return KoreanNLP.getTrendScores(texts);
+    }
+    if (typeof KoreanNLP.getFrequencies === 'function') {
+        return KoreanNLP.getFrequencies(texts);
+    }
+
+    console.warn('[generate-summary] KoreanNLP scoring method is unavailable. Falling back to a basic frequency map.');
+    const fallbackScores = {};
+    texts
+        .flatMap(text => String(text || '').split(/\s+/))
+        .map(word => word.trim())
+        .filter(word => word.length >= 2)
+        .forEach(word => {
+            fallbackScores[word] = (fallbackScores[word] || 0) + 1;
+        });
+    return fallbackScores;
+}
 
 async function getXRankings() {
     try {
@@ -113,6 +133,8 @@ async function getDaumRankings() {
         });
         const page = await browser.newPage();
         await page.setUserAgent(USER_AGENT);
+        // Daum 차단 방지를 위한 랜덤 지연 (1~3초)
+        await new Promise(r => setTimeout(r, 1000 + Math.random() * 2000));
         await page.goto('https://www.daum.net/', { waitUntil: 'networkidle2', timeout: 30000 });
 
         const trends = await page.evaluate(() => {
@@ -153,7 +175,8 @@ async function getCommunityKeywords(fs) {
         $2('.tit').each((i, el) => titles.push($2(el).text().trim()));
     } catch (e) { console.error('Community fetch error:', e); }
 
-    const wordCounts = KoreanNLP.getFrequencies(titles);
+    const wordCounts = getKeywordScores(titles);
+
 
     const sortedWords = Object.entries(wordCounts)
         .sort((a, b) => b[1] - a[1])
@@ -244,13 +267,14 @@ async function main() {
         const nowKST = new Date(Date.now() + (new Date().getTimezoneOffset() + 540) * 60000);
         const hour = nowKST.getHours();
         const day = nowKST.getDay(); // 0: 일요일
+        const isForce = process.argv.includes('--force');
 
-        if (day === 0) {
-            console.log('[scheduler] 일요일은 텔레그램 알림을 발송하지 않습니다.');
+        if (day === 0 && !isForce) {
+            console.log('[scheduler] 일요일은 텔레그램 알림을 발송하지 않습니다. (강제 발송 시 --force 사용)');
             return;
         }
-        if (hour >= 1 && hour < 5) {
-            console.log(`[scheduler] 새벽 시간대(${hour}시) 알림 발송 건너뜀 (01:00~05:00)`);
+        if (hour >= 1 && hour < 5 && !isForce) {
+            console.log(`[scheduler] 새벽 시간대(${hour}시) 알림 발송 건너뜀 (01:00~05:00) (강제 발송 시 --force 사용)`);
             return;
         }
 

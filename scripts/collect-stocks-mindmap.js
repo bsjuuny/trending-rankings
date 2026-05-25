@@ -9,7 +9,7 @@ const fs = require('fs');
 const path = require('path');
 const KoreanNLP = require('./utils/korean-nlp');
 
-const USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36';
+const USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36';
 
 const STOPWORDS = new Set([
   '관련', '이후', '주가', '시장', '투자', '매수', '매도', '상승', '하락',
@@ -62,7 +62,8 @@ async function getNaverFinanceNews() {
       headlines.push($(el).text().trim());
     });
 
-    const freqMap = KoreanNLP.getFrequencies(headlines);
+    const freqMap = KoreanNLP.getTrendScores(headlines);
+
     const keywords = Object.keys(freqMap);
     console.log(`[stocks] 네이버 뉴스 키워드: ${keywords.length}개`);
     return keywords;
@@ -104,7 +105,8 @@ async function getHankyungFinanceNews() {
       const text = $(el).text().trim();
       if (text.length >= 5 && text.length <= 80 && /[가-힣]/.test(text)) headlines.push(text);
     });
-    const freqMap = KoreanNLP.getFrequencies(headlines);
+    const freqMap = KoreanNLP.getTrendScores(headlines);
+
     console.log(`[stocks] 한국경제 뉴스: ${Object.keys(freqMap).length}개`);
     return Object.keys(freqMap);
   } catch (e) { return []; }

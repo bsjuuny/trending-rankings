@@ -19,7 +19,7 @@ export default function StocksMindmapPage() {
     useEffect(() => {
         fetch('/trendingrankings/data/mindmap_stocks.json')
             .then(res => res.json())
-            .then(data => { setWords(data.sort((a: any, b: any) => b.value - a.value).slice(0, 16)); setLoading(false); })
+            .then(data => { setWords(data.sort((a: any, b: any) => b.value - a.value).slice(0, 30)); setLoading(false); })
             .catch(() => setLoading(false));
     }, []);
 
@@ -40,6 +40,47 @@ export default function StocksMindmapPage() {
     const svgPx = win.w > 0 ? Math.min(win.w - 16, win.h - HEADER_H - 8) : 0;
     const svgLeft = win.w > 0 ? (win.w - svgPx) / 2 : 0;
     const svgTop = HEADER_H + (win.h - HEADER_H - svgPx) / 2;
+
+    const nodes = words.map((w, idx) => {
+        const total = words.length;
+        let isInner = false;
+        let totalInRing, ringIdx, distance, baseSize, nodeSizeAdd, fontSizeBase, fontSizeAdd;
+        
+        if (total > 20) {
+            const innerC = 6;
+            const midC = 10;
+            const outC = total - innerC - midC;
+            if (idx < innerC) {
+                isInner = true; totalInRing = innerC; ringIdx = idx; distance = 160; baseSize = 90; nodeSizeAdd = 30; fontSizeBase = 16; fontSizeAdd = 8;
+            } else if (idx < innerC + midC) {
+                totalInRing = midC; ringIdx = idx - innerC; distance = 260; baseSize = 75; nodeSizeAdd = 20; fontSizeBase = 14; fontSizeAdd = 6;
+            } else {
+                totalInRing = outC; ringIdx = idx - innerC - midC; distance = 360; baseSize = 65; nodeSizeAdd = 15; fontSizeBase = 13; fontSizeAdd = 4;
+            }
+        } else {
+            const innerC = total <= 8 ? Math.min(4, total) : 6;
+            isInner = idx < innerC;
+            totalInRing = isInner ? innerC : (total - innerC);
+            ringIdx = isInner ? idx : (idx - innerC);
+            distance = isInner ? 180 : 320;
+            baseSize = isInner ? 100 : 70;
+            nodeSizeAdd = isInner ? 30 : 20;
+            fontSizeBase = isInner ? 18 : 14;
+            fontSizeAdd = isInner ? 8 : 6;
+        }
+
+        const outerOffset = isInner ? 0 : (Math.PI / totalInRing);
+        const theta = (ringIdx / totalInRing) * 2 * Math.PI - (Math.PI / 2) + outerOffset;
+        const x = CENTER + Math.cos(theta) * distance;
+        const y = CENTER + Math.sin(theta) * distance;
+
+        const ratio = maxVal === minVal ? 0.5 : (w.value - minVal) / (maxVal - minVal);
+        const nodeSize = baseSize + (ratio * nodeSizeAdd);
+        const fontSize = fontSizeBase + (ratio * fontSizeAdd);
+        const color = colors[w.text.split('').reduce((acc, c) => acc + c.charCodeAt(0), 0) % colors.length];
+
+        return { ...w, idx, x, y, nodeSize, fontSize, color, strokeWidth: isInner ? 4 : 2 };
+    });
 
     return (
         <div style={{ position: 'fixed', inset: 0, background: '#0f172a', overflow: 'hidden', color: 'white' }}>
@@ -64,19 +105,9 @@ export default function StocksMindmapPage() {
                     viewBox={`0 0 ${SVG_SIZE} ${SVG_SIZE}`}
                     style={{ position: 'absolute', left: svgLeft, top: svgTop, width: svgPx, height: svgPx, display: 'block' }}
                 >
-                    {words.map((w, idx) => {
-                        const innerCount = words.length <= 8 ? Math.min(4, words.length) : 6;
-                        const isInner = idx < innerCount;
-                        const totalInRing = isInner ? innerCount : (words.length - innerCount);
-                        const ringIdx = isInner ? idx : (idx - innerCount);
-                        const distance = isInner ? 180 : 320;
-                        const outerOffset = isInner ? 0 : (Math.PI / totalInRing);
-                        const theta = (ringIdx / totalInRing) * 2 * Math.PI - (Math.PI / 2) + outerOffset;
-                        const x = CENTER + Math.cos(theta) * distance;
-                        const y = CENTER + Math.sin(theta) * distance;
-                        const color = colors[w.text.split('').reduce((acc, c) => acc + c.charCodeAt(0), 0) % colors.length];
-                        return <line key={`line-${idx}`} x1={CENTER} y1={CENTER} x2={x} y2={y} stroke={color} strokeWidth={isInner ? 4 : 2} strokeOpacity={0.5} />;
-                    })}
+                    {nodes.map(n => (
+                        <line key={`line-${n.idx}`} x1={CENTER} y1={CENTER} x2={n.x} y2={n.y} stroke={n.color} strokeWidth={n.strokeWidth} strokeOpacity={0.5} />
+                    ))}
 
                     <foreignObject x={CENTER - CENTER_SIZE/2} y={CENTER - CENTER_SIZE/2} width={CENTER_SIZE} height={CENTER_SIZE}>
                         <div style={{ width: '100%', height: '100%', borderRadius: '50%', backgroundColor: '#0f172a', border: '6px solid #334155', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', color: 'white', textAlign: 'center' }}>
@@ -84,32 +115,16 @@ export default function StocksMindmapPage() {
                         </div>
                     </foreignObject>
 
-                    {words.map((w, idx) => {
-                        const ratio = maxVal === minVal ? 0.5 : (w.value - minVal) / (maxVal - minVal);
-                        const innerCount = words.length <= 8 ? Math.min(4, words.length) : 6;
-                        const isInner = idx < innerCount;
-                        const totalInRing = isInner ? innerCount : (words.length - innerCount);
-                        const ringIdx = isInner ? idx : (idx - innerCount);
-                        const baseSize = isInner ? 100 : 70;
-                        const nodeSize = baseSize + (ratio * (isInner ? 30 : 20));
-                        const fontSize = isInner ? (18 + ratio * 8) : (14 + ratio * 6);
-                        const distance = isInner ? 180 : 320;
-                        const outerOffset = isInner ? 0 : (Math.PI / totalInRing);
-                        const theta = (ringIdx / totalInRing) * 2 * Math.PI - (Math.PI / 2) + outerOffset;
-                        const x = CENTER + Math.cos(theta) * distance;
-                        const y = CENTER + Math.sin(theta) * distance;
-                        const color = colors[w.text.split('').reduce((acc, c) => acc + c.charCodeAt(0), 0) % colors.length];
-                        return (
-                            <foreignObject key={`bubble-${idx}`} x={x - nodeSize/2} y={y - nodeSize/2} width={nodeSize} height={nodeSize} style={{ overflow: 'visible' }}>
-                                <div style={{ width: '100%', height: '100%', borderRadius: '50%', backgroundColor: color, border: '4px solid #0f172a', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', color: 'white', boxShadow: '0 8px 20px rgba(0,0,0,0.4)', transition: 'transform 0.3s cubic-bezier(0.175,0.885,0.32,1.275)', cursor: 'default' }}
-                                    onMouseEnter={e => { e.currentTarget.style.transform = 'scale(1.15)'; }}
-                                    onMouseLeave={e => { e.currentTarget.style.transform = 'scale(1)'; }}>
-                                    <span style={{ fontSize: `${fontSize}px`, fontWeight: 900, textAlign: 'center', lineHeight: 1.1, padding: '0 6px', wordBreak: 'keep-all' }}>{w.text}</span>
-                                    <span style={{ fontSize: '14px', fontWeight: 'bold', color: 'rgba(255,255,255,0.85)', marginTop: '4px' }}>{w.value}회</span>
-                                </div>
-                            </foreignObject>
-                        );
-                    })}
+                    {nodes.map(n => (
+                        <foreignObject key={`bubble-${n.idx}`} x={n.x - n.nodeSize/2} y={n.y - n.nodeSize/2} width={n.nodeSize} height={n.nodeSize} style={{ overflow: 'visible' }}>
+                            <div style={{ width: '100%', height: '100%', borderRadius: '50%', backgroundColor: n.color, border: '4px solid #0f172a', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', color: 'white', boxShadow: '0 8px 20px rgba(0,0,0,0.4)', transition: 'transform 0.3s cubic-bezier(0.175,0.885,0.32,1.275)', cursor: 'default' }}
+                                onMouseEnter={e => { e.currentTarget.style.transform = 'scale(1.15)'; }}
+                                onMouseLeave={e => { e.currentTarget.style.transform = 'scale(1)'; }}>
+                                <span style={{ fontSize: `${n.fontSize}px`, fontWeight: 900, textAlign: 'center', lineHeight: 1.1, padding: '0 6px', wordBreak: 'keep-all' }}>{n.text}</span>
+                                <span style={{ fontSize: '14px', fontWeight: 'bold', color: 'rgba(255,255,255,0.85)', marginTop: '4px' }}>{n.value}회</span>
+                            </div>
+                        </foreignObject>
+                    ))}
                 </svg>
             )}
         </div>

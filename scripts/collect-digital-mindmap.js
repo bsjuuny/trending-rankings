@@ -9,7 +9,7 @@ const fs = require('fs');
 const path = require('path');
 const KoreanNLP = require('./utils/korean-nlp');
 
-const USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36';
+const USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36';
 
 async function main() {
     console.log('[collect-digital-mindmap] 시작...');
@@ -39,7 +39,8 @@ async function main() {
         console.warn('[collect-digital-mindmap] 수집된 제목이 없습니다!');
     }
 
-    const wordCounts = KoreanNLP.getFrequencies(titles);
+    const wordCounts = KoreanNLP.getTrendScores(titles);
+
     
     // 특가 용어, 불필요한 단어 제거 옵션
     const excludeWords = ['무배', '할인', '특가', '배송', '무료', '체감가', '원', '만', '쿠폰', '적립', '네이버페', '네이버페이', '쇼핑라이브', '종합', '차트', '롯데리아', '농심', '세트'];

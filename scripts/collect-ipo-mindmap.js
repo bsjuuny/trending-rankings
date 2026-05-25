@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const KoreanNLP = require('./utils/korean-nlp');
 
-const USER_AGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36';
+const USER_AGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36';
 
 async function get38IPODiscussion() {
   const sources = [
@@ -129,7 +129,8 @@ async function main() {
   ]);
 
   const allHeadlines = [...disc38, ...newsNaver, ...hankyung, ...daumNews, ...naverCalendar];
-  const freqMap = KoreanNLP.getFrequencies(allHeadlines);
+  const freqMap = KoreanNLP.getTrendScores(allHeadlines);
+
   const STOPWORDS = new Set([
     '오늘', '내일', '진행', '확인', '정보', '관련', '내역', '결과', '발표', '안내',
     '방법', '이후', '검색', '순위', '전망', '분석', '기대', '급등', '하락', '예상',

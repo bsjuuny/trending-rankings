@@ -1,38 +1,58 @@
 [
   {
     "text": "생리대",
-    "value": 6
+    "value": 5
   },
   {
     "text": "이어폰",
-    "value": 4
+    "value": 4.5
   },
   {
     "text": "케이스",
+    "value": 4
+  },
+  {
+    "text": "있을까",
     "value": 3
   },
   {
-    "text": "청소",
+    "text": "데카트론",
     "value": 3
   },
   {
-    "text": "매출",
-    "value": 2
+    "text": "신형",
+    "value": 2.5
   },
   {
-    "text": "헤드셋",
-    "value": 2
+    "text": "맥세이프",
+    "value": 2.5
+  },
+  {
+    "text": "저렴한",
+    "value": 2.5
+  },
+  {
+    "text": "마트",
+    "value": 2.5
+  },
+  {
+    "text": "쿠팡",
+    "value": 2.5
   },
   {
     "text": "손톱깎",
-    "value": 2
-  },
-  {
-    "text": "플라스틱",
-    "value": 2
+    "value": 2.5
   },
   {
     "text": "스피커",
+    "value": 2
+  },
+  {
+    "text": "백팩",
+    "value": 2
+  },
+  {
+    "text": "후기",
     "value": 2
   },
   {
@@ -40,43 +60,11 @@
     "value": 2
   },
   {
-    "text": "중국산",
-    "value": 2
-  },
-  {
-    "text": "타이어",
+    "text": "플라스틱",
     "value": 2
   },
   {
     "text": "음질",
-    "value": 2
-  },
-  {
-    "text": "생산",
-    "value": 2
-  },
-  {
-    "text": "일체형",
-    "value": 2
-  },
-  {
-    "text": "비데",
-    "value": 2
-  },
-  {
-    "text": "양변기",
-    "value": 2
-  },
-  {
-    "text": "DIY",
-    "value": 2
-  },
-  {
-    "text": "수리",
-    "value": 2
-  },
-  {
-    "text": "건전지",
     "value": 2
   }
 ]

@@ -9,7 +9,7 @@ const fs = require('fs');
 const path = require('path');
 const KoreanNLP = require('./utils/korean-nlp');
 
-const USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36';
+const USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36';
 
 async function main() {
     console.log('[collect-daiso-mindmap] 시작...');
@@ -59,7 +59,8 @@ async function main() {
         console.warn('[collect-daiso-mindmap] 수집된 제목이 없습니다!');
     }
 
-    const wordCounts = KoreanNLP.getFrequencies(titles);
+    const wordCounts = KoreanNLP.getTrendScores(titles);
+
     
     const excludeWords = [
         '대통령', '광주', '서울', '동네', '계신', '도보여행기', '갔다', '새로운', '하게된', '이야기', 
