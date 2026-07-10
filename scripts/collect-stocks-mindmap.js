@@ -62,7 +62,7 @@ async function getNaverFinanceNews() {
       headlines.push($(el).text().trim());
     });
 
-    const freqMap = KoreanNLP.getTrendScores(headlines);
+    const freqMap = KoreanNLP.getTrendScores(headlines, { source: 'stock' });
 
     const keywords = Object.keys(freqMap);
     console.log(`[stocks] 네이버 뉴스 키워드: ${keywords.length}개`);
@@ -105,7 +105,7 @@ async function getHankyungFinanceNews() {
       const text = $(el).text().trim();
       if (text.length >= 5 && text.length <= 80 && /[가-힣]/.test(text)) headlines.push(text);
     });
-    const freqMap = KoreanNLP.getTrendScores(headlines);
+    const freqMap = KoreanNLP.getTrendScores(headlines, { source: 'stock' });
 
     console.log(`[stocks] 한국경제 뉴스: ${Object.keys(freqMap).length}개`);
     return Object.keys(freqMap);
@@ -130,8 +130,9 @@ async function main() {
   const sorted = Object.entries(freq)
     .filter(([text, v]) => {
       if (v < 2) return false;
-      const etfKeywords = ['KODEX', 'TIGER', '인버스', '레버리지', '선물', 'ETN', 'ETF', '2X', 'ACE', 'KOSEF'];
+      const etfKeywords = ['KODEX', 'TIGER', 'SOL', 'KBSTAR', '인버스', '레버리지', '선물', 'ETN', 'ETF', '2X', 'ACE', 'KOSEF'];
       if (etfKeywords.some(k => text.includes(k))) return false;
+      if (/TOP\d+/i.test(text)) return false;
       return true;
     })
     .sort((a, b) => b[1] - a[1])

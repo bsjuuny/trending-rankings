@@ -129,7 +129,7 @@ async function main() {
   ]);
 
   const allHeadlines = [...disc38, ...newsNaver, ...hankyung, ...daumNews, ...naverCalendar];
-  const freqMap = KoreanNLP.getTrendScores(allHeadlines);
+  const freqMap = KoreanNLP.getTrendScores(allHeadlines, { source: 'ipo' });
 
   const STOPWORDS = new Set([
     '오늘', '내일', '진행', '확인', '정보', '관련', '내역', '결과', '발표', '안내',

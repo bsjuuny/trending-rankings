@@ -68,7 +68,7 @@ async function main() {
         });
     } catch (e) { console.warn('[community] 더쿠 실패:', e.message); }
 
-    const wordCounts = KoreanNLP.getTrendScores(titles);
+    const wordCounts = KoreanNLP.getTrendScores(titles, { source: 'community' });
 
     const sorted = Object.entries(wordCounts)
         .filter(([, v]) => v >= 3)

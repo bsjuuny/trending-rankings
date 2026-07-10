@@ -7,6 +7,8 @@ node_modules
 
 # testing
 coverage
+__pycache__/
+*.py[cod]
 
 # next.js
 .next/
@@ -19,6 +21,8 @@ public/data/mindmap_stocks.json
 public/data/mindmap_ipo.json
 summary.txt
 deploy_log_*.txt
+dev-server.log
+dev-server.err.log
 
 # misc
 .DS_Store

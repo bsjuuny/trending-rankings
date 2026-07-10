@@ -39,7 +39,7 @@ async function main() {
         console.warn('[collect-digital-mindmap] 수집된 제목이 없습니다!');
     }
 
-    const wordCounts = KoreanNLP.getTrendScores(titles);
+    const wordCounts = KoreanNLP.getTrendScores(titles, { source: 'community' });
 
     
     // 특가 용어, 불필요한 단어 제거 옵션

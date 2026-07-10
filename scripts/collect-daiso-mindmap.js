@@ -59,7 +59,7 @@ async function main() {
         console.warn('[collect-daiso-mindmap] 수집된 제목이 없습니다!');
     }
 
-    const wordCounts = KoreanNLP.getTrendScores(titles);
+    const wordCounts = KoreanNLP.getTrendScores(titles, { source: 'community' });
 
     
     const excludeWords = [

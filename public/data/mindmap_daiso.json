@@ -1,70 +1,146 @@
 [
   {
-    "text": "생리대",
-    "value": 5
-  },
-  {
-    "text": "이어폰",
-    "value": 4.5
-  },
-  {
-    "text": "케이스",
-    "value": 4
-  },
-  {
-    "text": "있을까",
-    "value": 3
-  },
-  {
-    "text": "데카트론",
-    "value": 3
-  },
-  {
-    "text": "신형",
-    "value": 2.5
+    "text": "배터리",
+    "value": 10
   },
   {
     "text": "맥세이프",
-    "value": 2.5
+    "value": 9.8
   },
   {
-    "text": "저렴한",
-    "value": 2.5
+    "text": "케이블",
+    "value": 5.2
   },
   {
-    "text": "마트",
-    "value": 2.5
+    "text": "유선",
+    "value": 4.5
   },
   {
-    "text": "쿠팡",
-    "value": 2.5
+    "text": "삼성",
+    "value": 4.2
   },
   {
-    "text": "손톱깎",
-    "value": 2.5
+    "text": "교체",
+    "value": 4.2
   },
   {
-    "text": "스피커",
-    "value": 2
+    "text": "아이폰",
+    "value": 3.9
   },
   {
-    "text": "백팩",
-    "value": 2
+    "text": "알리",
+    "value": 3.9
   },
   {
-    "text": "후기",
-    "value": 2
+    "text": "손톱깎이",
+    "value": 3.9
+  },
+  {
+    "text": "마우스",
+    "value": 3.5
+  },
+  {
+    "text": "케이스",
+    "value": 3.5
   },
   {
     "text": "키보드",
-    "value": 2
+    "value": 3.5
+  },
+  {
+    "text": "노트북",
+    "value": 3.2
+  },
+  {
+    "text": "알뜰",
+    "value": 3.2
+  },
+  {
+    "text": "만년필",
+    "value": 3.2
+  },
+  {
+    "text": "벌레",
+    "value": 2.9
+  },
+  {
+    "text": "욕실",
+    "value": 2.9
   },
   {
     "text": "플라스틱",
-    "value": 2
+    "value": 2.8
   },
   {
-    "text": "음질",
+    "text": "탈모",
+    "value": 2.7
+  },
+  {
+    "text": "셀프",
+    "value": 2.6
+  },
+  {
+    "text": "수정",
+    "value": 2.6
+  },
+  {
+    "text": "CMOS",
+    "value": 2.6
+  },
+  {
+    "text": "커넥터",
+    "value": 2.6
+  },
+  {
+    "text": "연결",
+    "value": 2.6
+  },
+  {
+    "text": "요금",
+    "value": 2.6
+  },
+  {
+    "text": "충전",
+    "value": 2.6
+  },
+  {
+    "text": "선풍기",
+    "value": 2.6
+  },
+  {
+    "text": "STAND",
+    "value": 2.6
+  },
+  {
+    "text": "청소",
+    "value": 2.6
+  },
+  {
+    "text": "일본",
+    "value": 2.6
+  },
+  {
+    "text": "스피커",
+    "value": 2.6
+  },
+  {
+    "text": "FAN",
+    "value": 2.4
+  },
+  {
+    "text": "OEM",
+    "value": 2.4
+  },
+  {
+    "text": "삼성전자",
+    "value": 2.2
+  },
+  {
+    "text": "데카트론",
+    "value": 2.2
+  },
+  {
+    "text": "쿠팡",
     "value": 2
   }
 ]
