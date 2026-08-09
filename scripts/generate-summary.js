@@ -47,42 +47,6 @@ function getKeywordScores(texts) {
     return fallbackScores;
 }
 
-async function getXRankings() {
-    try {
-        const response = await fetch('https://trends24.in/korea/', {
-            headers: { 'User-Agent': USER_AGENT }
-        });
-        const html = await response.text();
-        const $ = cheerio.load(html);
-        const items = [];
-        $('.trend-link').each((i, el) => {
-            const keyword = $(el).text().trim();
-            if (keyword && items.length < 10) {
-                items.push(`${items.length + 1}. ${keyword}`);
-            }
-        });
-        return items.join('\n');
-    } catch (e) { return '데이터를 가져올 수 없습니다.'; }
-}
-
-async function getYoutubeRankings() {
-    try {
-        const response = await fetch('https://kworb.net/youtube/trending/kr.html', {
-            headers: { 'User-Agent': USER_AGENT }
-        });
-        const html = await response.text();
-        const $ = cheerio.load(html);
-        const items = [];
-        $('.text div a').each((i, el) => {
-            const keyword = $(el).text().trim();
-            if (keyword && items.length < 10) {
-                items.push(`${items.length + 1}. ${keyword}`);
-            }
-        });
-        return items.join('\n');
-    } catch (e) { return '데이터를 가져올 수 없습니다.'; }
-}
-
 async function getSignalRankings() {
     try {
         const response = await fetch('https://api.signal.bz/news/realtime', {
@@ -210,12 +174,10 @@ async function getJSONMindmap(fs, filename, title) {
 
 async function main() {
     const fs = require('fs');
-    const [nate, google, signal, x, youtube, daum, comm] = await Promise.all([
+    const [nate, google, signal, daum, comm] = await Promise.all([
         getNateRankings(),
         getGoogleTrends(),
         getSignalRankings(),
-        getXRankings(),
-        getYoutubeRankings(),
         getDaumRankings(),
         getCommunityKeywords(fs) // 20개 가져오도록 내부 수정 필요
     ]);
@@ -243,10 +205,6 @@ async function main() {
         formatSection('Daum 트렌드', '🟡', daum),
         '',
         formatSection('Signal.bz', '🚥', signal),
-        '',
-        formatSection('X (Twitter)', '🐦', x),
-        '',
-        formatSection('YouTube 인기 급상승', '🎬', youtube),
     ].join('\n');
 
     // 2. 통합 인텔리전스 버즈 리포트 (커뮤니티 + 마인드맵)
@@ -263,18 +221,13 @@ async function main() {
     console.log('Dual-bot summaries generated successfully.');
 
     if (process.argv.includes('--send')) {
-        // 새벽 (01시~05시) 및 일요일 알림 건너뜀
+        // 일요일 알림 건너뜀 (실행 자체가 07~23시로 제한되어 있어 새벽 quiet-hour 체크는 불필요)
         const nowKST = new Date(Date.now() + (new Date().getTimezoneOffset() + 540) * 60000);
-        const hour = nowKST.getHours();
         const day = nowKST.getDay(); // 0: 일요일
         const isForce = process.argv.includes('--force');
 
         if (day === 0 && !isForce) {
             console.log('[scheduler] 일요일은 텔레그램 알림을 발송하지 않습니다. (강제 발송 시 --force 사용)');
-            return;
-        }
-        if (hour >= 1 && hour < 5 && !isForce) {
-            console.log(`[scheduler] 새벽 시간대(${hour}시) 알림 발송 건너뜀 (01:00~05:00) (강제 발송 시 --force 사용)`);
             return;
         }
 

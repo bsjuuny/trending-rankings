@@ -1,6 +1,5 @@
 import * as cheerio from 'cheerio';
 import puppeteer from 'puppeteer';
-import { unstable_cache } from 'next/cache';
 import fs from 'fs';
 import path from 'path';
 export interface RankingItem {
@@ -12,6 +11,22 @@ export interface RankingItem {
 export interface RankingSource {
     title: string;
     items: RankingItem[];
+}
+
+interface SignalItem {
+    rank: number;
+    keyword: string;
+}
+
+interface GlobalBuzzItem {
+    text: string;
+    value?: number;
+}
+
+interface GlobalBuzzData {
+    bbc?: GlobalBuzzItem[];
+    reddit?: GlobalBuzzItem[];
+    hn?: GlobalBuzzItem[];
 }
 
 const USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36';
@@ -100,8 +115,8 @@ export async function getSignalRankings(revalidate: number): Promise<RankingSour
             next: { revalidate }
         });
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
-        const data = await response.json();
-        const items: RankingItem[] = (data.top10 ?? []).map((item: any) => ({
+        const data = await response.json() as { top10?: SignalItem[] };
+        const items: RankingItem[] = (data.top10 ?? []).map((item) => ({
             rank: item.rank,
             keyword: item.keyword,
             link: `https://search.naver.com/search.naver?query=${encodeURIComponent(item.keyword)}`,
@@ -227,14 +242,14 @@ export async function getGlobalBuzz(): Promise<RankingSource[]> {
         const filePath = path.join(process.cwd(), 'public', 'data', 'global-buzz.json');
         if (!fs.existsSync(filePath)) return [];
         
-        const data = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+        const data = JSON.parse(fs.readFileSync(filePath, 'utf8')) as GlobalBuzzData;
         const sources: RankingSource[] = [];
 
         // 1. BBC World News
         if (data.bbc && data.bbc.length > 0) {
             sources.push({
                 title: 'BBC World News',
-                items: data.bbc.slice(0, 10).map((item: any, idx: number) => ({
+                items: data.bbc.slice(0, 10).map((item, idx) => ({
                     rank: idx + 1,
                     keyword: item.text,
                     link: `https://www.bbc.com/search?q=${encodeURIComponent(item.text)}`,
@@ -246,7 +261,7 @@ export async function getGlobalBuzz(): Promise<RankingSource[]> {
         if (data.reddit && data.reddit.length > 0) {
             sources.push({
                 title: 'Reddit Hot (r/all)',
-                items: data.reddit.slice(0, 10).map((item: any, idx: number) => ({
+                items: data.reddit.slice(0, 10).map((item, idx) => ({
                     rank: idx + 1,
                     keyword: item.text,
                     link: `https://www.reddit.com/search?q=${encodeURIComponent(item.text)}`,
@@ -258,7 +273,7 @@ export async function getGlobalBuzz(): Promise<RankingSource[]> {
         if (data.hn && data.hn.length > 0) {
             sources.push({
                 title: 'Hacker News Top',
-                items: data.hn.slice(0, 10).map((item: any, idx: number) => ({
+                items: data.hn.slice(0, 10).map((item, idx) => ({
                     rank: idx + 1,
                     keyword: item.text,
                     link: `https://www.google.com/search?q=${encodeURIComponent(item.text)}`,

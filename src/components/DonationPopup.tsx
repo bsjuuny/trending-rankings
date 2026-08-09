@@ -2,14 +2,13 @@
 
 import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
+import Image from "next/image";
 
 export default function DonationPopup() {
-    const [mounted, setMounted] = useState(false);
     const [isVisible, setIsVisible] = useState(false);
     const [show, setShow] = useState(false);
 
     useEffect(() => {
-        setMounted(true);
         const hasClosed = sessionStorage.getItem("donationPopupClosed");
         if (!hasClosed) {
             const timer = setTimeout(() => {
@@ -20,7 +19,7 @@ export default function DonationPopup() {
         }
     }, []);
 
-    if (!mounted || !isVisible) return null;
+    if (!isVisible) return null;
 
     return createPortal(
         <div
@@ -67,9 +66,11 @@ export default function DonationPopup() {
             </button>
 
             <div style={{ width: "100%", marginBottom: "16px", backgroundColor: "#f9fafb", borderRadius: "12px", display: "flex", justifyContent: "center", padding: "12px", border: "1px solid #f3f4f6" }}>
-                <img
+                <Image
                     src="/trendingrankings/donation-qr.png"
                     alt="기부 QR 코드"
+                    width={150}
+                    height={150}
                     style={{ width: "150px", height: "150px", objectFit: "contain" }}
                 />
             </div>

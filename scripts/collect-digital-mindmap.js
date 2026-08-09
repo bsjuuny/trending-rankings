@@ -14,6 +14,7 @@ const USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
 async function main() {
     console.log('[collect-digital-mindmap] 시작...');
     const titles = [];
+    let sourceUnavailable = false;
 
     // 퀘이사존 핫딜 (여러 페이지)
     for (let page = 1; page <= 8; page++) {
@@ -23,6 +24,13 @@ async function main() {
                 signal: AbortSignal.timeout(10000)
             });
             const html = await res.text();
+
+            if (!res.ok || /cloudflare|captcha|access denied/i.test(html)) {
+                console.log(`[digital] 퀘이사존 접근 제한 (HTTP ${res.status}) — 기존 데이터 유지`);
+                sourceUnavailable = true;
+                break;
+            }
+
             const $ = cheerio.load(html);
             $('.subject-link .ellipsis-with-reply-cnt').each((_i, el) => {
                 const text = $(el).text().trim();
@@ -31,12 +39,16 @@ async function main() {
                 if (filterText.length >= 2) titles.push(filterText);
             });
         } catch (e) {
-            console.warn(`[digital] 퀘이사존 추출 실패 (페이지 ${page}): ${e.message}`);
+            console.log(`[digital] 퀘이사존 추출 실패 (페이지 ${page}): ${e.message}`);
+            sourceUnavailable = true;
+            break;
         }
     }
 
     if (titles.length === 0) {
-        console.warn('[collect-digital-mindmap] 수집된 제목이 없습니다!');
+        const reason = sourceUnavailable ? '원본 사이트 접근 제한' : '수집 결과 없음';
+        console.log(`[collect-digital-mindmap] ${reason} — 기존 mindmap_digital.json을 유지합니다.`);
+        return;
     }
 
     const wordCounts = KoreanNLP.getTrendScores(titles, { source: 'community' });

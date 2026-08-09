@@ -4,33 +4,40 @@ import { useEffect, useState } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import { ArrowLeft, MessageSquare, TrendingUp, Landmark } from "lucide-react";
+import { MindmapWord, parseMindmapWords } from "@/lib/mindmap";
 
 type Category = "community" | "stocks" | "ipo" | "daiso" | "digital";
 
+const categories = [
+    { id: "community", label: "커뮤니티", icon: <MessageSquare size={18} />, file: 'mindmap.json' },
+    { id: "stocks", label: "주식/증권", icon: <TrendingUp size={18} />, file: 'mindmap_stocks.json' },
+    { id: "ipo", label: "공모주", icon: <Landmark size={18} />, file: 'mindmap_ipo.json' },
+    { id: "daiso", label: "다이소", icon: <MessageSquare size={18} />, file: 'mindmap_daiso.json' },
+    { id: "digital", label: "디지털가전", icon: <TrendingUp size={18} />, file: 'mindmap_digital.json' },
+] as const;
+
 export default function MindmapPage() {
     const [category, setCategory] = useState<Category>("community");
-    const [words, setWords] = useState<{ text: string, value: number }[]>([]);
+    const [words, setWords] = useState<MindmapWord[]>([]);
     const [loading, setLoading] = useState(true);
 
-    const categories = [
-        { id: "community", label: "커뮤니티", icon: <MessageSquare size={18} />, file: 'mindmap.json' },
-        { id: "stocks", label: "주식/증권", icon: <TrendingUp size={18} />, file: 'mindmap_stocks.json' },
-        { id: "ipo", label: "공모주", icon: <Landmark size={18} />, file: 'mindmap_ipo.json' },
-        { id: "daiso", label: "다이소", icon: <MessageSquare size={18} />, file: 'mindmap_daiso.json' },
-        { id: "digital", label: "디지털가전", icon: <TrendingUp size={18} />, file: 'mindmap_digital.json' },
-    ];
-
     useEffect(() => {
-        setLoading(true);
         const fileName = categories.find(c => c.id === category)?.file || 'mindmap.json';
+        const controller = new AbortController();
         // 캐시 방지를 위해 타임스탬프 추가
-        fetch(`../data/${fileName}?t=${new Date().getTime()}`)
+        fetch(`../data/${fileName}?t=${new Date().getTime()}`, { signal: controller.signal })
             .then(res => res.json())
-            .then(data => { 
-                setWords(data.sort((a: any, b: any) => b.value - a.value).slice(0, 30)); 
-                setLoading(false); 
+            .then((data: unknown) => {
+                if (!controller.signal.aborted) setWords(parseMindmapWords(data, 30));
             })
-            .catch(() => setLoading(false));
+            .catch(() => {
+                if (!controller.signal.aborted) setWords([]);
+            })
+            .finally(() => {
+                if (!controller.signal.aborted) setLoading(false);
+            });
+
+        return () => controller.abort();
     }, [category]);
 
     const colors = [
@@ -95,7 +102,12 @@ export default function MindmapPage() {
                     {categories.map(cat => (
                         <button
                             key={cat.id}
-                            onClick={() => setCategory(cat.id as Category)}
+                            onClick={() => {
+                                if (cat.id !== category) {
+                                    setLoading(true);
+                                    setCategory(cat.id);
+                                }
+                            }}
                             style={{
                                 display: 'flex',
                                 alignItems: 'center',

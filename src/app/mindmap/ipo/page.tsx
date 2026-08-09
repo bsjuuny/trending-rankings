@@ -2,9 +2,10 @@
 
 import { useEffect, useState } from "react";
 import Head from "next/head";
+import { MindmapWord, parseMindmapWords } from "@/lib/mindmap";
 
 export default function IpoMindmapPage() {
-    const [words, setWords] = useState<{ text: string, value: number }[]>([]);
+    const [words, setWords] = useState<MindmapWord[]>([]);
     const [loading, setLoading] = useState(true);
     const [win, setWin] = useState({ w: 0, h: 0 });
 
@@ -19,7 +20,7 @@ export default function IpoMindmapPage() {
     useEffect(() => {
         fetch('/trendingrankings/data/mindmap_ipo.json')
             .then(res => res.json())
-            .then(data => { setWords(data.sort((a: any, b: any) => b.value - a.value).slice(0, 16)); setLoading(false); })
+            .then((data: unknown) => { setWords(parseMindmapWords(data, 16)); setLoading(false); })
             .catch(() => setLoading(false));
     }, []);
 
