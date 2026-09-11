@@ -67,29 +67,40 @@ async function getNaverFinanceNews() {
     const keywords = Object.keys(freqMap);
     console.log(`[stocks] 네이버 뉴스 키워드: ${keywords.length}개`);
     return keywords;
-  } catch (e) { return []; }
+  } catch (e) {
+    console.warn(`[stocks] 네이버 뉴스 키워드 실패: ${e.message}`);
+    return [];
+  }
 }
 
+/**
+ * 네이버 금융이 Next.js 기반으로 전면 리뉴얼되면서(2026-09 이전 어느 시점) sise_quant.naver 같은
+ * 구버전 페이지는 정적 HTML에 데이터가 없어졌다(클라이언트 사이드 렌더링) — .type_2 td a 셀렉터가
+ * 항상 0건을 반환해 이 소스만 죽어있던 게 아니라, 한경 뉴스(가중치 1)만 남아 필터(v<2) 문턱을
+ * 못 넘어서 전체 결과가 0개로 나왔다 (2026-09-11 사용자 리포트로 확인). 모바일 웹이 쓰는 실제
+ * JSON API(m.stock.naver.com)로 교체한다 — 거래량 랭킹 API를 못 찾아 시가총액 랭킹으로 대체했지만,
+ * 대형주는 어차피 뉴스 언급 빈도가 높아 키워드 소스로는 충분하다.
+ */
 async function getNaverStockRanking() {
   try {
-    const res = await fetch('https://finance.naver.com/sise/sise_quant.naver', {
-      headers: { 'User-Agent': USER_AGENT },
-    });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const buf = await res.arrayBuffer();
-    const html = new TextDecoder('euc-kr').decode(buf);
-    const $ = cheerio.load(html);
-
     const keywords = [];
-    $('.type_2 td a').each((i, el) => {
-      const text = $(el).text().trim();
-      if (text && text.length >= 2 && keywords.length < 20) {
-        keywords.push(text);
+    for (const market of ['KOSPI', 'KOSDAQ']) {
+      const res = await fetch(
+        `https://m.stock.naver.com/api/stocks/marketValue/${market}?page=1&pageSize=20`,
+        { headers: { 'User-Agent': USER_AGENT } },
+      );
+      if (!res.ok) throw new Error(`HTTP ${res.status} (${market})`);
+      const data = await res.json();
+      for (const stock of data.stocks ?? []) {
+        if (stock.stockName) keywords.push(stock.stockName);
       }
-    });
-    console.log(`[stocks] 거래량 상위: ${keywords.length}개`);
+    }
+    console.log(`[stocks] 거래량 상위(시가총액 대체): ${keywords.length}개`);
     return keywords;
-  } catch (e) { return []; }
+  } catch (e) {
+    console.warn(`[stocks] 거래량 상위 실패: ${e.message}`);
+    return [];
+  }
 }
 
 async function getHankyungFinanceNews() {
@@ -109,7 +120,10 @@ async function getHankyungFinanceNews() {
 
     console.log(`[stocks] 한국경제 뉴스: ${Object.keys(freqMap).length}개`);
     return Object.keys(freqMap);
-  } catch (e) { return []; }
+  } catch (e) {
+    console.warn(`[stocks] 한국경제 뉴스 실패: ${e.message}`);
+    return [];
+  }
 }
 
 async function main() {

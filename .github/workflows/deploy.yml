@@ -1,9 +1,18 @@
 name: Build and Deploy to Cafe24
 on:
-  push:
-    branches:
-      - main
-  # schedule 비활성화 — PM2 스케줄러(run-trending-rankings.mjs)가 매시 13분 실행
+  # push 트리거 비활성화 — run-trending-rankings.mjs(Windows Task Scheduler, 매시
+  # 17/27분)가 빌드·FTP 배포·텔레그램 알림까지 전부 대체했다. push가 활성 상태로
+  # 남아있으면 self-hosted 러너가 main에 push될 때마다(자동 커밋 포함) 이 오래된
+  # 워크플로우가 "요약 생성 + 텔레그램 알림" 스텝까지 별도로 다시 실행돼, 새
+  # 파이프라인이 보낸 알림과 중복으로 발송된다 — 2026-04-24에 커밋 5개가 11분 안에
+  # 몰렸을 때 실제로 이 경로로 알림이 여러 번 겹쳐 나간 이력이 있다(git log 참고).
+  # 수동으로 한 번 돌려야 할 때는 Actions 탭에서 workflow_dispatch로 실행한다.
+  workflow_dispatch: {}
+  # push:
+  #   branches:
+  #     - main
+  # schedule 비활성화 — Windows Task Scheduler(run-trending-rankings.mjs)가 매시
+  # 17/27분 실행
   # schedule:
   #   - cron: '0 */2 * * *'
 

@@ -51,7 +51,7 @@ export default function RealTimeRanking({ initialData }: RealTimeRankingProps) {
         <div className="w-full flex flex-col gap-8">
             {/* 프리미엄 슬라이딩 탭 내비게이션 */}
             <div className="flex justify-center mb-8">
-                <div className="relative p-1.5 bg-slate-900/80 backdrop-blur-2xl border border-white/5 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] flex items-center overflow-hidden">
+                <div className="relative w-full max-w-[420px] p-1.5 bg-slate-900/80 backdrop-blur-2xl border border-white/5 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] flex items-center overflow-hidden sm:w-auto sm:max-w-none">
                     {/* 슬라이딩 인디케이터 */}
                     <div 
                         className={`absolute top-1.5 bottom-1.5 transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] rounded-xl shadow-lg ${
@@ -65,7 +65,7 @@ export default function RealTimeRanking({ initialData }: RealTimeRankingProps) {
 
                     <button 
                         onClick={() => setActiveTab('domestic')}
-                        className={`relative z-10 px-10 py-3.5 rounded-xl font-black text-sm transition-all duration-500 flex items-center gap-3 min-w-[180px] justify-center ${
+                        className={`relative z-10 min-w-0 flex-1 px-3 py-3.5 rounded-xl font-black text-sm transition-all duration-500 flex items-center justify-center gap-2 sm:min-w-[180px] sm:flex-none sm:px-10 sm:gap-3 ${
                             activeTab === 'domestic' ? 'text-white' : 'text-slate-500 hover:text-slate-300'
                         }`}
                     >
@@ -75,7 +75,7 @@ export default function RealTimeRanking({ initialData }: RealTimeRankingProps) {
                     
                     <button 
                         onClick={() => setActiveTab('overseas')}
-                        className={`relative z-10 px-10 py-3.5 rounded-xl font-black text-sm transition-all duration-500 flex items-center gap-3 min-w-[180px] justify-center ${
+                        className={`relative z-10 min-w-0 flex-1 px-3 py-3.5 rounded-xl font-black text-sm transition-all duration-500 flex items-center justify-center gap-2 sm:min-w-[180px] sm:flex-none sm:px-10 sm:gap-3 ${
                             activeTab === 'overseas' ? 'text-white' : 'text-slate-500 hover:text-slate-300'
                         }`}
                     >

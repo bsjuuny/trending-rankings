@@ -287,35 +287,7 @@ h1 {
   transform: scale(0.95);
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  h1 {
-    font-size: 2.5rem;
-  }
-
-  .subtitle,
-  .update-time {
-    font-size: 0.9rem;
-  }
-
-  .grid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-
-  .card {
-    padding: 1.5rem;
-    border-radius: 12px;
-  }
-
-  .theme-toggle {
-    top: 1rem;
-    right: 1rem;
-    padding: 0.6rem;
-  }
-}
-
-/* Tablet & Small Mobile Adjustments */
+/* Tablet adjustments */
 @media (max-width: 1024px) {
 
   /* Tablet layout */
@@ -342,6 +314,38 @@ h1 {
     top: 1.2rem;
     right: 1.2rem;
     padding: 0.65rem;
+  }
+}
+
+/* Mobile adjustments must follow the tablet rules so they take precedence. */
+@media (max-width: 768px) {
+  main {
+    padding: 2.5rem 1rem;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  .subtitle,
+  .update-time {
+    font-size: 0.9rem;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .card {
+    padding: 1.5rem;
+    border-radius: 12px;
+  }
+
+  .theme-toggle {
+    top: 1rem;
+    right: 1rem;
+    padding: 0.6rem;
   }
 }
 

@@ -54,7 +54,10 @@ async function getSignalRankings() {
         });
         const data = await response.json();
         return data.top10.slice(0, 10).map((item, i) => `${i + 1}. ${item.keyword}`).join('\n');
-    } catch (e) { return '데이터를 가져올 수 없습니다.'; }
+    } catch (e) {
+        console.warn(`[generate-summary] getSignalRankings failed: ${e.message}`);
+        return '데이터를 가져올 수 없습니다.';
+    }
 }
 
 async function getNateRankings() {
@@ -67,7 +70,10 @@ async function getNateRankings() {
         const text = decoder.decode(buffer);
         const data = JSON.parse(text);
         return data.slice(0, 10).map((item, i) => `${i + 1}. ${item[4]}`).join('\n');
-    } catch (e) { return '데이터를 가져올 수 없습니다.'; }
+    } catch (e) {
+        console.warn(`[generate-summary] getNateRankings failed: ${e.message}`);
+        return '데이터를 가져올 수 없습니다.';
+    }
 }
 
 async function getGoogleTrends() {
@@ -85,7 +91,10 @@ async function getGoogleTrends() {
             }
         });
         return items.join('\n');
-    } catch (e) { return '데이터를 가져올 수 없습니다.'; }
+    } catch (e) {
+        console.warn(`[generate-summary] getGoogleTrends failed: ${e.message}`);
+        return '데이터를 가져올 수 없습니다.';
+    }
 }
 
 async function getDaumRankings() {
@@ -119,6 +128,7 @@ async function getDaumRankings() {
         }
         return '데이터를 가져올 수 없습니다.';
     } catch (e) {
+        console.warn(`[generate-summary] getDaumRankings failed: ${e.message}`);
         return '데이터를 가져올 수 없습니다.';
     } finally {
         if (browser) await browser.close();
@@ -169,7 +179,10 @@ async function getJSONMindmap(fs, filename, title) {
             return keywords.map((w, i) => `${i + 1}. ${w.text} (${w.value}회)`).join('\n');
         }
         return '수집된 키워드가 없습니다.';
-    } catch (e) { return '데이터를 가져올 수 없습니다.'; }
+    } catch (e) {
+        console.warn(`[generate-summary] getJSONMindmap(${filename}) failed: ${e.message}`);
+        return '데이터를 가져올 수 없습니다.';
+    }
 }
 
 async function main() {

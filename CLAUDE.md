@@ -50,3 +50,13 @@
 - `scripts/`: 수집 엔진들의 집합소. 각 소스별로 코드가 분리되어 있어 유지보수가 쉽습니다.
 - `src/components/mindmap/`: 이 프로젝트의 핵심인 마인드맵 시각화 로직이 담긴 곳입니다. (Tailwind CSS 4가 사용되었습니다.)
 - `public/data/`: `mindmap.json` (웹 출력용)과 `summary.txt` (알림용)가 사는 곳입니다.
+
+<!-- BEGIN:nextjs-agent-rules -->
+
+# This is NOT the Next.js you know
+
+This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+
+This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
+
+<!-- END:nextjs-agent-rules -->

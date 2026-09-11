@@ -1,175 +1,114 @@
 {
   "bbc": [
     {
-      "text": "Israel rejects Trump's 15-point plan for Gaza, Netanyahu says",
+      "text": "Houthis claim major advance in Yemen and tighten grip on Red Sea shipping lane",
       "value": 1
     },
     {
-      "text": "Ancient Roman shipwreck discovered off Sicily coast",
+      "text": "Norway's Princess Astrid dies two days after attending brother King Harald's funeral",
       "value": 1
     },
     {
-      "text": "Perez Hilton faces long recovery after reports he self-harmed during livestream",
+      "text": "Israel says it has destroyed major underground Hezbollah base",
       "value": 1
     },
     {
-      "text": "Residents warned to brace for the worst as Canada wildfire rages out of control",
+      "text": "Princess Diana's 'revenge dress' goes up for auction",
       "value": 1
     },
     {
-      "text": "Ecuador charges ex-minister over presidential candidate assassination case",
+      "text": "Buddhist monk arrested in suspected $3m embezzlement scandal",
       "value": 1
     },
     {
-      "text": "Drones spotted over German base days after Leipzig bomb incident",
+      "text": "Anthropic blocks possible attempt to use AI to make biological weapons",
       "value": 1
     },
     {
-      "text": "Puerto Rico rations water supplies due to intense drought",
+      "text": "Hong Kong's Tiananmen activists sentenced to up to seven years in prison",
       "value": 1
     },
     {
-      "text": "An unbearable rotting stench is plaguing an LA neighbourhood",
+      "text": "Philippine rescuers board ferry 40 hours after blaze began",
       "value": 1
     },
     {
-      "text": "Israel accused of weaponising archaeology at ancient West Bank sites",
+      "text": "Six Nigerians accused of romance scams to be extradited to the US",
       "value": 1
     },
     {
-      "text": "Man arrested after boat capsizes near Statue of Liberty killing woman and infant",
+      "text": "Five dead and dozens injured in coach crash in Swiss Alps",
       "value": 1
     },
     {
-      "text": "Hormuz talks positive, Oman says, as Iran warns deal would not open strait",
+      "text": "Man jailed after threatening to behead son's teacher in French village",
       "value": 1
     },
     {
-      "text": "Spain imposes border controls against Italy as row over Ceuta migrant influx intensifies",
+      "text": "Man loses case to claw back $369,000 he spent on lavish gifts for ex-girlfriend",
       "value": 1
     }
   ],
-  "reddit": [
-    {
-      "text": "Your order price goes up when you don't tip at Shake Shack self checkout",
-      "value": 1
-    },
-    {
-      "text": "He is the original source",
-      "value": 1
-    },
-    {
-      "text": "After 9/11, rescue dogs experienced depression from primarily finding deceased victims, so workers staged fake rescues to boost their morale",
-      "value": 1
-    },
-    {
-      "text": "🤔",
-      "value": 1
-    },
-    {
-      "text": "Two very different Americas",
-      "value": 1
-    },
-    {
-      "text": "Meirl",
-      "value": 1
-    },
-    {
-      "text": "Just to be clear...",
-      "value": 1
-    },
-    {
-      "text": "no vacancy",
-      "value": 1
-    },
-    {
-      "text": "Found my family’s 1991 Disneyland tickets. One-day admission was $25.50.",
-      "value": 1
-    },
-    {
-      "text": "Meanwhile spiderman need new home 😅",
-      "value": 1
-    },
-    {
-      "text": "Double Headshot.",
-      "value": 1
-    },
-    {
-      "text": "I mean, thats the truth",
-      "value": 1
-    },
-    {
-      "text": "Jimmy Carter, 95, needed 14 stitches after falling at home. He showed up the following day to assist in the construction of homes for Habitat for Humanity despite his wounds.",
-      "value": 1
-    },
-    {
-      "text": "Surprising his best friend during an Ironman race and giving an energy boost 🚴🏻⚡️",
-      "value": 1
-    },
-    {
-      "text": "Video Game Accounts Can Be Inherited, Chinese Court Rules",
-      "value": 1
-    }
-  ],
+  "reddit": [],
   "hn": [
     {
-      "text": "How I use LLMs to learn complex topics",
+      "text": "A misalignment of AI in mathematics",
       "value": 1
     },
     {
-      "text": "Mea Culpa – Dark Hours",
+      "text": "I spent $220 on Google app ads and 60% of the installs were robots",
       "value": 1
     },
     {
-      "text": "Ask HN: What are you working on? (August 2026)",
+      "text": "GrapheneOS' rewritten Messages app is released",
       "value": 1
     },
     {
-      "text": "OpenChamber: An Agentic Development Environment",
+      "text": "A Design Space Exploration of Async/Await",
       "value": 1
     },
     {
-      "text": "Cool URIs Don't Change (1998)",
+      "text": "Project Blinkenlights",
       "value": 1
     },
     {
-      "text": "John C. Lilly on solid state intelligence and the elimination of man (1978)",
+      "text": "Show HN: ResolveHQ – A Helpdesk Built on Cloudflare Workers, D1, R2 and Queues",
       "value": 1
     },
     {
-      "text": "Crickets as Pets",
+      "text": "DeCloudflare",
       "value": 1
     },
     {
-      "text": "Show HN: A Project Oberon System version running on RISC-V instead of RISC-5",
+      "text": "Litelm: LiteLLM Without the Bloat",
       "value": 1
     },
     {
-      "text": "If experience is the goal, then you always win",
+      "text": "Λ Snap – An inviting programming language for kids and adults for CS study",
       "value": 1
     },
     {
-      "text": "There Are Magic Hexagons of Every Order",
+      "text": "AlphaGenome maps 9B DNA variants",
       "value": 1
     },
     {
-      "text": "Human vs. AI – Diff-based line-level provenance for text under agentic editing",
+      "text": "QueryBrew: System-Agnostic SQL-to-SQL Query Optimization [pdf]",
       "value": 1
     },
     {
-      "text": "Every fast write moves work somewhere else",
+      "text": "The EPA is planning to scrap public review rules for data center pollution",
       "value": 1
     },
     {
-      "text": "FCC moves to ban Lidar-equipped foreign drones from US",
+      "text": "Rune is now open source",
       "value": 1
     },
     {
-      "text": "How Golden Is Silence, Actually?",
+      "text": "I've operated petabyte-scale ClickHouse clusters for 5 years",
       "value": 1
     },
     {
-      "text": "Saying No",
+      "text": "Mind-altering drugs played key role in rise of Andean civilization",
       "value": 1
     }
   ]
