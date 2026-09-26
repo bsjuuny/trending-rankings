@@ -29,9 +29,6 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
-    // One-off reverse-engineering and scratch scripts are not production code.
-    "scratch/**",
-    "test-*.js",
   ]),
 ]);
 

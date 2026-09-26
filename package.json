@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "npm run collect:all && next build",
-    "build:push": "npm run build && git add public/data summary_main.txt summary_buzz.txt summary.txt public/donation-qr.png && git commit -m \"Build and update Trending Rankings (Fresh Data)\" && git push",
+    "build:push": "npm run build && git add public/data summary_main.txt summary_buzz.txt public/donation-qr.png && git commit -m \"Build and update Trending Rankings (Fresh Data)\" && git push",
     "generate": "node scripts/generate-summary.js",
     "generate:summary": "node scripts/generate-summary.js",
     "collect:community": "node scripts/collect-community-mindmap.js",
@@ -22,17 +22,14 @@
     "cheerio": "^1.2.0",
     "lucide-react": "^0.577.0",
     "next": "^16.3.3",
-    "node-cron": "^4.2.1",
     "react": "19.2.3",
     "react-dom": "19.2.3"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
-    "@types/node-cron": "^3.0.11",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "babel-plugin-react-compiler": "1.0.0",
     "eslint": "^9",
     "eslint-config-next": "16.1.6",
     "tailwindcss": "^4",
