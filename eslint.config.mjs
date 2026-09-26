@@ -32,9 +32,6 @@ const eslintConfig = defineConfig([
     // One-off reverse-engineering and scratch scripts are not production code.
     "scratch/**",
     "test-*.js",
-    "daum-main-script-5.js",
-    "extract-daum-json.js",
-    "parse-daum-main.js",
   ]),
 ]);
 
