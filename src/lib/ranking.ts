@@ -1,7 +1,8 @@
 import * as cheerio from 'cheerio';
-import puppeteer from 'puppeteer';
 import fs from 'fs';
 import path from 'path';
+import { fetchDaumTrendKeywords } from './daum-trends';
+import { parseLenientJson, collapseWhitespace } from './lenient-json';
 export interface RankingItem {
     rank: number;
     keyword: string;
@@ -140,14 +141,14 @@ export async function getNateRankings(revalidate: number): Promise<RankingSource
         const buffer = await response.arrayBuffer();
         const decoder = new TextDecoder('euc-kr');
         const text = decoder.decode(buffer);
-        const data = JSON.parse(text);
+        const data = parseLenientJson(text);
 
         const items: RankingItem[] = (Array.isArray(data) ? data : [])
             .filter((item: string[]) => Array.isArray(item) && item.length > 4 && item[4])
             .map((item: string[]) => ({
                 rank: parseInt(item[0], 10),
-                keyword: item[4],
-                link: `https://search.daum.net/search?w=tot&q=${encodeURIComponent(item[4])}`,
+                keyword: collapseWhitespace(item[4]),
+                link: `https://search.daum.net/search?w=tot&q=${encodeURIComponent(collapseWhitespace(item[4]))}`,
             }));
 
         return { title: 'Nate 이슈', items };
@@ -187,35 +188,10 @@ export async function getGoogleTrends(revalidate: number): Promise<RankingSource
     }
 }
 
-// Puppeteer fetching is heavy, so we wrap it in Next.js unstable_cache
 async function fetchDaumRankings(): Promise<RankingSource> {
-    let browser = null;
     try {
-        browser = await puppeteer.launch({
-            headless: true,
-            args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage']
-        });
-        const page = await browser.newPage();
-        await page.setUserAgent(USER_AGENT);
-        // Daum 차단 방지를 위한 랜덤 지연 (1~3초)
-        await new Promise(r => setTimeout(r, 1000 + Math.random() * 2000));
-        await page.goto('https://www.daum.net/', { waitUntil: 'networkidle2', timeout: 30000 });
-
-        const trends = await page.evaluate(() => {
-            const results: string[] = [];
-            const items = document.querySelectorAll('.box_trendrank .tit_item');
-            items.forEach(el => {
-                const text = (el as HTMLElement).innerText.trim();
-                if (text && !results.includes(text)) {
-                    results.push(text);
-                }
-            });
-            return results;
-        });
-
-        console.log(`[Daum Scraper] Found ${trends.length} items`);
-
-        const keywords = trends.slice(0, 10);
+        const keywords = await fetchDaumTrendKeywords(10);
+        console.log(`[Daum Scraper] Found ${keywords.length} items`);
 
         const items: RankingItem[] = keywords.map((keyword, index) => ({
             rank: index + 1,
@@ -227,8 +203,6 @@ async function fetchDaumRankings(): Promise<RankingSource> {
     } catch (error) {
         console.error('Error fetching Daum rankings:', error);
         return { title: 'Daum 트렌드 (Beta)', items: [] };
-    } finally {
-        if (browser) await browser.close();
     }
 }
 

@@ -1,6 +1,7 @@
 const cheerio = require('cheerio');
-const puppeteer = require('puppeteer');
 const KoreanNLP = require('./utils/korean-nlp');
+const { fetchDaumTrendKeywords } = require('./utils/daum-trends');
+const { parseLenientJson, collapseWhitespace } = require('./utils/lenient-json');
 const fs = require('fs');
 const path = require('path');
 
@@ -68,8 +69,8 @@ async function getNateRankings() {
         const buffer = await response.arrayBuffer();
         const decoder = new TextDecoder('euc-kr');
         const text = decoder.decode(buffer);
-        const data = JSON.parse(text);
-        return data.slice(0, 10).map((item, i) => `${i + 1}. ${item[4]}`).join('\n');
+        const data = parseLenientJson(text);
+        return data.slice(0, 10).map((item, i) => `${i + 1}. ${collapseWhitespace(item[4])}`).join('\n');
     } catch (e) {
         console.warn(`[generate-summary] getNateRankings failed: ${e.message}`);
         return '데이터를 가져올 수 없습니다.';
@@ -98,31 +99,8 @@ async function getGoogleTrends() {
 }
 
 async function getDaumRankings() {
-    let browser = null;
     try {
-        browser = await puppeteer.launch({
-            headless: 'new',
-            args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage']
-        });
-        const page = await browser.newPage();
-        await page.setUserAgent(USER_AGENT);
-        // Daum 차단 방지를 위한 랜덤 지연 (1~3초)
-        await new Promise(r => setTimeout(r, 1000 + Math.random() * 2000));
-        await page.goto('https://www.daum.net/', { waitUntil: 'networkidle2', timeout: 30000 });
-
-        const trends = await page.evaluate(() => {
-            const results = [];
-            const items = document.querySelectorAll('.box_trendrank .tit_item');
-            items.forEach(el => {
-                const text = el.innerText.trim();
-                if (text && !results.includes(text)) {
-                    results.push(text);
-                }
-            });
-            return results;
-        });
-
-        const keywords = trends.slice(0, 10);
+        const keywords = await fetchDaumTrendKeywords(cheerio, 10);
         if (keywords.length > 0) {
             return keywords.map((k, i) => `${i + 1}. ${k}`).join('\n');
         }
@@ -130,8 +108,6 @@ async function getDaumRankings() {
     } catch (e) {
         console.warn(`[generate-summary] getDaumRankings failed: ${e.message}`);
         return '데이터를 가져올 수 없습니다.';
-    } finally {
-        if (browser) await browser.close();
     }
 }
 
